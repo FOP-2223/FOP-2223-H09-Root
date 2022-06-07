@@ -1,19 +1,19 @@
 {
-  "name": "_name_",
+  "name": "FOP-2223-H09-Root",
   "assignmentIds": [
-    "h_id_"
+    "h09"
   ],
   "sourceSets": [
     {
       "name": "grader",
       "files": [
-        "h_id_/H_id__RubricProvider.java"
+        "h09/H09_RubricProvider.java"
       ]
     },
     {
       "name": "solution",
       "files": [
-        "h_id_/Main.java"
+        "h09/Main.java"
       ]
     }
   ]
