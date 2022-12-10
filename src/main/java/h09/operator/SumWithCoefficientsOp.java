@@ -1,19 +1,24 @@
 package h09.operator;
 
+import h09.basic.BasicBinaryOperations;
+
 import java.util.function.BinaryOperator;
 
-public class SumWithCoefficientsOp<T extends Number> implements BinaryOperator<T> {
+public class SumWithCoefficientsOp<X, Y> implements BinaryOperator<X> {
 
-    private final T coeff_1;
-    private final T coeff_2;
+    private final Y coeff_1;
+    private final Y coeff_2;
 
-    public SumWithCoefficientsOp(T coeff_1, T coeff_2) {
-        this.coeff_1 = coeff_1;
-        this.coeff_2 = coeff_2;
+    private final BasicBinaryOperations<X, Y> op;
+
+    public SumWithCoefficientsOp(BasicBinaryOperations<X, Y> op, Y leftCoeff, Y rightCoeff) {
+        this.op = op;
+        this.coeff_1 = leftCoeff;
+        this.coeff_2 = rightCoeff;
     }
 
     @Override
-    public T apply(T aDouble, T aDouble2) {
-        return coeff_1 * aDouble + coeff_2 * aDouble2;
+    public X apply(X left, X right) {
+        return op.add(op.mult(left, coeff_1), op.mult(right, coeff_2));
     }
 }
