@@ -1,7 +1,5 @@
 package h09.sequence;
 
-import h09.Sequence;
-
 import java.util.Iterator;
 import java.util.function.Predicate;
 

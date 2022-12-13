@@ -1,4 +1,4 @@
-package h09;
+package h09.sequence;
 
 import java.util.Iterator;
 

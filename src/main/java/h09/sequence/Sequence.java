@@ -1,6 +1,8 @@
-package h09;
+package h09.sequence;
 
 import java.util.Iterator;
+import java.util.stream.Collector;
+import java.util.stream.Stream;
 
 /**
  * A sequence of discrete values of {@link T}
@@ -16,6 +18,8 @@ public interface Sequence<T> {
      * Creates an iterator for this sequence.
      */
     Iterator<T> iterator();
+
+    // TODO: Collect
 
     interface Factory<T> {
         Sequence<T> create(T... values);

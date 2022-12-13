@@ -1,4 +1,4 @@
-package h09;
+package h09.sequence;
 
 public class AbstractSequenceFactory<T> implements Sequence.Factory<T> {
 
