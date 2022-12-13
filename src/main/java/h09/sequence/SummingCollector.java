@@ -4,12 +4,12 @@ import h09.basic.BasicBinaryOperations;
 
 import java.util.Iterator;
 
-public class SummingSequenceCollector<T> implements SequenceCollector<T, T> {
+public class SummingCollector<T> implements SequenceCollector<T, T> {
 
     private final T identity;
     private final BasicBinaryOperations<T, T> operations;
 
-    public SummingSequenceCollector(T identity, BasicBinaryOperations<T, T> operations) {
+    public SummingCollector(T identity, BasicBinaryOperations<T, T> operations) {
         this.identity = identity;
         this.operations = operations;
     }
