@@ -1,8 +1,9 @@
 package h09.sequence;
 
+import h09.basic.BasicFactory;
+
 import java.util.Iterator;
-import java.util.stream.Collector;
-import java.util.stream.Stream;
+import java.util.function.Function;
 
 /**
  * A sequence of discrete values of {@link T}
@@ -19,12 +20,21 @@ public interface Sequence<T> {
      */
     Iterator<T> iterator();
 
-    // TODO: Collect
+    default <R> Sequence<R> then(Function<Sequence<T>, Sequence<R>> sequenceMapper) {
+        return sequenceMapper.apply(this);
+    }
 
-    interface Factory<T> {
-        Sequence<T> create(T... values);
+    default <R> R collect(SequenceCollector<T, R> collector) {
+        return collector.collect(this);
+    }
 
-        Sequence<T> create(Iterable<T> iterable);
+    @SafeVarargs
+    static <T> Sequence<T> of(T... elements) {
+        return new ArraySequence<>(elements);
+    }
+
+    static <T> Sequence<T> of(BasicFactory<T> factory) {
+        return new BasicFactorySequence<>(factory);
     }
 
     static <T> Sequence<T> concat(Sequence<? extends T> a, Sequence<? extends T> b) {

@@ -1,5 +1,5 @@
 package h09.sequence;
 
-public interface SequenceCollector<T, A, R> {
-    // TODO: Inspiration from java's collector
+public interface SequenceCollector<T, R> {
+    R collect(Sequence<T> sequence);
 }

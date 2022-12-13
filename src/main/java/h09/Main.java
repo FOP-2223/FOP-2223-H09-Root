@@ -15,10 +15,4 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("Hello World!");
     }
-
-    void foo(Sequence<Foo> sequence) {
-        for (Foo foo : sequence) {
-            System.out.println(foo);
-        }
-    }
 }
