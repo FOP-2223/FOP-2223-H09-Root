@@ -2,30 +2,79 @@
 
 ## H1 Factories
 
-### H1.1 Double & Integer Factory
+### H1.1 IntegerFactory
 
-### H1.2 StringFactory
+-[x] Musterlösung
+-[x] Vorlage
+-[x] Aufgabe existiert im blatt
+-[x] Aufgabe einigermaßen formuliert
+-[ ] Aufgabe fertig formuliert
+-[ ] Alles gecheckt
 
-TODO: Merge 1.1 and 1.2?
+- ### H1.2 DoubleFactory
 
-### H1.3 BasicBinaryOperations
+-[x] Musterlösung
+-[x] Vorlage
+-[x] Aufgabe existiert im blatt
+-[ ] Aufgabe einigermaßen formuliert
+-[ ] Aufgabe fertig formuliert
+-[ ] Alles gecheckt
 
-- DoubleBasicBinaryOperations
-- IntegerBasicBinaryOperations
-- StringBasicBinaryOperations
+### H1.3 StringFactory
+
+-[x] Implementation
+-[x] Vorlage
+-[x] Aufgabe existiert im blatt
+-[ ] Aufgabe einigermaßen formuliert
+-[ ] Aufgabe fertig formuliert
+-[ ] Alles gecheckt
 
 ## H2 Binary operators
 
-### H2.1 Implement with Double
+Text muss noch angepasst werden
+
+### H2.1 Erster Satz von binären Operatorklassen (nicht generisch, parametrisiert mit Double)
+
+-[x] Implementation
+-[x] Vorlage
+-[x] Aufgabe existiert im blatt
+-[x] Aufgabe einigermaßen formuliert
+-[ ] Aufgabe fertig formuliert
+-[ ] Alles gecheckt
+
+Notes:
 
 - DoubleSumWithCoefficientsOp
 - DoubleMaxOfTwo
 - ComposedDoubleBinaryOperator
 
-### H2.2 Implement with better bounds (`ComposedBinaryOperator<T>`)
+### H2.2 Verbesserte Version von H2.1 - `ComposedBinaryOperator<T>`
 
-### H2.3 Implement with better bounds (`MaxOfTwo<T extends Comparable<T>>`)
+-[x] Implementation
+-[x] Vorlage
+-[x] Aufgabe existiert im blatt
+-[ ] Aufgabe einigermaßen formuliert
+-[ ] Aufgabe fertig formuliert
+-[ ] Alles gecheckt
 
-### H2.4 Implement with better bounds (`SumWithCoefficientsOp<T>`)
+### H2.3 Verbesserte Version von H2.1 - `MaxOfTwo<T extends Comparable<T>>`
+
+-[x] Implementation
+-[x] Vorlage
+-[x] Aufgabe existiert im blatt
+-[ ] Aufgabe einigermaßen formuliert
+-[ ] Aufgabe fertig formuliert
+-[ ] Alles gecheckt
+
+### H2.3 Verbesserte Version von H2.1 - `SumWithCoefficientsOp<T>`
+
+-[x] Implementation
+-[x] Vorlage
+-[x] Aufgabe existiert im blatt
+-[ ] Aufgabe einigermaßen formuliert
+-[ ] Aufgabe fertig formuliert
+-[ ] Alles gecheckt
+
+Notes:
 
 - Uses BasicBinaryOperations to implement the `apply` method
