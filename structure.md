@@ -78,3 +78,45 @@ Notes:
 Notes:
 
 - Uses BasicBinaryOperations to implement the `apply` method
+
+## H3 Eins nach dem Anderen - Sequences
+
+### H3.1 ArraySequence
+
+-[x] Musterlösung
+-[ ] Vorlage
+-[x] Aufgabe existiert im blatt
+-[x] Aufgabe einigermaßen formuliert
+-[ ] Aufgabe fertig formuliert
+-[ ] Alles gecheckt
+
+Notes:
+
+- Sequence.of() einkommentieren
+
+### H3.2 Diese Elemente... und dann noch Diese! - Sequence.concat
+
+-[x] Musterlösung
+-[ ] Vorlage
+-[x] Aufgabe existiert im blatt
+-[x] Aufgabe einigermaßen formuliert
+-[ ] Aufgabe fertig formuliert
+-[ ] Alles gecheckt
+
+### H3.3 FibonacciSequence
+
+-[x] Musterlösung
+-[ ] Vorlage
+-[x] Aufgabe existiert im blatt
+-[ ] Aufgabe einigermaßen formuliert
+-[ ] Aufgabe fertig formuliert
+-[ ] Alles gecheckt
+
+### H3.4 BasicFactorySequence
+
+-[x] Musterlösung
+-[ ] Vorlage
+-[x] Aufgabe existiert im blatt
+-[ ] Aufgabe einigermaßen formuliert
+-[ ] Aufgabe fertig formuliert
+-[ ] Alles gecheckt
