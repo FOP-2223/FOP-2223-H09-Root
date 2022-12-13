@@ -120,3 +120,56 @@ Notes:
 -[ ] Aufgabe einigermaßen formuliert
 -[ ] Aufgabe fertig formuliert
 -[ ] Alles gecheckt
+
+## H4 Sequence Operationen
+
+`OnEachSequence` und `LimitSequence` bereits implementiert in der studentischen Vorlage.
+
+-[ ] Intro text
+
+### H4.1 `TransformingSequence`
+
+-[x] Musterlösung
+-[ ] Vorlage
+-[x] Aufgabe existiert im blatt
+-[ ] Aufgabe einigermaßen formuliert
+-[ ] Aufgabe fertig formuliert
+-[ ] Alles gecheckt
+
+### H4.2 `FilteringSequence`
+
+-[x] Musterlösung
+-[ ] Vorlage
+-[x] Aufgabe existiert im blatt
+-[ ] Aufgabe einigermaßen formuliert
+-[ ] Aufgabe fertig formuliert
+-[ ] Alles gecheckt
+
+## H5 - Collect
+
+### H5.1 `SummingCollector`
+
+-[x] Musterlösung
+-[ ] Vorlage
+-[x] Aufgabe existiert im blatt
+-[ ] Aufgabe einigermaßen formuliert
+-[ ] Aufgabe fertig formuliert
+-[ ] Alles gecheckt
+
+### H5.2 `ToListCollector`
+
+-[x] Musterlösung
+-[ ] Vorlage
+-[x] Aufgabe existiert im blatt
+-[ ] Aufgabe einigermaßen formuliert
+-[ ] Aufgabe fertig formuliert
+-[ ] Alles gecheckt
+
+### H5.3 `BinaryOpFoldCollector`
+
+-[x] Musterlösung
+-[ ] Vorlage
+-[x] Aufgabe existiert im blatt
+-[ ] Aufgabe einigermaßen formuliert
+-[ ] Aufgabe fertig formuliert
+-[ ] Alles gecheckt
