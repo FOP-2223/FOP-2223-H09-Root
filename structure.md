@@ -5,7 +5,7 @@
 ### H1.1 IntegerFactory
 
 -[x] Musterlösung
--[x] Vorlage
+-[ ] Vorlage
 -[x] Aufgabe existiert im blatt
 -[x] Aufgabe einigermaßen formuliert
 -[ ] Aufgabe fertig formuliert
@@ -14,7 +14,7 @@
 - ### H1.2 DoubleFactory
 
 -[x] Musterlösung
--[x] Vorlage
+-[ ] Vorlage
 -[x] Aufgabe existiert im blatt
 -[ ] Aufgabe einigermaßen formuliert
 -[ ] Aufgabe fertig formuliert
@@ -22,8 +22,8 @@
 
 ### H1.3 StringFactory
 
--[x] Implementation
--[x] Vorlage
+-[x] Musterlösung
+-[ ] Vorlage
 -[x] Aufgabe existiert im blatt
 -[ ] Aufgabe einigermaßen formuliert
 -[ ] Aufgabe fertig formuliert
@@ -35,8 +35,8 @@ Text muss noch angepasst werden
 
 ### H2.1 Erster Satz von binären Operatorklassen (nicht generisch, parametrisiert mit Double)
 
--[x] Implementation
--[x] Vorlage
+-[x] Musterlösung
+-[ ] Vorlage
 -[x] Aufgabe existiert im blatt
 -[x] Aufgabe einigermaßen formuliert
 -[ ] Aufgabe fertig formuliert
@@ -50,8 +50,8 @@ Notes:
 
 ### H2.2 Verbesserte Version von H2.1 - `ComposedBinaryOperator<T>`
 
--[x] Implementation
--[x] Vorlage
+-[x] Musterlösung
+-[ ] Vorlage
 -[x] Aufgabe existiert im blatt
 -[ ] Aufgabe einigermaßen formuliert
 -[ ] Aufgabe fertig formuliert
@@ -59,8 +59,8 @@ Notes:
 
 ### H2.3 Verbesserte Version von H2.1 - `MaxOfTwo<T extends Comparable<T>>`
 
--[x] Implementation
--[x] Vorlage
+-[x] Musterlösung
+-[ ] Vorlage
 -[x] Aufgabe existiert im blatt
 -[ ] Aufgabe einigermaßen formuliert
 -[ ] Aufgabe fertig formuliert
@@ -68,8 +68,8 @@ Notes:
 
 ### H2.3 Verbesserte Version von H2.1 - `SumWithCoefficientsOp<T>`
 
--[x] Implementation
--[x] Vorlage
+-[x] Musterlösung
+-[ ] Vorlage
 -[x] Aufgabe existiert im blatt
 -[ ] Aufgabe einigermaßen formuliert
 -[ ] Aufgabe fertig formuliert
