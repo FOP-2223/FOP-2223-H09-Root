@@ -1,11 +1,5 @@
 package h09.operator;
 
-import java.util.function.BinaryOperator;
-
-public class DoubleMaxOfTwo implements BinaryOperator<Double> {
-
-    @Override
-    public Double apply(Double left, Double right) {
-        return left.compareTo(right) > 0 ? left : right;
-    }
+public class DoubleMaxOfTwo {
+    // TODO: H2.1 - remove if implemented
 }
