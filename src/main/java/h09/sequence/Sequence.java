@@ -33,6 +33,10 @@ public interface Sequence<T> {
         return new ArraySequence<>(elements);
     }
 
+    static <T> Sequence<T> of(Iterable<T> iterable) {
+        return iterable::iterator;
+    }
+
     static <T> Sequence<T> of(BasicFactory<T> factory) {
         return new BasicFactorySequence<>(factory);
     }
