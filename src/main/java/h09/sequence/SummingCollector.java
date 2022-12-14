@@ -15,9 +15,9 @@ public class SummingCollector<T> implements SequenceCollector<T, T> {
     }
 
     @Override
-    public T collect(Sequence<T> sequence) {
+    public T collect(Sequence<? extends T> sequence) {
         T result = identity;
-        final Iterator<T> iterator = sequence.iterator();
+        final Iterator<? extends T> iterator = sequence.iterator();
         while (iterator.hasNext()) {
             result = operations.add(result, iterator.next());
         }

@@ -16,8 +16,8 @@ final class VoidCollector<T> implements SequenceCollector<T, Void> {
     }
 
     @Override
-    public Void collect(Sequence<T> sequence) {
-        final Iterator<T> iterator = sequence.iterator();
+    public Void collect(Sequence<? extends T> sequence) {
+        final Iterator<? extends T> iterator = sequence.iterator();
         while (iterator.hasNext()) {
             iterator.next();
         }

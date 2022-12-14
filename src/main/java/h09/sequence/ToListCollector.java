@@ -18,9 +18,9 @@ public class ToListCollector<T> implements SequenceCollector<T, List<T>> {
     }
 
     @Override
-    public List<T> collect(Sequence<T> sequence) {
+    public List<T> collect(Sequence<? extends T> sequence) {
         final List<T> result = listSupplier.get();
-        final Iterator<T> iterator = sequence.iterator();
+        final Iterator<? extends T> iterator = sequence.iterator();
         while (iterator.hasNext()) {
             result.add(iterator.next());
         }
