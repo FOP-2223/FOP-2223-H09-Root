@@ -30,7 +30,10 @@ public interface Sequence<T> {
 
     @SafeVarargs
     static <T> Sequence<T> of(T... elements) {
-        return new ArraySequence<>(elements);
+        // TODO: H3.1 - remove if implemented
+        throw new RuntimeException("Not implemented yet");
+        // Uncomment the following line when implemented:
+//        return new ArraySequence<>(elements);
     }
 
     static <T> Sequence<T> of(BasicFactory<T> factory) {
