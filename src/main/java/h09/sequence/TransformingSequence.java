@@ -8,7 +8,7 @@ public class TransformingSequence<T, R> implements Sequence<R> {
     private final Sequence<T> sequence;
     private final Function<? super T, ? extends R> function;
 
-    public static <T, R> Function<Sequence<T>, Sequence<R>> apply(Function<? super T, ? extends R> function) {
+    public static <T, R> Function<Sequence<T>, Sequence<R>> of(Function<? super T, ? extends R> function) {
         return sequence -> new TransformingSequence<>(sequence, function);
     }
 

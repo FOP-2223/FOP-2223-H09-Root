@@ -8,7 +8,7 @@ public class LimitSequence<T> implements Sequence<T> {
     private final Sequence<T> sequence;
     private final int limit;
 
-    public static <T> Function<Sequence<T>, Sequence<T>> apply(int limit) {
+    public static <T> Function<Sequence<T>, Sequence<T>> of(int limit) {
         return sequence -> new LimitSequence<>(sequence, limit);
     }
 

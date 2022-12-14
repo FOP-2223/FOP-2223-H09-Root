@@ -9,7 +9,7 @@ public class OnEachSequence<T> implements Sequence<T> {
     private final Sequence<T> sequence;
     private final Consumer<? super T> action;
 
-    public static <T> Function<Sequence<T>, Sequence<T>> apply(Consumer<? super T> action) {
+    public static <T> Function<Sequence<T>, Sequence<T>> of(Consumer<? super T> action) {
         return sequence -> new OnEachSequence<>(sequence, action);
     }
 

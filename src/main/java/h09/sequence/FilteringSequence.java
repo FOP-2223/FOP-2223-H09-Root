@@ -9,7 +9,7 @@ public class FilteringSequence<T> implements Sequence<T> {
     private final Sequence<T> sequence;
     private final Predicate<? super T> predicate;
 
-    public static <T> Function<Sequence<T>, Sequence<T>> apply(Predicate<? super T> predicate) {
+    public static <T> Function<Sequence<T>, Sequence<T>> of(Predicate<? super T> predicate) {
         return sequence -> new FilteringSequence<>(sequence, predicate);
     }
 
