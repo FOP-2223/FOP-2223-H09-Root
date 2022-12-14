@@ -3,16 +3,16 @@ package h09.sequence;
 import java.util.Iterator;
 import java.util.function.Function;
 
-public class FlatteningTransformingSequence<T, S extends Sequence<R>, R> implements Sequence<R> {
+public class FlatteningTransformingSequence<T, R> implements Sequence<R> {
 
     private final Sequence<T> sequence;
-    private final Function<? super T, ? extends S> function;
+    private final Function<? super T, ? extends Sequence<? extends R>> function;
 
-    public static <T, S extends Sequence<R>, R> Function<Sequence<T>, Sequence<R>> of(Function<? super T, ? extends S> function) {
+    public static <T, R> Function<Sequence<T>, Sequence<R>> of(Function<? super T, ? extends Sequence<? extends R>> function) {
         return sequence -> new FlatteningTransformingSequence<>(sequence, function);
     }
 
-    public FlatteningTransformingSequence(Sequence<T> sequence, Function<? super T, ? extends S> function) {
+    public FlatteningTransformingSequence(Sequence<T> sequence, Function<? super T, ? extends Sequence<? extends R>> function) {
         this.sequence = sequence;
         this.function = function;
     }
@@ -21,7 +21,7 @@ public class FlatteningTransformingSequence<T, S extends Sequence<R>, R> impleme
     public Iterator<R> iterator() {
         return new Iterator<>() {
             private final Iterator<T> iterator = sequence.iterator();
-            private Iterator<R> currentIterator = null;
+            private Iterator<? extends R> currentIterator = null;
 
             @Override
             public boolean hasNext() {
