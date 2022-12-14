@@ -37,19 +37,8 @@ public interface Sequence<T> {
         return new BasicFactorySequence<>(factory);
     }
 
-    static <T> Sequence<T> concat(Sequence<? extends T> a, Sequence<? extends T> b) {
-        return () -> new Iterator<>() {
-            Iterator<? extends T> it = a.iterator();
-
-            @Override
-            public boolean hasNext() {
-                return it.hasNext() || (it = b.iterator()).hasNext();
-            }
-
-            @Override
-            public T next() {
-                return it.next();
-            }
-        };
+    static <T> Sequence/*TODO: 3.2*/ concat(Sequence/*TODO: 3.2*/ left, Sequence/*TODO: 3.2*/ right) {
+        // TODO: H3.2 - remove if implemented
+        throw new RuntimeException("Not implemented yet");
     }
 }
