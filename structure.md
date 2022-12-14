@@ -136,7 +136,7 @@ Notes:
 
 -[ ] Intro text
 
-### H4.1 `TransformingSequence`
+### H4.1 `FilteringSequence`
 
 -[x] Musterlösung
 -[ ] Vorlage
@@ -145,7 +145,16 @@ Notes:
 -[ ] Aufgabe fertig formuliert
 -[ ] Alles gecheckt
 
-### H4.2 `FilteringSequence`
+### H4.2 `TransformingSequence`
+
+-[x] Musterlösung
+-[ ] Vorlage
+-[x] Aufgabe existiert im blatt
+-[ ] Aufgabe einigermaßen formuliert
+-[ ] Aufgabe fertig formuliert
+-[ ] Alles gecheckt
+
+### H4.3 `FlatteningTransformingSequence`
 
 -[x] Musterlösung
 -[ ] Vorlage
