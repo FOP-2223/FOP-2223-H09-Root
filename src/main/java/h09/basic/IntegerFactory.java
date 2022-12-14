@@ -1,17 +1,10 @@
 package h09.basic;
 
-public class IntegerFactory implements BasicFactory<Integer> {
-
-    private int current;
-    private final int step;
-
-    public IntegerFactory(int start, int step) {
-        this.current = start;
-        this.step = step;
-    }
+public class IntegerFactory implements BasicFactory/*TODO 1.1*/ {
 
     @Override
     public Integer create() {
-        return current += step;
+        // TODO: H1.1 - remove if implemented
+        throw new RuntimeException("Not implemented yet");
     }
 }

@@ -1,17 +1,10 @@
 package h09.basic;
 
-public class DoubleFactory implements BasicFactory<Double> {
-
-    private double current;
-    private final double step;
-
-    public DoubleFactory(double start, double step) {
-        this.current = start;
-        this.step = step;
-    }
+public class DoubleFactory implements BasicFactory/*TODO 1.2*/ {
 
     @Override
     public Double create() {
-        return current += step;
+        // TODO: H1.2 - remove if implemented
+        throw new RuntimeException("Not implemented yet");
     }
 }
