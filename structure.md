@@ -29,6 +29,15 @@
 -[ ] Aufgabe fertig formuliert
 -[ ] Alles gecheckt
 
+### H1.4 Traits für die binären Operatorenklassen
+
+-[x] Musterlösung
+-[ ] Vorlage
+-[x] Aufgabe existiert im blatt
+-[ ] Aufgabe einigermaßen formuliert
+-[ ] Aufgabe fertig formuliert
+-[ ] Alles gecheckt
+
 ## H2 Binary operators
 
 Text muss noch angepasst werden
