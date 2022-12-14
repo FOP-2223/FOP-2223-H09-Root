@@ -37,7 +37,10 @@ public interface Sequence<T> {
     }
 
     static <T> Sequence<T> of(BasicFactory<T> factory) {
-        return new BasicFactorySequence<>(factory);
+        // TODO: H3.4 - remove if implemented
+        throw new RuntimeException("Not implemented yet");
+        // Uncomment the following line when implemented:
+//        return new BasicFactorySequence<>(factory);
     }
 
     static <T> Sequence/*TODO: 3.2*/ concat(Sequence/*TODO: 3.2*/ left, Sequence/*TODO: 3.2*/ right) {
