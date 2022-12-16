@@ -1,5 +1,7 @@
 package h09.sequence;
 
+import org.jetbrains.annotations.Nullable;
+
 import java.util.Iterator;
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -26,10 +28,13 @@ public class FilteringSequence<T> implements Sequence<T> {
     private class FilteringSequenceIterator implements Iterator<T> {
         private final Iterator<T> iterator = sequence.iterator();
 
-        private T next;
+        private @Nullable T next;
 
         @Override
         public boolean hasNext() {
+            if (next != null) {
+                return true;
+            }
             while (iterator.hasNext()) {
                 next = iterator.next();
                 if (predicate.test(next)) {
@@ -41,7 +46,9 @@ public class FilteringSequence<T> implements Sequence<T> {
 
         @Override
         public T next() {
-            return next;
+            final T result = next;
+            next = null;
+            return result;
         }
     }
 }
