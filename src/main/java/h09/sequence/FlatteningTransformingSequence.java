@@ -25,21 +25,27 @@ public class FlatteningTransformingSequence<T, R> implements Sequence<R> {
 
             @Override
             public boolean hasNext() {
-                if (currentIterator != null && currentIterator.hasNext()) {
-                    return true;
-                }
-                while (iterator.hasNext()) {
-                    currentIterator = function.apply(iterator.next()).iterator();
-                    if (currentIterator.hasNext()) {
-                        return true;
-                    }
-                }
-                return false;
+                updateCurrentIterator();
+                return currentIterator.hasNext();
             }
 
             @Override
             public R next() {
+                updateCurrentIterator();
                 return currentIterator.next();
+            }
+
+            private void updateCurrentIterator() {
+                if (currentIterator != null && currentIterator.hasNext()) {
+                    return;
+                }
+
+                while (iterator.hasNext()) {
+                    currentIterator = function.apply(iterator.next()).iterator();
+                    if (currentIterator.hasNext()) {
+                        return;
+                    }
+                }
             }
         };
     }
