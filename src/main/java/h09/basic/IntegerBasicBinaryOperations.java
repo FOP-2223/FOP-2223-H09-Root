@@ -8,7 +8,7 @@ public class IntegerBasicBinaryOperations implements BasicBinaryOperations<Integ
     }
 
     @Override
-    public Integer mult(Integer left, Integer right) {
+    public Integer mul(Integer left, Integer right) {
         return left * right;
     }
 }

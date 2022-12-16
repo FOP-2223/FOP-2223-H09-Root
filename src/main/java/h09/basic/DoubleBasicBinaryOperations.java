@@ -8,7 +8,7 @@ public class DoubleBasicBinaryOperations implements BasicBinaryOperations<Double
     }
 
     @Override
-    public Double mult(Double left, Double right) {
+    public Double mul(Double left, Double right) {
         return left * right;
     }
 }

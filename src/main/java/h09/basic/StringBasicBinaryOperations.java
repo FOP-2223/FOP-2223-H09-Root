@@ -8,7 +8,7 @@ public class StringBasicBinaryOperations implements BasicBinaryOperations<String
     }
 
     @Override
-    public String mult(String left, Integer right) {
+    public String mul(String left, Integer right) {
         return left.repeat(right);
     }
 }

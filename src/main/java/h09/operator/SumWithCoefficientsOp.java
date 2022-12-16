@@ -19,6 +19,6 @@ public class SumWithCoefficientsOp<X, Y> implements BinaryOperator<X> {
 
     @Override
     public X apply(X left, X right) {
-        return op.add(op.mult(left, coeff_1), op.mult(right, coeff_2));
+        return op.add(op.mul(left, coeff_1), op.mul(right, coeff_2));
     }
 }
