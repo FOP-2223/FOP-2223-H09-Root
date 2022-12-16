@@ -13,6 +13,6 @@ public class StringFactory implements BasicFactory<String> {
 
     @Override
     public String create() {
-        return text[current = (current + 1) % text.length];
+        return text[current++ % text.length];
     }
 }
