@@ -11,17 +11,21 @@ public class BasicFactorySequence<T> implements Sequence<T> {
     public BasicFactorySequence(BasicFactory<T> factory) {
         this.factory = factory;
     }
+
     @Override
     public Iterator<T> iterator() {
-        return new Iterator<>() {
-            @Override
-            public boolean hasNext() {
-                return true;
-            }
-            @Override
-            public T next() {
-                return factory.create();
-            }
-        };
+        return new BasicFactorySequenceIterator();
+    }
+
+    private class BasicFactorySequenceIterator implements Iterator<T> {
+        @Override
+        public boolean hasNext() {
+            return true;
+        }
+
+        @Override
+        public T next() {
+            return factory.create();
+        }
     }
 }

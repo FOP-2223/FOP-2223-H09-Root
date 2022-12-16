@@ -19,20 +19,22 @@ public class LimitSequence<T> implements Sequence<T> {
 
     @Override
     public Iterator<T> iterator() {
-        return new Iterator<>() {
-            private final Iterator<T> iterator = sequence.iterator();
-            private int count = 0;
+        return new LimitSequenceIterator();
+    }
 
-            @Override
-            public boolean hasNext() {
-                return count < limit && iterator.hasNext();
-            }
+    private class LimitSequenceIterator implements Iterator<T> {
+        private final Iterator<T> iterator = sequence.iterator();
+        private int count = 0;
 
-            @Override
-            public T next() {
-                count++;
-                return iterator.next();
-            }
-        };
+        @Override
+        public boolean hasNext() {
+            return count < limit && iterator.hasNext();
+        }
+
+        @Override
+        public T next() {
+            count++;
+            return iterator.next();
+        }
     }
 }

@@ -11,18 +11,20 @@ public class ArraySequence<T> implements Sequence<T> {
 
     @Override
     public Iterator<T> iterator() {
-        return new Iterator<>() {
-            private int index = 0;
+        return new ArraySequenceIterator();
+    }
 
-            @Override
-            public boolean hasNext() {
-                return index < values.length;
-            }
+    private class ArraySequenceIterator implements Iterator<T> {
+        private int index = 0;
 
-            @Override
-            public T next() {
-                return values[index++];
-            }
-        };
+        @Override
+        public boolean hasNext() {
+            return index < values.length;
+        }
+
+        @Override
+        public T next() {
+            return values[index++];
+        }
     }
 }

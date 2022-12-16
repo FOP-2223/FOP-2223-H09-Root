@@ -20,20 +20,22 @@ public class OnEachSequence<T> implements Sequence<T> {
 
     @Override
     public Iterator<T> iterator() {
-        return new Iterator<>() {
-            private final Iterator<T> iterator = sequence.iterator();
+        return new OnEachSequenceIterator();
+    }
 
-            @Override
-            public boolean hasNext() {
-                return iterator.hasNext();
-            }
+    private class OnEachSequenceIterator implements Iterator<T> {
+        private final Iterator<T> iterator = sequence.iterator();
 
-            @Override
-            public T next() {
-                T next = iterator.next();
-                action.accept(next);
-                return next;
-            }
-        };
+        @Override
+        public boolean hasNext() {
+            return iterator.hasNext();
+        }
+
+        @Override
+        public T next() {
+            T next = iterator.next();
+            action.accept(next);
+            return next;
+        }
     }
 }

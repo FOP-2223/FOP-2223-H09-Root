@@ -19,18 +19,20 @@ public class TransformingSequence<T, R> implements Sequence<R> {
 
     @Override
     public Iterator<R> iterator() {
-        return new Iterator<>() {
-            private final Iterator<T> iterator = sequence.iterator();
+        return new TransformingSequenceIterator();
+    }
 
-            @Override
-            public boolean hasNext() {
-                return iterator.hasNext();
-            }
+    private class TransformingSequenceIterator implements Iterator<R> {
+        private final Iterator<T> iterator = sequence.iterator();
 
-            @Override
-            public R next() {
-                return function.apply(iterator.next());
-            }
-        };
+        @Override
+        public boolean hasNext() {
+            return iterator.hasNext();
+        }
+
+        @Override
+        public R next() {
+            return function.apply(iterator.next());
+        }
     }
 }

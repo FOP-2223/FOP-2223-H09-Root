@@ -20,26 +20,28 @@ public class FilteringSequence<T> implements Sequence<T> {
 
     @Override
     public Iterator<T> iterator() {
-        return new Iterator<>() {
-            private final Iterator<T> iterator = sequence.iterator();
+        return new FilteringSequenceIterator();
+    }
 
-            private T next;
+    private class FilteringSequenceIterator implements Iterator<T> {
+        private final Iterator<T> iterator = sequence.iterator();
 
-            @Override
-            public boolean hasNext() {
-                while (iterator.hasNext()) {
-                    next = iterator.next();
-                    if (predicate.test(next)) {
-                        return true;
-                    }
+        private T next;
+
+        @Override
+        public boolean hasNext() {
+            while (iterator.hasNext()) {
+                next = iterator.next();
+                if (predicate.test(next)) {
+                    return true;
                 }
-                return false;
             }
+            return false;
+        }
 
-            @Override
-            public T next() {
-                return next;
-            }
-        };
+        @Override
+        public T next() {
+            return next;
+        }
     }
 }
