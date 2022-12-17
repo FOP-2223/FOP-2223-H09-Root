@@ -11,9 +11,9 @@ class FilteringSequenceIterator<T> implements Iterator<T> {
 
     private @Nullable T next;
 
-    public FilteringSequenceIterator(Predicate<? super T> predicate, Iterator<T> iterator) {
-        this.predicate = predicate;
+    public FilteringSequenceIterator(Iterator<T> iterator, Predicate<? super T> predicate) {
         this.iterator = iterator;
+        this.predicate = predicate;
     }
 
     @Override

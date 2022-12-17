@@ -3,6 +3,7 @@ package h09.sequence;
 import java.util.Iterator;
 
 public class ArraySequence<T> implements Sequence<T> {
+
     private final T[] values;
 
     public ArraySequence(T[] values) {
