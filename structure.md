@@ -2,40 +2,42 @@
 
 ## H1 Factories
 
+-[x] Text fertig formuliert
+
 ### H1.1 IntegerFactory 1
 
 -[x] Musterlösung
--[ ] Vorlage
+-[x] Vorlage
 -[x] Aufgabe existiert im blatt
 -[x] Aufgabe einigermaßen formuliert
--[ ] Aufgabe fertig formuliert
+-[x] Aufgabe fertig formuliert
 -[ ] Alles gecheckt
 
 - ### H1.2 DoubleFactory 1
 
 -[x] Musterlösung
--[ ] Vorlage
+-[x] Vorlage
 -[x] Aufgabe existiert im blatt
--[ ] Aufgabe einigermaßen formuliert
--[ ] Aufgabe fertig formuliert
+-[x] Aufgabe einigermaßen formuliert
+-[x] Aufgabe fertig formuliert
 -[ ] Alles gecheckt
 
 ### H1.3 StringFactory 1
 
 -[x] Musterlösung
--[ ] Vorlage
+-[x] Vorlage
 -[x] Aufgabe existiert im blatt
--[ ] Aufgabe einigermaßen formuliert
--[ ] Aufgabe fertig formuliert
+-[x] Aufgabe einigermaßen formuliert
+-[x] Aufgabe fertig formuliert
 -[ ] Alles gecheckt
 
 ### H1.4 Traits für die binären Operatorenklassen 2
 
 -[x] Musterlösung
--[ ] Vorlage
+-[x] Vorlage
 -[x] Aufgabe existiert im blatt
--[ ] Aufgabe einigermaßen formuliert
--[ ] Aufgabe fertig formuliert
+-[x] Aufgabe einigermaßen formuliert
+-[x] Aufgabe fertig formuliert
 -[ ] Alles gecheckt
 
 ## H2 Binary operators
