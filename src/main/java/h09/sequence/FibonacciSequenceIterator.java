@@ -13,9 +13,10 @@ public class FibonacciSequenceIterator implements Iterator<Integer> {
 
     @Override
     public Integer next() {
+        int toReturn = previous;
         int next = previous + current;
         previous = current;
         current = next;
-        return next;
+        return toReturn;
     }
 }
