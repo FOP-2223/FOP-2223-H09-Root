@@ -1,4 +1,6 @@
-package h09.sequence;
+package h09.sequence.operation;
+
+import h09.sequence.Sequence;
 
 import java.util.Iterator;
 import java.util.function.Consumer;
@@ -20,22 +22,6 @@ public class OnEachSequence<T> implements Sequence<T> {
 
     @Override
     public Iterator<T> iterator() {
-        return new OnEachSequenceIterator();
-    }
-
-    private class OnEachSequenceIterator implements Iterator<T> {
-        private final Iterator<T> iterator = sequence.iterator();
-
-        @Override
-        public boolean hasNext() {
-            return iterator.hasNext();
-        }
-
-        @Override
-        public T next() {
-            T next = iterator.next();
-            action.accept(next);
-            return next;
-        }
+        return new OnEachSequenceIterator<>(sequence.iterator(), action);
     }
 }

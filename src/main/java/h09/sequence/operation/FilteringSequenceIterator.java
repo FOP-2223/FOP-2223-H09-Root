@@ -1,4 +1,4 @@
-package h09.sequence;
+package h09.sequence.operation;
 
 import org.jetbrains.annotations.Nullable;
 

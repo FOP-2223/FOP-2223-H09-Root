@@ -2,7 +2,7 @@ package h09.sequence;
 
 import java.util.Iterator;
 
-class ArraySequenceIterator<T> implements Iterator<T> {
+public class ArraySequenceIterator<T> implements Iterator<T> {
 
     // TODO: H3.1 - remove if implemented
 

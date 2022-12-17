@@ -1,4 +1,6 @@
-package h09.sequence;
+package h09.sequence.collect;
+
+import h09.sequence.Sequence;
 
 @FunctionalInterface
 public interface SequenceCollector<T, R> {

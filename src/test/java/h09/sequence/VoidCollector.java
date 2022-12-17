@@ -1,5 +1,7 @@
 package h09.sequence;
 
+import h09.sequence.collect.SequenceCollector;
+
 import java.util.Iterator;
 
 /**

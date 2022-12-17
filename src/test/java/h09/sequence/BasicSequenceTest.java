@@ -1,5 +1,9 @@
 package h09.sequence;
 
+import h09.sequence.operation.FilteringSequence;
+import h09.sequence.operation.LimitSequence;
+import h09.sequence.operation.OnEachSequence;
+import h09.sequence.operation.TransformingSequence;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

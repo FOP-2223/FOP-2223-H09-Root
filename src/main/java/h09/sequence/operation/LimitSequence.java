@@ -1,4 +1,6 @@
-package h09.sequence;
+package h09.sequence.operation;
+
+import h09.sequence.Sequence;
 
 import java.util.Iterator;
 import java.util.function.Function;
@@ -19,22 +21,6 @@ public class LimitSequence<T> implements Sequence<T> {
 
     @Override
     public Iterator<T> iterator() {
-        return new LimitSequenceIterator();
-    }
-
-    private class LimitSequenceIterator implements Iterator<T> {
-        private final Iterator<T> iterator = sequence.iterator();
-        private int count = 0;
-
-        @Override
-        public boolean hasNext() {
-            return count < limit && iterator.hasNext();
-        }
-
-        @Override
-        public T next() {
-            count++;
-            return iterator.next();
-        }
+        return new LimitSequenceIterator<>(sequence.iterator(), limit);
     }
 }
