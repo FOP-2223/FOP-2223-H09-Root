@@ -37,20 +37,4 @@ public interface Sequence<T> {
     static <T> Sequence<T> of(BasicFactory<T> factory) {
         return new BasicFactorySequence<>(factory);
     }
-
-    static <T> Sequence<T> concat(Sequence<? extends T> a, Sequence<? extends T> b) {
-        return () -> new Iterator<>() {
-            Iterator<? extends T> it = a.iterator();
-
-            @Override
-            public boolean hasNext() {
-                return it.hasNext() || (it = b.iterator()).hasNext();
-            }
-
-            @Override
-            public T next() {
-                return it.next();
-            }
-        };
-    }
 }

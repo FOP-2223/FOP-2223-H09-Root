@@ -2,10 +2,10 @@ package h09.operator;
 
 import java.util.function.BinaryOperator;
 
-public class MaxOfTwo<T extends Comparable<T>> implements BinaryOperator<T> {
+public class DoubleMaxOfTwoOperator implements BinaryOperator<Double> {
 
     @Override
-    public T apply(T left, T right) {
+    public Double apply(Double left, Double right) {
         return left.compareTo(right) > 0 ? left : right;
     }
 }

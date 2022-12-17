@@ -14,18 +14,6 @@ public class BasicFactorySequence<T> implements Sequence<T> {
 
     @Override
     public Iterator<T> iterator() {
-        return new BasicFactorySequenceIterator();
-    }
-
-    private class BasicFactorySequenceIterator implements Iterator<T> {
-        @Override
-        public boolean hasNext() {
-            return true;
-        }
-
-        @Override
-        public T next() {
-            return factory.create();
-        }
+        return new BasicFactorySequenceIterator<>(factory);
     }
 }

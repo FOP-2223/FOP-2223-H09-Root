@@ -6,7 +6,6 @@ public class ComposedDoubleBinaryOperator implements BinaryOperator<Double> {
 
     private final BinaryOperator<Double> op_1;
     private final BinaryOperator<Double> op_2;
-
     private final BinaryOperator<Double> op_3;
 
     public ComposedDoubleBinaryOperator(BinaryOperator<Double> op_1, BinaryOperator<Double> op_2, BinaryOperator<Double> op_3) {

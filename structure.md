@@ -57,6 +57,11 @@ Notes:
 - DoubleMaxOfTwo
 - ComposedDoubleBinaryOperator
 
+TODO:
+- Put primitive implementations from h07 into `operator.primitive` package
+- Mention `apply` instead of `applyAsDouble` in the text
+- Use BinaryOperator<Double> also for constructor parameters and fields
+
 ### H2.2 Verbesserte Version von H2.1 - `ComposedBinaryOperator<T>` 1
 
 -[x] Musterlösung
@@ -75,7 +80,7 @@ Notes:
 -[ ] Aufgabe fertig formuliert
 -[ ] Alles gecheckt
 
-### H2.3 Verbesserte Version von H2.1 - `SumWithCoefficientsOp<T>` 1 (2)
+### H2.4 Verbesserte Version von H2.1 - `SumWithCoefficientsOp<T>` 1 (2)
 
 -[x] Musterlösung
 -[ ] Vorlage
@@ -87,6 +92,9 @@ Notes:
 Notes:
 
 - Uses BasicBinaryOperations to implement the `apply` method
+
+TODO:
+- Describe how to implement method with basic binary operations
 
 ## H3 Eins nach dem Anderen - Sequences
 
@@ -103,16 +111,7 @@ Notes:
 
 - Sequence.of() einkommentieren
 
-### H3.2 Diese Elemente... und dann noch Diese! - Sequence.concat 2
-
--[x] Musterlösung
--[ ] Vorlage
--[x] Aufgabe existiert im blatt
--[x] Aufgabe einigermaßen formuliert
--[ ] Aufgabe fertig formuliert
--[ ] Alles gecheckt
-
-### H3.3 FibonacciSequence 2
+### H3.2 FibonacciSequence 2
 
 -[x] Musterlösung
 -[ ] Vorlage
@@ -121,7 +120,7 @@ Notes:
 -[ ] Aufgabe fertig formuliert
 -[ ] Alles gecheckt
 
-### H3.4 BasicFactorySequence 2
+### H3.3 BasicFactorySequence 2
 
 -[x] Musterlösung
 -[ ] Vorlage
