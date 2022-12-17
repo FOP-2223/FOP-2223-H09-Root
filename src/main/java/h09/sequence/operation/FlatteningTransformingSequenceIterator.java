@@ -1,5 +1,6 @@
-package h09.sequence;
+package h09.sequence.operation;
 
+import h09.sequence.Sequence;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Iterator;

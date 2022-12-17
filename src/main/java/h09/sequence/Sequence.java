@@ -1,16 +1,13 @@
 package h09.sequence;
 
 import h09.basic.BasicFactory;
+import h09.sequence.collect.SequenceCollector;
 
 import java.util.Iterator;
 import java.util.function.Function;
 
 /**
- * A sequence of discrete values of {@link T}
- *
- * <p>
- * If this sequence is not a {@link Range}, it must, by definition, contain a cycle.
- * </p>
+ * A sequence of discrete values of {@link T}.
  */
 @FunctionalInterface
 public interface Sequence<T> {
