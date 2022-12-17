@@ -2,7 +2,7 @@
 
 ## H1 Factories
 
-### H1.1 IntegerFactory
+### H1.1 IntegerFactory 1
 
 -[x] Musterlösung
 -[ ] Vorlage
@@ -11,7 +11,7 @@
 -[ ] Aufgabe fertig formuliert
 -[ ] Alles gecheckt
 
-- ### H1.2 DoubleFactory
+- ### H1.2 DoubleFactory 1
 
 -[x] Musterlösung
 -[ ] Vorlage
@@ -20,7 +20,7 @@
 -[ ] Aufgabe fertig formuliert
 -[ ] Alles gecheckt
 
-### H1.3 StringFactory
+### H1.3 StringFactory 1
 
 -[x] Musterlösung
 -[ ] Vorlage
@@ -29,7 +29,7 @@
 -[ ] Aufgabe fertig formuliert
 -[ ] Alles gecheckt
 
-### H1.4 Traits für die binären Operatorenklassen
+### H1.4 Traits für die binären Operatorenklassen 2
 
 -[x] Musterlösung
 -[ ] Vorlage
@@ -42,7 +42,7 @@
 
 Text muss noch angepasst werden
 
-### H2.1 Erster Satz von binären Operatorklassen (nicht generisch, parametrisiert mit Double)
+### H2.1 Erster Satz von binären Operatorklassen (nicht generisch, parametrisiert mit Double) 2
 
 -[x] Musterlösung
 -[ ] Vorlage
@@ -57,7 +57,7 @@ Notes:
 - DoubleMaxOfTwo
 - ComposedDoubleBinaryOperator
 
-### H2.2 Verbesserte Version von H2.1 - `ComposedBinaryOperator<T>`
+### H2.2 Verbesserte Version von H2.1 - `ComposedBinaryOperator<T>` 1
 
 -[x] Musterlösung
 -[ ] Vorlage
@@ -66,7 +66,7 @@ Notes:
 -[ ] Aufgabe fertig formuliert
 -[ ] Alles gecheckt
 
-### H2.3 Verbesserte Version von H2.1 - `MaxOfTwo<T extends Comparable<T>>`
+### H2.3 Verbesserte Version von H2.1 - `MaxOfTwo<T extends Comparable<T>>` 1
 
 -[x] Musterlösung
 -[ ] Vorlage
@@ -75,7 +75,7 @@ Notes:
 -[ ] Aufgabe fertig formuliert
 -[ ] Alles gecheckt
 
-### H2.3 Verbesserte Version von H2.1 - `SumWithCoefficientsOp<T>`
+### H2.3 Verbesserte Version von H2.1 - `SumWithCoefficientsOp<T>` 1 (2)
 
 -[x] Musterlösung
 -[ ] Vorlage
@@ -90,7 +90,7 @@ Notes:
 
 ## H3 Eins nach dem Anderen - Sequences
 
-### H3.1 ArraySequence
+### H3.1 ArraySequence 2
 
 -[x] Musterlösung
 -[ ] Vorlage
@@ -103,7 +103,7 @@ Notes:
 
 - Sequence.of() einkommentieren
 
-### H3.2 Diese Elemente... und dann noch Diese! - Sequence.concat
+### H3.2 Diese Elemente... und dann noch Diese! - Sequence.concat 2
 
 -[x] Musterlösung
 -[ ] Vorlage
@@ -112,7 +112,7 @@ Notes:
 -[ ] Aufgabe fertig formuliert
 -[ ] Alles gecheckt
 
-### H3.3 FibonacciSequence
+### H3.3 FibonacciSequence 2
 
 -[x] Musterlösung
 -[ ] Vorlage
@@ -121,7 +121,7 @@ Notes:
 -[ ] Aufgabe fertig formuliert
 -[ ] Alles gecheckt
 
-### H3.4 BasicFactorySequence
+### H3.4 BasicFactorySequence 2
 
 -[x] Musterlösung
 -[ ] Vorlage
@@ -136,7 +136,7 @@ Notes:
 
 -[ ] Intro text
 
-### H4.1 `FilteringSequence`
+### H4.1 `FilteringSequence` 3
 
 -[x] Musterlösung
 -[ ] Vorlage
@@ -145,7 +145,7 @@ Notes:
 -[ ] Aufgabe fertig formuliert
 -[ ] Alles gecheckt
 
-### H4.2 `TransformingSequence`
+### H4.2 `TransformingSequence` 2
 
 -[x] Musterlösung
 -[ ] Vorlage
@@ -154,7 +154,7 @@ Notes:
 -[ ] Aufgabe fertig formuliert
 -[ ] Alles gecheckt
 
-### H4.3 `FlatteningTransformingSequence`
+### H4.3 `FlatteningTransformingSequence` 3
 
 -[x] Musterlösung
 -[ ] Vorlage
@@ -162,10 +162,12 @@ Notes:
 -[ ] Aufgabe einigermaßen formuliert
 -[ ] Aufgabe fertig formuliert
 -[ ] Alles gecheckt
+
+### H4.4 `Einfachere syntax bei Verwendung von Sequences` 2
 
 ## H5 - Collect
 
-### H5.1 `SummingCollector`
+### H5.1 `SummingCollector` 2
 
 -[x] Musterlösung
 -[ ] Vorlage
@@ -174,7 +176,7 @@ Notes:
 -[ ] Aufgabe fertig formuliert
 -[ ] Alles gecheckt
 
-### H5.2 `ToListCollector`
+### H5.2 `ToListCollector` 2
 
 -[x] Musterlösung
 -[ ] Vorlage
@@ -183,7 +185,7 @@ Notes:
 -[ ] Aufgabe fertig formuliert
 -[ ] Alles gecheckt
 
-### H5.3 `BinaryOpFoldCollector`
+### H5.3 `BinaryOpFoldCollector` 2
 
 -[x] Musterlösung
 -[ ] Vorlage
@@ -191,3 +193,5 @@ Notes:
 -[ ] Aufgabe einigermaßen formuliert
 -[ ] Aufgabe fertig formuliert
 -[ ] Alles gecheckt
+
+### H6 - Elf Calories 2
