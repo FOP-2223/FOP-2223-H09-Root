@@ -5,6 +5,6 @@ public class FilteringSequence/*TODO: H4.1*/ {
 
 //    @Override
 //    public Iterator<T> iterator() {
-//        return new FilteringSequenceIterator<>(predicate, sequence.iterator());
+//        return new FilteringSequenceIterator<>(sequence.iterator(), predicate);
 //    }
 }
