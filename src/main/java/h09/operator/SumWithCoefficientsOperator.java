@@ -6,10 +6,9 @@ import java.util.function.BinaryOperator;
 
 public class SumWithCoefficientsOperator<X, Y> implements BinaryOperator<X> {
 
+    private final BasicBinaryOperations<X, Y> op;
     private final Y coeff_1;
     private final Y coeff_2;
-
-    private final BasicBinaryOperations<X, Y> op;
 
     public SumWithCoefficientsOperator(BasicBinaryOperations<X, Y> op, Y leftCoeff, Y rightCoeff) {
         this.op = op;
