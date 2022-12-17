@@ -1,6 +1,6 @@
 package h09.sequence;
 
-public class ArraySequence {
+public class ArraySequence/*TODO: H3.1*/ {
 // TODO: H3.1 - uncomment if implemented
 
 //    @Override
