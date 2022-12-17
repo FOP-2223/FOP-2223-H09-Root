@@ -43,9 +43,4 @@ public interface Sequence<T> {
         // Uncomment the following line when implemented:
 //        return new BasicFactorySequence<>(factory);
     }
-
-    static <T> Sequence/*TODO: 3.2*/ concat(Sequence/*TODO: 3.2*/ left, Sequence/*TODO: 3.2*/ right) {
-        // TODO: H3.2 - remove if implemented
-        throw new RuntimeException("Not implemented yet");
-    }
 }
