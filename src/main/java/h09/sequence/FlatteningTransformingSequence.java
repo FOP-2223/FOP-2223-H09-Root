@@ -19,36 +19,6 @@ public class FlatteningTransformingSequence<T, R> implements Sequence<R> {
 
     @Override
     public Iterator<R> iterator() {
-        return new FlatteningTransformingSequenceIterator();
-    }
-
-    private class FlatteningTransformingSequenceIterator implements Iterator<R> {
-        private final Iterator<T> iterator = sequence.iterator();
-        private Iterator<? extends R> currentIterator = null;
-
-        @Override
-        public boolean hasNext() {
-            updateCurrentIterator();
-            return currentIterator.hasNext();
-        }
-
-        @Override
-        public R next() {
-            updateCurrentIterator();
-            return currentIterator.next();
-        }
-
-        private void updateCurrentIterator() {
-            if (currentIterator != null && currentIterator.hasNext()) {
-                return;
-            }
-
-            while (iterator.hasNext()) {
-                currentIterator = function.apply(iterator.next()).iterator();
-                if (currentIterator.hasNext()) {
-                    return;
-                }
-            }
-        }
+        return new FlatteningTransformingSequenceIterator<>(sequence.iterator(), function);
     }
 }
