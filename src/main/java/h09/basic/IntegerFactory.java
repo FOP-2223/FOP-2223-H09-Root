@@ -12,6 +12,8 @@ public class IntegerFactory implements BasicFactory<Integer> {
 
     @Override
     public Integer create() {
-        return current += step;
+        int result = current;
+        current += step;
+        return result;
     }
 }
