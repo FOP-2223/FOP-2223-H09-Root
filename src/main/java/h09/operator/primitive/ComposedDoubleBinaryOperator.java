@@ -28,9 +28,9 @@ public class ComposedDoubleBinaryOperator implements DoubleBinaryOperator {
     /**
      * Constructor initializes the three operators.
      *
-     * @param op1   First operator.
-     * @param op2   Second operator.
-     * @param op3   Third operator.
+     * @param op1 First operator.
+     * @param op2 Second operator.
+     * @param op3 Third operator.
      */
     public ComposedDoubleBinaryOperator(DoubleBinaryOperator op1, DoubleBinaryOperator op2, DoubleBinaryOperator op3) {
         // Assign first parameter to first operator
@@ -48,10 +48,10 @@ public class ComposedDoubleBinaryOperator implements DoubleBinaryOperator {
      * Then applies the third operator to the result of the application of the
      * first two operators.
      *
-     * @param left      The first parameter.
-     * @param right     The second parameter.
-     * @return          Application of the third operator on the results of the
-     *                  first and second operator.
+     * @param left  The first parameter.
+     * @param right The second parameter.
+     * @return Application of the third operator on the results of the
+     * first and second operator.
      */
     @Override
     public double applyAsDouble(double left, double right) {
@@ -64,5 +64,4 @@ public class ComposedDoubleBinaryOperator implements DoubleBinaryOperator {
         // Return application of third operator to the intermediate results
         return op3.applyAsDouble(result1, result2);
     }
-
 }

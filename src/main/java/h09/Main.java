@@ -1,7 +1,5 @@
 package h09;
 
-import h09.sequence.Sequence;
-
 /**
  * Main entry point in executing the program.
  */

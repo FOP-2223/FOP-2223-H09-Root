@@ -12,9 +12,9 @@ public class DoubleMaxOfTwoOperator implements DoubleBinaryOperator {
     /**
      * Returns the bigger value of the two given parameters.
      *
-     * @param left      The first parameter.
-     * @param right     The second parameter.
-     * @return          The bigger value of the two.
+     * @param left  The first parameter.
+     * @param right The second parameter.
+     * @return The bigger value of the two.
      */
     @Override
     public double applyAsDouble(double left, double right) {
@@ -24,5 +24,4 @@ public class DoubleMaxOfTwoOperator implements DoubleBinaryOperator {
         // Optionally with conditional statement:
         // return left < right ? right : left;
     }
-
 }

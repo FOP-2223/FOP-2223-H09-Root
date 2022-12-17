@@ -1,7 +1,5 @@
 package h09.sequence.operation;
 
-import org.jetbrains.annotations.Nullable;
-
 import java.util.Iterator;
 import java.util.function.Predicate;
 

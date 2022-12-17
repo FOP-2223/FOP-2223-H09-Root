@@ -22,8 +22,8 @@ public class DoubleSumWithCoefficientsOperator implements DoubleBinaryOperator {
     /**
      * Constructor initializes the two coefficients.
      *
-     * @param coeff1    The first coefficient.
-     * @param coeff2    The second coefficient.
+     * @param coeff1 The first coefficient.
+     * @param coeff2 The second coefficient.
      */
     public DoubleSumWithCoefficientsOperator(double coeff1, double coeff2) {
         // Assign first parameter to first coefficient
@@ -37,9 +37,9 @@ public class DoubleSumWithCoefficientsOperator implements DoubleBinaryOperator {
      * Returns the sum of the first parameter multiplied by the first coefficient
      * with the second parameter multiplied by the second coefficient.
      *
-     * @param left      The first parameter.
-     * @param right     The second parameter.
-     * @return          The sum of the products.
+     * @param left  The first parameter.
+     * @param right The second parameter.
+     * @return The sum of the products.
      */
     @Override
     public double applyAsDouble(double left, double right) {
