@@ -21,6 +21,20 @@ public class LimitSequence<T> implements Sequence<T> {
 
     @Override
     public Iterator<T> iterator() {
-        return new LimitSequenceIterator<>(sequence.iterator(), limit);
+        return new Iterator<>() {
+            private final Iterator<T> iterator = sequence.iterator();
+            private int count = 0;
+
+            @Override
+            public boolean hasNext() {
+                return count < limit && iterator.hasNext();
+            }
+
+            @Override
+            public T next() {
+                count++;
+                return iterator.next();
+            }
+        };
     }
 }
