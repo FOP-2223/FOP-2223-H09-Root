@@ -9,7 +9,6 @@ public class BasicFactorySequence/*TODO: H3.4*/ {
 //    @Override
     public Iterator</*TODO: H3.4 replace*/Object> iterator() {
         return new Iterator<>() {
-            // TODO: H3.4 - attributes here
             @Override
             public boolean hasNext() {
                 return crash(); // TODO: H3.4 - remove if implemented
