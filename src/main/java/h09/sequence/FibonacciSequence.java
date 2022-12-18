@@ -17,11 +17,10 @@ public class FibonacciSequence implements Sequence<Integer> {
 
             @Override
             public Integer next() {
-                int toReturn = previous;
                 int next = previous + current;
                 previous = current;
                 current = next;
-                return toReturn;
+                return current;
             }
         };
     }
