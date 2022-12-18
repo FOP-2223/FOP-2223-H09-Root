@@ -22,6 +22,20 @@ public class OnEachSequence<T> implements Sequence<T> {
 
     @Override
     public Iterator<T> iterator() {
-        return new OnEachSequenceIterator<>(sequence.iterator(), action);
+        return new Iterator<>() {
+            private final Iterator<T> iterator = sequence.iterator();
+
+            @Override
+            public boolean hasNext() {
+                return iterator.hasNext();
+            }
+
+            @Override
+            public T next() {
+                T next = iterator.next();
+                action.accept(next);
+                return next;
+            }
+        };
     }
 }
