@@ -5,7 +5,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Iterator;
 import java.util.function.Predicate;
 
-class FilteringSequenceIterator<T> implements Iterator<T> {
+public class FilteringSequenceIterator<T> implements Iterator<T> {
     private final Iterator<T> iterator;
     private final Predicate<? super T> predicate;
 
