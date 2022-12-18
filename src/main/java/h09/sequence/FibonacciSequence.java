@@ -6,6 +6,23 @@ public class FibonacciSequence implements Sequence<Integer> {
 
     @Override
     public Iterator<Integer> iterator() {
-        return new FibonacciSequenceIterator();
+        return new Iterator<>() {
+            private int previous = 0;
+            private int current = 1;
+
+            @Override
+            public boolean hasNext() {
+                return true;
+            }
+
+            @Override
+            public Integer next() {
+                int toReturn = previous;
+                int next = previous + current;
+                previous = current;
+                current = next;
+                return toReturn;
+            }
+        };
     }
 }
