@@ -3,7 +3,7 @@ package h09.sequence.operation;
 import java.util.Iterator;
 import java.util.function.Predicate;
 
-class FilteringSequenceIterator<T> implements Iterator<T> {
+public class FilteringSequenceIterator<T> implements Iterator<T> {
 
     // TODO: H4.1 - remove if implemented
 
