@@ -20,7 +20,7 @@ public class FibonacciSequence implements Sequence<Integer> {
                 int next = previous + current;
                 previous = current;
                 current = next;
-                return current;
+                return previous;
             }
         };
     }
