@@ -1,6 +1,7 @@
 package h09.sequence.operation;
 
 import h09.sequence.Sequence;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.Iterator;
 import java.util.function.Function;
@@ -21,6 +22,28 @@ public class FlatteningTransformingSequence<T, R> implements Sequence<R> {
 
     @Override
     public Iterator<R> iterator() {
-        return new FlatteningTransformingSequenceIterator<>(sequence.iterator(), function);
+        return new Iterator<>() {
+            private final Iterator<T> iterator = sequence.iterator();
+            private @Nullable Iterator<? extends R> currentIterator = null;
+
+            @Override
+            public boolean hasNext() {
+                while (currentIterator == null || !currentIterator.hasNext()) {
+                    if (!iterator.hasNext()) {
+                        return false;
+                    }
+                    currentIterator = function.apply(iterator.next()).iterator();
+                }
+                return true;
+            }
+
+            @Override
+            public R next() {
+                if (currentIterator == null) {
+                    throw new IllegalStateException("next() called before hasNext()");
+                }
+                return currentIterator.next();
+            }
+        };
     }
 }
