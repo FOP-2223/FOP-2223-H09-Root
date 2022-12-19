@@ -1,5 +1,9 @@
 package h09.sequence;
 
+/**
+ * Helper methods to create sequences from arrays
+ * of primitive types.
+ */
 public interface PrimitiveSequence {
 
     static Sequence<Long> of(long... values) {

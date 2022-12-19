@@ -16,7 +16,7 @@ public class FibonacciSequence/*TODO: H3.2*/ {
             }
 
             @Override
-            public /*TODO: H3.3 replace*/Object next() {
+            public /*TODO: H3.2 replace*/Object next() {
                 return crash(); // TODO: H3.2 - remove if implemented
             }
         };
