@@ -7,8 +7,8 @@ public class FibonacciSequence implements Sequence<Integer> {
     @Override
     public Iterator<Integer> iterator() {
         return new Iterator<>() {
-            private int previous = 0;
-            private int current = 1;
+            private int current = 0;
+            private int next = 1;
 
             @Override
             public boolean hasNext() {
@@ -17,10 +17,10 @@ public class FibonacciSequence implements Sequence<Integer> {
 
             @Override
             public Integer next() {
-                int next = previous + current;
-                previous = current;
+                int nextTemp = current + next;
                 current = next;
-                return previous;
+                next = nextTemp;
+                return current;
             }
         };
     }
