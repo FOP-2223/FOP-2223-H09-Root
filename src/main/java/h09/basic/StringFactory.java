@@ -2,9 +2,8 @@ package h09.basic;
 
 public class StringFactory implements BasicFactory<String> {
 
-    private final String[] text;
-
     private int current;
+    private final String[] text;
 
     public StringFactory(int start, String[] text) {
         this.current = start;
@@ -13,6 +12,6 @@ public class StringFactory implements BasicFactory<String> {
 
     @Override
     public String create() {
-        return text[current += current == text.length - 1 ? 1 - text.length : 1];
+        return text[(current += current == text.length - 1 ? 1 - text.length : 1) - 1];
     }
 }

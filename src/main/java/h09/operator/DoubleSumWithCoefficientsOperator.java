@@ -13,7 +13,7 @@ public class DoubleSumWithCoefficientsOperator implements BinaryOperator<Double>
     }
 
     @Override
-    public Double apply(Double aDouble, Double aDouble2) {
-        return aDouble * coeff1 + aDouble2 * coeff2;
+    public Double apply(Double left, Double right) {
+        return left * coeff1 + right * coeff2;
     }
 }

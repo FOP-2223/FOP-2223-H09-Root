@@ -45,6 +45,6 @@ public class DoubleSumWithCoefficientsOperator implements DoubleBinaryOperator {
     public double applyAsDouble(double left, double right) {
         // Multiply first coefficient with first parameter and add it to the product
         // of the second coefficient with the second parameter
-        return coeff1 * left + coeff2 * right;
+        return left * coeff1 + right * coeff2;
     }
 }
