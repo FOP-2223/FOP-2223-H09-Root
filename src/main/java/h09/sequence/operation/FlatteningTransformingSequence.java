@@ -1,48 +1,23 @@
 package h09.sequence.operation;
 
-import h09.sequence.Sequence;
-import org.jetbrains.annotations.Nullable;
-
 import java.util.Iterator;
-import java.util.function.Function;
 
-public class FlatteningTransformingSequence<T, R> implements Sequence<R> {
+import static org.tudalgo.algoutils.student.Student.crash;
 
-    private final Sequence<T> sequence;
-    private final Function<? super T, ? extends Sequence<? extends R>> function;
-
-    public static <T, R> Function<Sequence<T>, Sequence<R>> of(Function<? super T, ? extends Sequence<? extends R>> function) {
-        return sequence -> new FlatteningTransformingSequence<>(sequence, function);
-    }
-
-    public FlatteningTransformingSequence(Sequence<T> sequence, Function<? super T, ? extends Sequence<? extends R>> function) {
-        this.sequence = sequence;
-        this.function = function;
-    }
-
-    @Override
-    public Iterator<R> iterator() {
+public class FlatteningTransformingSequence/*TODO: H4.3*/ {
+// TODO: H4.3 - uncomment if implemented
+//    @Override
+    public Iterator</*TODO: H4.3 replace*/Object> iterator() {
         return new Iterator<>() {
-            private final Iterator<T> iterator = sequence.iterator();
-            private @Nullable Iterator<? extends R> currentIterator = null;
-
+            // TODO: H4.3 - attributes here
             @Override
             public boolean hasNext() {
-                while (currentIterator == null || !currentIterator.hasNext()) {
-                    if (!iterator.hasNext()) {
-                        return false;
-                    }
-                    currentIterator = function.apply(iterator.next()).iterator();
-                }
-                return true;
+                return crash(); // TODO: H4.3 - remove if implemented
             }
 
             @Override
-            public R next() {
-                if (currentIterator == null) {
-                    throw new IllegalStateException("next() called before hasNext()");
-                }
-                return currentIterator.next();
+            public /*TODO: H4.3 replace*/Object next() {
+                return crash(); // TODO: H4.3 - remove if implemented
             }
         };
     }
