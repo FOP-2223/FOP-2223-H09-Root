@@ -8,14 +8,14 @@ import java.util.function.Predicate;
 
 public class FilteringSequence<T> implements Sequence<T> {
 
-    private final Sequence<T> sequence;
+    private final Sequence<? extends T> sequence;
     private final Predicate<? super T> predicate;
 
     public static <T> Function<Sequence<T>, Sequence<T>> of(Predicate<? super T> predicate) {
         return sequence -> new FilteringSequence<>(sequence, predicate);
     }
 
-    public FilteringSequence(Sequence<T> sequence, Predicate<? super T> predicate) {
+    public FilteringSequence(Sequence<? extends T> sequence, Predicate<? super T> predicate) {
         this.sequence = sequence;
         this.predicate = predicate;
     }
@@ -23,7 +23,7 @@ public class FilteringSequence<T> implements Sequence<T> {
     @Override
     public Iterator<T> iterator() {
         return new Iterator<>() {
-            private final Iterator<T> iterator = sequence.iterator();
+            private final Iterator<? extends T> iterator = sequence.iterator();
             private T next;
 
             @Override
