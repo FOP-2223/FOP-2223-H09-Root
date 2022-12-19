@@ -7,14 +7,14 @@ import java.util.function.Function;
 
 public class LimitSequence<T> implements Sequence<T> {
 
-    private final Sequence<T> sequence;
+    private final Sequence<? extends T> sequence;
     private final int limit;
 
     public static <T> Function<Sequence<T>, Sequence<T>> of(int limit) {
         return sequence -> new LimitSequence<>(sequence, limit);
     }
 
-    public LimitSequence(Sequence<T> sequence, int limit) {
+    public LimitSequence(Sequence<? extends T> sequence, int limit) {
         this.sequence = sequence;
         this.limit = limit;
     }
@@ -22,7 +22,7 @@ public class LimitSequence<T> implements Sequence<T> {
     @Override
     public Iterator<T> iterator() {
         return new Iterator<>() {
-            private final Iterator<T> iterator = sequence.iterator();
+            private final Iterator<? extends T> iterator = sequence.iterator();
             private int count = 0;
 
             @Override

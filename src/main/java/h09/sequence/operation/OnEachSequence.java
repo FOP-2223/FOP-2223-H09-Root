@@ -8,14 +8,14 @@ import java.util.function.Function;
 
 public class OnEachSequence<T> implements Sequence<T> {
 
-    private final Sequence<T> sequence;
+    private final Sequence<? extends T> sequence;
     private final Consumer<? super T> action;
 
     public static <T> Function<Sequence<T>, Sequence<T>> of(Consumer<? super T> action) {
         return sequence -> new OnEachSequence<>(sequence, action);
     }
 
-    public OnEachSequence(Sequence<T> sequence, Consumer<? super T> action) {
+    public OnEachSequence(Sequence<? extends T> sequence, Consumer<? super T> action) {
         this.sequence = sequence;
         this.action = action;
     }
@@ -23,7 +23,7 @@ public class OnEachSequence<T> implements Sequence<T> {
     @Override
     public Iterator<T> iterator() {
         return new Iterator<>() {
-            private final Iterator<T> iterator = sequence.iterator();
+            private final Iterator<? extends T> iterator = sequence.iterator();
 
             @Override
             public boolean hasNext() {
