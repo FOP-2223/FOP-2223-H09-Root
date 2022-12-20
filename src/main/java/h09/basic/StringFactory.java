@@ -12,6 +12,8 @@ public class StringFactory implements BasicFactory<String> {
 
     @Override
     public String create() {
-        return text[(current += current == text.length - 1 ? 1 - text.length : 1) - 1];
+        String result = text[current];
+        current = (current + 1) % text.length;
+        return result;
     }
 }

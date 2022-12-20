@@ -12,6 +12,8 @@ public class DoubleFactory implements BasicFactory<Double> {
 
     @Override
     public Double create() {
-        return current += step;
+        double result = current;
+        current += step;
+        return result;
     }
 }
