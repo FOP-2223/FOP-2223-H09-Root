@@ -11,7 +11,9 @@ import h09.operator.ComposedBinaryOperatorTest;
 import h09.operator.H2_1_Test;
 import h09.operator.MaxOfTwoOperatorTest;
 import h09.operator.SumWithCoefficientsOperatorTest;
-import h09.sequence.ArraySequenceTest;
+import h09.sequence.ArraySequenceBasicTest;
+import h09.sequence.BasicFactorySequenceBasicTest;
+import h09.sequence.FibonacciSequenceBasicTest;
 import org.sourcegrade.jagr.api.rubric.Criterion;
 import org.sourcegrade.jagr.api.rubric.Grader;
 import org.sourcegrade.jagr.api.rubric.JUnitTestRef;
@@ -60,9 +62,12 @@ public class H09_RubricProvider implements RubricProvider {
         .addChildCriteria(H2_1, H2_2, H2_3, H2_4)
         .build();
 
-    public static final Criterion H3_1_1 = createCriterion("Klassensignature von ArraySequence ist korrekt", () -> ArraySequenceTest.class);
+    public static final Criterion H3_1_1 = createCriterion(
+        "Klassensignature von ArraySequence ist korrekt und der Iterator funktioniert für einfache Fälle",
+        () -> ArraySequenceBasicTest.class);
+
     public static final Criterion H3_1_2 = Criterion.builder()
-        .shortDescription("H3.1.2 - ArraySequence")
+        .shortDescription("ArraySequence is vollständig korrekt implementiert")
         .build();
 
     public static final Criterion H3_1 = Criterion.builder()
@@ -70,9 +75,35 @@ public class H09_RubricProvider implements RubricProvider {
         .addChildCriteria(H3_1_1, H3_1_2)
         .build();
 
+    public static final Criterion H3_2_1 = createCriterion(
+        "Klassensignature von FibonacciSequence ist korrekt und der Iterator funktioniert für einfache Fälle",
+        () -> FibonacciSequenceBasicTest.class);
+
+    public static final Criterion H3_2_2 = Criterion.builder()
+        .shortDescription("FibonacciSequence is vollständig korrekt implementiert")
+        .build();
+
+    public static final Criterion H3_2 = Criterion.builder()
+        .shortDescription("H3.2 - FibonacciSequence")
+        .addChildCriteria(H3_2_1, H3_2_2)
+        .build();
+
+    public static final Criterion H3_3_1 = createCriterion(
+        "Klassensignatur von BasicFactorySequence ist korrekt",
+        () -> BasicFactorySequenceBasicTest.class);
+
+    public static final Criterion H3_3_2 = Criterion.builder()
+        .shortDescription("BasicFactorySequence is vollständig korrekt implementiert")
+        .build();
+
+    public static final Criterion H3_3 = Criterion.builder()
+        .shortDescription("H3.3 - BasicFactorySequence")
+        .addChildCriteria(H3_3_1, H3_3_2)
+        .build();
+
     public static final Criterion H3 = Criterion.builder()
         .shortDescription("H3 - Sequences")
-        .addChildCriteria(H3_1)
+        .addChildCriteria(H3_1, H3_2, H3_3)
         .build();
 
     public static final Rubric RUBRIC = Rubric.builder()
