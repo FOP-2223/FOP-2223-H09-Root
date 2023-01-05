@@ -14,6 +14,8 @@ import h09.operator.SumWithCoefficientsOperatorTest;
 import h09.sequence.ArraySequenceBasicTest;
 import h09.sequence.BasicFactorySequenceBasicTest;
 import h09.sequence.FibonacciSequenceBasicTest;
+import h09.sequence.operation.FilteringSequenceBasicTest;
+import h09.sequence.operation.FilteringSequenceIntermediateTest;
 import org.sourcegrade.jagr.api.rubric.Criterion;
 import org.sourcegrade.jagr.api.rubric.Grader;
 import org.sourcegrade.jagr.api.rubric.JUnitTestRef;
@@ -106,9 +108,46 @@ public class H09_RubricProvider implements RubricProvider {
         .addChildCriteria(H3_1, H3_2, H3_3)
         .build();
 
+    public static final Criterion H4_1_1 = createCriterion(
+        "Klassensignatur von FilteringSequence ist korrekt und der Iterator funktioniert für einfache Fälle",
+        () -> FilteringSequenceBasicTest.class);
+
+    public static final Criterion H4_1_2 = createCriterion(
+        "Attribute und konstruktor sind bis auf Wildcards korrekt implementiert",
+        () -> FilteringSequenceIntermediateTest.class);
+
+    public static final Criterion H4_1_3 = Criterion.builder()
+        .shortDescription("FilteringSequence is vollständig korrekt implementiert")
+        .build();
+
+    public static final Criterion H4_1 = Criterion.builder()
+        .shortDescription("H4.1 - FilteringSequence")
+        .addChildCriteria(H4_1_1, H4_1_2, H4_1_3)
+        .build();
+
+    public static final Criterion H4_2 = Criterion.builder()
+        .shortDescription("H4.2 - TransformingSequence")
+        .maxPoints(3)
+        .build();
+
+    public static final Criterion H4_3 = Criterion.builder()
+        .shortDescription("H4.3 - FlatteningTransformingSequence")
+        .maxPoints(4)
+        .build();
+
+    public static final Criterion H4_4 = Criterion.builder()
+        .shortDescription("H4.4 - Einfachere Syntax bei Verwendung von Sequences")
+        .maxPoints(3)
+        .build();
+
+    public static final Criterion H4 = Criterion.builder()
+        .shortDescription("H4 - Sequence Operationen")
+        .addChildCriteria(H4_1, H4_2, H4_3, H4_4)
+        .build();
+
     public static final Rubric RUBRIC = Rubric.builder()
         .title("H09 - Ein Einblick in Generics")
-        .addChildCriteria(H1, H2, H3)
+        .addChildCriteria(H1, H2, H3, H4)
         .build();
 
     @Override
