@@ -19,7 +19,7 @@ public class StringBasicBinaryOperationsTest {
 
     @Test
     void testAddNormalCase() {
-        final BasicBinaryOperations<String, Integer> operations = new StringBasicBinaryOperations();
+        final StringBasicBinaryOperations operations = new StringBasicBinaryOperations();
         final Random random = new Random();
         for (int i = 0; i < 10; i++) {
             final String a = RandomExtensions.generateString(random, i);
@@ -31,7 +31,7 @@ public class StringBasicBinaryOperationsTest {
 
     @Test
     void testAddEmpty() {
-        final BasicBinaryOperations<String, Integer> operations = new StringBasicBinaryOperations();
+        final StringBasicBinaryOperations operations = new StringBasicBinaryOperations();
         Assertions.assertEquals("", operations.add("", ""),
             "\"\" + \"\" should be \"\"");
         final Random random = new Random();
@@ -46,7 +46,7 @@ public class StringBasicBinaryOperationsTest {
 
     @Test
     void testMulNonNegative() {
-        final BasicBinaryOperations<String, Integer> operations = new StringBasicBinaryOperations();
+        final StringBasicBinaryOperations operations = new StringBasicBinaryOperations();
         final Random random = new Random();
         for (int i = 0; i < 10; i++) {
             final String a = RandomExtensions.generateString(random, i);
@@ -59,7 +59,7 @@ public class StringBasicBinaryOperationsTest {
 
     @Test
     void testMulNegative() {
-        final BasicBinaryOperations<String, Integer> operations = new StringBasicBinaryOperations();
+        final StringBasicBinaryOperations operations = new StringBasicBinaryOperations();
         final Random random = new Random();
         for (int i = 0; i < 10; i++) {
             final String a = RandomExtensions.generateString(random, i);

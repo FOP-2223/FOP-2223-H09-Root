@@ -32,7 +32,7 @@ public class SignatureTestExtensions {
         Assertions.assertEquals(1, interfaces.length,
             "Expected " + className + " to implement exactly one interface " + superInterfaceSignature
                 + ", but found " + Arrays.toString(interfaces));
-        if (interfaces[0] instanceof ParameterizedType parameterizedType) {
+        if (interfaces[0] instanceof final ParameterizedType parameterizedType) {
             Assertions.assertEquals(targetSuperInterface, parameterizedType.getRawType(),
                 "Expected " + className + " to implement exactly one interface " + superInterfaceSignature
                     + ", but found " + parameterizedType);

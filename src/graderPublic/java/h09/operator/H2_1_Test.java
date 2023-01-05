@@ -15,7 +15,7 @@ import java.lang.reflect.Type;
 import java.util.function.BinaryOperator;
 
 @TestForSubmission
-public class H2_1_Test {
+public final class H2_1_Test {
 
     private abstract static class AbstractTest {
 
@@ -33,12 +33,12 @@ public class H2_1_Test {
         @Test
         void testApplySignature() {
             final Method apply = Assertions.assertDoesNotThrow(() ->
-                    DoubleMaxOfTwoOperator.class.getDeclaredMethod("apply", Double.class, Double.class),
-                "DoubleMaxOfTwoOperator should have a method with signature apply(Double, Double)");
+                    targetClass.getDeclaredMethod("apply", Double.class, Double.class),
+                targetClass.getName() + " should have a method with signature apply(Double, Double)");
             Assertions.assertTrue(Modifier.isPublic(apply.getModifiers()),
-                "Method DoubleMaxOfTwoOperator.apply(Double, Double) should be public");
+                "Method " + targetClass.getName() + ".apply(Double, Double) should be public");
             Assertions.assertEquals(Double.class, apply.getReturnType(),
-                "Method DoubleMaxOfTwoOperator.apply(Double, Double) should return a Double");
+                "Method " + targetClass.getName() + ".apply(Double, Double) should return a Double");
         }
     }
 
@@ -59,7 +59,7 @@ public class H2_1_Test {
                     "Field ComposedDoubleBinaryOperator." + field.getName() + " should be private");
                 Assertions.assertEquals(BinaryOperator.class, field.getType(),
                     "Field ComposedDoubleBinaryOperator." + field.getName() + " should be of type BinaryOperator<Double>");
-                if (field.getGenericType() instanceof ParameterizedType type) {
+                if (field.getGenericType() instanceof final ParameterizedType type) {
                     Assertions.assertEquals(Double.class, type.getActualTypeArguments()[0],
                         "Field ComposedDoubleBinaryOperator." + field.getName() + " should be of type BinaryOperator<Double>");
                 } else {
@@ -80,11 +80,11 @@ public class H2_1_Test {
                 "Constructor ComposedDoubleBinaryOperator(BinaryOperator<Double>, BinaryOperator<Double>, BinaryOperator<Double>) should be public");
             final Type[] genericParams = constructor.getGenericParameterTypes();
             for (int i = 0; i < 3; i++) {
-                if (genericParams[i] instanceof ParameterizedType type) {
+                if (genericParams[i] instanceof final ParameterizedType type) {
                     Assertions.assertEquals(Double.class, type.getActualTypeArguments()[0],
-                        "Parameter " + (i + 1) + " of ComposedDoubleBinaryOperator should be of type BinaryOperator<Double>");
+                        "Parameter " + i + " of ComposedDoubleBinaryOperator should be of type BinaryOperator<Double>");
                 } else {
-                    Assertions.fail("Parameter " + (i + 1) + " of ComposedDoubleBinaryOperator is not a parameterized type");
+                    Assertions.fail("Parameter " + i + " of ComposedDoubleBinaryOperator is not a parameterized type");
                 }
             }
         }
