@@ -1,6 +1,5 @@
 package h09.sequence.operation;
 
-import h09.operator.MaxOfTwoOperator;
 import h09.sequence.Sequence;
 import h09.variance.Variance;
 import h09.variance.VarianceNode;

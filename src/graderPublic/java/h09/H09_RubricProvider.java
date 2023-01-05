@@ -16,6 +16,8 @@ import h09.sequence.BasicFactorySequenceBasicTest;
 import h09.sequence.FibonacciSequenceBasicTest;
 import h09.sequence.operation.FilteringSequenceBasicTest;
 import h09.sequence.operation.FilteringSequenceIntermediateTest;
+import h09.sequence.operation.TransformingSequenceBasicTest;
+import h09.sequence.operation.TransformingSequenceIntermediateTest;
 import org.sourcegrade.jagr.api.rubric.Criterion;
 import org.sourcegrade.jagr.api.rubric.Grader;
 import org.sourcegrade.jagr.api.rubric.JUnitTestRef;
@@ -125,9 +127,21 @@ public class H09_RubricProvider implements RubricProvider {
         .addChildCriteria(H4_1_1, H4_1_2, H4_1_3)
         .build();
 
+    public static final Criterion H4_2_1 = createCriterion(
+        "Klassensignatur von TransformingSequence ist korrekt und der Iterator funktioniert für einfache Fälle",
+        () -> TransformingSequenceBasicTest.class);
+
+    public static final Criterion H4_2_2 = createCriterion(
+        "Attribute und konstruktor sind bis auf Wildcards korrekt implementiert",
+        () -> TransformingSequenceIntermediateTest.class);
+
+    public static final Criterion H4_2_3 = Criterion.builder()
+        .shortDescription("TransformingSequence is vollständig korrekt implementiert")
+        .build();
+
     public static final Criterion H4_2 = Criterion.builder()
         .shortDescription("H4.2 - TransformingSequence")
-        .maxPoints(3)
+        .addChildCriteria(H4_2_1, H4_2_2, H4_2_3)
         .build();
 
     public static final Criterion H4_3 = Criterion.builder()
