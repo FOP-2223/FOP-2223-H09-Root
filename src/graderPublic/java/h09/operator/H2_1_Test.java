@@ -27,7 +27,7 @@ public final class H2_1_Test {
 
         @Test
         void testClassSignature() {
-            SignatureTestExtensions.testSignature(targetClass, BinaryOperator.class, Double.class);
+            SignatureTestExtensions.testSignatureWithNonGenericBase(targetClass, BinaryOperator.class, Double.class);
         }
 
         @Test

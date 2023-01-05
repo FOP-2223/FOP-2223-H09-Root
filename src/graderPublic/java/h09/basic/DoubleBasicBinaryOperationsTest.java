@@ -10,7 +10,7 @@ public class DoubleBasicBinaryOperationsTest {
 
     @Test
     void testSignature() {
-        SignatureTestExtensions.testSignature(
+        SignatureTestExtensions.testSignatureWithNonGenericBase(
             DoubleBasicBinaryOperations.class, BasicBinaryOperations.class, Double.class, Double.class);
     }
 

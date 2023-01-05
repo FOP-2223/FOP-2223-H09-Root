@@ -1,5 +1,6 @@
 package h09.operator;
 
+import h09.SignatureTestExtensions;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.sourcegrade.jagr.api.rubric.TestForSubmission;
@@ -8,6 +9,7 @@ import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.lang.reflect.TypeVariable;
 import java.lang.reflect.WildcardType;
+import java.util.function.BinaryOperator;
 import java.util.stream.Stream;
 
 @TestForSubmission
@@ -46,7 +48,7 @@ public class MaxOfTwoOperatorTest {
                 "MaxOfTwoOperator should have a type parameter T with bound who's raw type is Comparable");
             Assertions.fail("MaxOfTwoOperator's generic type T's upper bound is not parameterized");
         }
-        GenericBinaryOperatorExtensions.testGenericSuperInterface(MaxOfTwoOperator.class, typeParameter);
+        SignatureTestExtensions.testGenericSuperInterface(MaxOfTwoOperator.class, BinaryOperator.class, typeParameter);
     }
 
     @Test

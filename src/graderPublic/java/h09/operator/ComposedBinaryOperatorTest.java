@@ -1,6 +1,7 @@
 package h09.operator;
 
 import com.google.common.collect.Sets;
+import h09.SignatureTestExtensions;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.sourcegrade.jagr.api.rubric.TestForSubmission;
@@ -12,9 +13,9 @@ import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.lang.reflect.TypeVariable;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 import java.util.function.BinaryOperator;
-import java.util.stream.Stream;
 
 @TestForSubmission
 @SuppressWarnings("rawtypes")
@@ -22,13 +23,8 @@ public final class ComposedBinaryOperatorTest {
 
     @Test
     void testSignature() {
-        final TypeVariable<Class<ComposedBinaryOperator>>[] typeParameters = ComposedBinaryOperator.class.getTypeParameters();
-        Assertions.assertArrayEquals(new String[]{"T"}, Stream.of(typeParameters).map(TypeVariable::getName).toArray(String[]::new),
-            "ComposedBinaryOperator should have a single type parameter T");
-        final TypeVariable<Class<ComposedBinaryOperator>> typeParameter = typeParameters[0];
-        Assertions.assertEquals(1, typeParameter.getBounds().length, "ComposedBinaryOperator should not have additional bounds on type parameter T");
-        Assertions.assertEquals(Object.class, typeParameter.getBounds()[0], "ComposedBinaryOperator should have a type parameter T with bound Object");
-        GenericBinaryOperatorExtensions.testGenericSuperInterface(ComposedBinaryOperator.class, typeParameter);
+        SignatureTestExtensions.testSignatureSimplePassThroughParameterization(
+            ComposedBinaryOperator.class, BinaryOperator.class, Map.of("T", Object.class));
     }
 
     @Test

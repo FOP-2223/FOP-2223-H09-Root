@@ -1,5 +1,6 @@
 package h09.operator;
 
+import h09.SignatureTestExtensions;
 import h09.basic.BasicBinaryOperations;
 import h09.basic.StringBasicBinaryOperations;
 import org.junit.jupiter.api.Assertions;
@@ -13,6 +14,7 @@ import java.lang.reflect.Modifier;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.lang.reflect.TypeVariable;
+import java.util.function.BinaryOperator;
 import java.util.stream.Stream;
 
 @TestForSubmission
@@ -34,7 +36,7 @@ public class SumWithCoefficientsOperatorTest {
             "ComposedBinaryOperator should have a type parameter X with bound Object");
         Assertions.assertEquals(Object.class, genericY.getBounds()[0],
             "ComposedBinaryOperator should have a type parameter Y with bound Object");
-        GenericBinaryOperatorExtensions.testGenericSuperInterface(SumWithCoefficientsOperator.class, genericX);
+        SignatureTestExtensions.testGenericSuperInterface(SumWithCoefficientsOperator.class, BinaryOperator.class, genericX);
     }
 
     @Test

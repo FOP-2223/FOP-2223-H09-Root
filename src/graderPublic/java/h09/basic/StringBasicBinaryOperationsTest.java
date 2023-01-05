@@ -13,7 +13,7 @@ public class StringBasicBinaryOperationsTest {
 
     @Test
     void testSignature() {
-        SignatureTestExtensions.testSignature(
+        SignatureTestExtensions.testSignatureWithNonGenericBase(
             StringBasicBinaryOperations.class, BasicBinaryOperations.class, String.class, Integer.class);
     }
 

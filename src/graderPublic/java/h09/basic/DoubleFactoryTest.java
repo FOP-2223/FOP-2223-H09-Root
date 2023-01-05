@@ -12,7 +12,7 @@ public final class DoubleFactoryTest {
 
     @Test
     void testSignature() {
-        SignatureTestExtensions.testSignature(
+        SignatureTestExtensions.testSignatureWithNonGenericBase(
             DoubleFactory.class, BasicFactory.class, Double.class);
     }
 

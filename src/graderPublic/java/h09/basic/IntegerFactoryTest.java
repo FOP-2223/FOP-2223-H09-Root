@@ -12,7 +12,7 @@ public final class IntegerFactoryTest {
 
     @Test
     void testSignature() {
-        SignatureTestExtensions.testSignature(
+        SignatureTestExtensions.testSignatureWithNonGenericBase(
             IntegerFactory.class, BasicFactory.class, Integer.class);    }
 
     @ParameterizedTest

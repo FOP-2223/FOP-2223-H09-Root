@@ -16,7 +16,7 @@ public final class StringFactoryTest {
 
     @Test
     void testSignature() {
-        SignatureTestExtensions.testSignature(
+        SignatureTestExtensions.testSignatureWithNonGenericBase(
             StringFactory.class, BasicFactory.class, String.class);
     }
 
