@@ -45,4 +45,15 @@ public final class DoubleFactoryTest {
                 "Failed for step = " + step + " and i = " + i);
         }
     }
+
+    @ParameterizedTest
+    @ValueSource(doubles = {-1.5, 1.5, -5.25, 5.25, -1500.5, 1500.5})
+    void testAll(final double step) {
+        final double start = -7.5;
+        final BasicFactory<Double> factory = new DoubleFactory(start, step);
+        for (double i = 0; i < 200; i++) {
+            Assertions.assertEquals(start + i * step, factory.create(),
+                "Failed for step = " + step + " and i = " + i);
+        }
+    }
 }

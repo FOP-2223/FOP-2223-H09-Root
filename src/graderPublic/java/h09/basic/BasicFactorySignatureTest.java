@@ -21,7 +21,7 @@ public final class BasicFactorySignatureTest {
      *
      * <p>
      * The type for {@code factoryClass} should technically be
-     * {@code Class&lt;? extends BasicFactory&lt;T&gt;&gt;}, but we must allow for
+     * {@code Class<? extends BasicFactory<T>>}, but we must allow for
      * the fact that the student may have used a raw type.
      * </p>
      */

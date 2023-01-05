@@ -45,4 +45,15 @@ public final class IntegerFactoryTest {
                 "Failed for step = " + step + " and i = " + i);
         }
     }
+
+    @ParameterizedTest
+    @ValueSource(ints = {-1, 1, -5, 5, -2000, 2000})
+    void testAll(final int step) {
+        final int start = -7;
+        final BasicFactory<Integer> factory = new IntegerFactory(start, step);
+        for (int i = 0; i < 200; i++) {
+            Assertions.assertEquals(start + i * step, factory.create(),
+                "Failed for step = " + step + " and i = " + i);
+        }
+    }
 }
