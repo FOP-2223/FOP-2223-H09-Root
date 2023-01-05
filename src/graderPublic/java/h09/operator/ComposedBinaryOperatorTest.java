@@ -29,7 +29,7 @@ public final class ComposedBinaryOperatorTest {
 
     @Test
     void testFields() {
-        final TypeVariable<Class<ComposedBinaryOperator>> T = ComposedBinaryOperator.class.getTypeParameters()[0];
+        final TypeVariable<Class<ComposedBinaryOperator>> genericT = ComposedBinaryOperator.class.getTypeParameters()[0];
         final Field[] fields = ComposedBinaryOperator.class.getDeclaredFields();
         Assertions.assertEquals(3, fields.length, "ComposedBinaryOperator should have three fields");
         for (final Field field : fields) {
@@ -40,7 +40,7 @@ public final class ComposedBinaryOperatorTest {
             Assertions.assertEquals(BinaryOperator.class, field.getType(),
                 "ComposedBinaryOperator." + field.getName() + " should be of type BinaryOperator<T>");
             if (field.getGenericType() instanceof final ParameterizedType type) {
-                Assertions.assertEquals(T, type.getActualTypeArguments()[0],
+                Assertions.assertEquals(genericT, type.getActualTypeArguments()[0],
                     "Field ComposedBinaryOperator." + field.getName() + " should be of type BinaryOperator<T>");
             } else {
                 Assertions.fail("Field ComposedBinaryOperator." + field.getName() + " is not a parameterized type");

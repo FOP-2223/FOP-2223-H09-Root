@@ -11,6 +11,7 @@ import h09.operator.ComposedBinaryOperatorTest;
 import h09.operator.H2_1_Test;
 import h09.operator.MaxOfTwoOperatorTest;
 import h09.operator.SumWithCoefficientsOperatorTest;
+import h09.sequence.ArraySequenceTest;
 import org.sourcegrade.jagr.api.rubric.Criterion;
 import org.sourcegrade.jagr.api.rubric.Grader;
 import org.sourcegrade.jagr.api.rubric.JUnitTestRef;
@@ -59,9 +60,24 @@ public class H09_RubricProvider implements RubricProvider {
         .addChildCriteria(H2_1, H2_2, H2_3, H2_4)
         .build();
 
+    public static final Criterion H3_1_1 = createCriterion("Klassensignature von ArraySequence ist korrekt", () -> ArraySequenceTest.class);
+    public static final Criterion H3_1_2 = Criterion.builder()
+        .shortDescription("H3.1.2 - ArraySequence")
+        .build();
+
+    public static final Criterion H3_1 = Criterion.builder()
+        .shortDescription("H3.1 - ArraySequence")
+        .addChildCriteria(H3_1_1, H3_1_2)
+        .build();
+
+    public static final Criterion H3 = Criterion.builder()
+        .shortDescription("H3 - Sequences")
+        .addChildCriteria(H3_1)
+        .build();
+
     public static final Rubric RUBRIC = Rubric.builder()
         .title("H09 - Ein Einblick in Generics")
-        .addChildCriteria(H1, H2)
+        .addChildCriteria(H1, H2, H3)
         .build();
 
     @Override

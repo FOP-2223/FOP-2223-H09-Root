@@ -1,6 +1,5 @@
 package h09;
 
-import h09.operator.ComposedBinaryOperator;
 import org.junit.jupiter.api.Assertions;
 
 import java.lang.reflect.ParameterizedType;
@@ -46,7 +45,7 @@ public class SignatureTestExtensions {
             Assertions.assertEquals(bound, bounds[0],
                 targetClass.getSimpleName() + "'s type parameter " + name + " should have upper bound " + bound);
         });
-        testGenericSuperInterface(ComposedBinaryOperator.class, targetSuperInterface, typeParameters);
+        testGenericSuperInterface(targetClass, targetSuperInterface, typeParameters);
     }
 
     public static void testGenericSuperInterface(final Class<?> targetClass,
