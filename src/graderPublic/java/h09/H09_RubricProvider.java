@@ -10,6 +10,7 @@ import h09.basic.IntegerFactoryTest;
 import h09.basic.StringBasicBinaryOperationsTest;
 import h09.basic.StringFactory;
 import h09.basic.StringFactoryTest;
+import h09.operator.H2_1_Test;
 import org.sourcegrade.jagr.api.rubric.Criterion;
 import org.sourcegrade.jagr.api.rubric.Grader;
 import org.sourcegrade.jagr.api.rubric.JUnitTestRef;
@@ -83,9 +84,23 @@ public class H09_RubricProvider implements RubricProvider {
         .addChildCriteria(H1_1, H1_2, H1_3, H1_4)
         .build();
 
+    public static final Criterion H2_1 = Criterion.builder()
+        .shortDescription("H2.1 - Erster Satz von binären Operatorklassen")
+        .grader(Grader.testAwareBuilder()
+            .requirePass(JUnitTestRef.ofClass(() -> H2_1_Test.class))
+            .pointsPassedMax()
+            .pointsFailedMin()
+            .build())
+        .build();
+
+    public static final Criterion H2 = Criterion.builder()
+        .shortDescription("H2 - Binary Operators")
+        .addChildCriteria(H2_1)
+        .build();
+
     public static final Rubric RUBRIC = Rubric.builder()
         .title("H09 - Ein Einblick in Generics")
-        .addChildCriteria(H1)
+        .addChildCriteria(H1, H2)
         .build();
 
     @Override

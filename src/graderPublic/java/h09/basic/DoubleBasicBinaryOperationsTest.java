@@ -1,5 +1,6 @@
 package h09.basic;
 
+import h09.SignatureTestExtensions;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.sourcegrade.jagr.api.rubric.TestForSubmission;
@@ -9,12 +10,13 @@ public class DoubleBasicBinaryOperationsTest {
 
     @Test
     void testSignature() {
-        BasicBinaryOperationsSignatureTest.testSignature(DoubleBasicBinaryOperations.class, Double.class, Double.class);
+        SignatureTestExtensions.testSignature(
+            DoubleBasicBinaryOperations.class, BasicBinaryOperations.class, Double.class, Double.class);
     }
 
     @Test
     void testAdd() {
-        final BasicBinaryOperations<Double, Double> operations = new DoubleBasicBinaryOperations();
+        final DoubleBasicBinaryOperations operations = new DoubleBasicBinaryOperations();
         for (double i = -10; i < 10; i+=0.5) {
             for (double j = -10; j < 10; j+=0.25) {
                 Assertions.assertEquals(i + j, operations.add(i, j),
@@ -25,7 +27,7 @@ public class DoubleBasicBinaryOperationsTest {
 
     @Test
     void testMul() {
-        final BasicBinaryOperations<Double, Double> operations = new DoubleBasicBinaryOperations();
+        final DoubleBasicBinaryOperations operations = new DoubleBasicBinaryOperations();
         for (double i = -10; i < 10; i+=0.5) {
             for (double j = -10; j < 10; j+=0.25) {
                 Assertions.assertEquals(i * j, operations.mul(i, j),

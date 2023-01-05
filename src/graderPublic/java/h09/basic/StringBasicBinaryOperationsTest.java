@@ -1,6 +1,7 @@
 package h09.basic;
 
 import h09.RandomExtensions;
+import h09.SignatureTestExtensions;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.sourcegrade.jagr.api.rubric.TestForSubmission;
@@ -12,7 +13,8 @@ public class StringBasicBinaryOperationsTest {
 
     @Test
     void testSignature() {
-        BasicBinaryOperationsSignatureTest.testSignature(StringBasicBinaryOperations.class, String.class, Integer.class);
+        SignatureTestExtensions.testSignature(
+            StringBasicBinaryOperations.class, BasicBinaryOperations.class, String.class, Integer.class);
     }
 
     @Test

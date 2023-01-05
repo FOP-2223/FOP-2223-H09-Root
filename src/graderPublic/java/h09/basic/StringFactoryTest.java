@@ -1,6 +1,7 @@
 package h09.basic;
 
 import h09.RandomExtensions;
+import h09.SignatureTestExtensions;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -15,7 +16,8 @@ public final class StringFactoryTest {
 
     @Test
     void testSignature() {
-        BasicFactorySignatureTest.testSignature(StringFactory.class, String.class);
+        SignatureTestExtensions.testSignature(
+            StringFactory.class, BasicFactory.class, String.class);
     }
 
     @Test
