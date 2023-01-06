@@ -6,9 +6,11 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.sourcegrade.jagr.api.rubric.TestForSubmission;
 
+import java.lang.reflect.Constructor;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Predicate;
 
 @TestForSubmission
 public final class FilteringSequenceBasicTest {
@@ -20,10 +22,15 @@ public final class FilteringSequenceBasicTest {
     }
 
     @Test
-    @SuppressWarnings({"rawtypes", "unchecked"})
+    @SuppressWarnings({"rawtypes"})
     void testIteratorBasic() {
-        Sequence og = Sequence.of(List.of("aa", "bbb", "cc", "d", "eee", "ffff", "g", "hh", "ii", "jjj"));
-        FilteringSequence sequence = new FilteringSequence(og, s -> s.toString().length() > 2);
+        final Constructor<FilteringSequence> constructor = Assertions.assertDoesNotThrow(() ->
+            FilteringSequence.class.getDeclaredConstructor(Sequence.class, Predicate.class),
+            "FilteringSequence does not have a correct constructor");
+        final Sequence<String> og = Sequence.of(List.of("aa", "bbb", "cc", "d", "eee", "ffff", "g", "hh", "ii", "jjj"));
+        final FilteringSequence sequence = Assertions.assertDoesNotThrow(() ->
+            constructor.newInstance(og, (Predicate<String>) s -> s.length() > 2),
+            "Failed to invoke FilteringSequence constructor");
         final List result = List.of("bbb", "eee", "ffff", "jjj");
         final Iterator it = sequence.iterator();
         for (final Object o : result) {
