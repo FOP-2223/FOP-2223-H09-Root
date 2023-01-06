@@ -9,6 +9,6 @@ public class StringBasicBinaryOperations implements BasicBinaryOperations<String
 
     @Override
     public String mul(String left, Integer right) {
-        return left.repeat(right);
+        return left.repeat(Math.max(0, right));
     }
 }
