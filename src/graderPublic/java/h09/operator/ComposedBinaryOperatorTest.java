@@ -74,6 +74,7 @@ public final class ComposedBinaryOperatorTest {
     }
 
     @Test
+    @SuppressWarnings({"rawtypes", "unchecked"})
     void testApply() {
         final BinaryOperator<String> concat = (a, b) -> a + b;
         final BinaryOperator<String> intersect = (a, b) -> {
@@ -83,18 +84,21 @@ public final class ComposedBinaryOperatorTest {
             );
             return foo.stream().collect(StringBuilder::new, StringBuilder::append, StringBuilder::append).toString();
         };
-        final ComposedBinaryOperator<String> operator =
-            Assertions.assertDoesNotThrow(() -> new ComposedBinaryOperator<>(concat, intersect, concat),
-                "ComposedBinaryOperator should have a constructor with signature"
-                    + "ComposedBinaryOperator(BinaryOperator<T>, BinaryOperator<T>, BinaryOperator<T>)"
-            );
-        Assertions.assertEquals("abbcb", operator.apply("ab", "bc"),
+        final Constructor<ComposedBinaryOperator> constructor = Assertions.assertDoesNotThrow(() ->
+                ComposedBinaryOperator.class.getDeclaredConstructor(
+                    BinaryOperator.class, BinaryOperator.class, BinaryOperator.class),
+            "ComposedBinaryOperator does not have a correct constructor"
+        );
+        final ComposedBinaryOperator operator =
+            Assertions.assertDoesNotThrow(() -> constructor.newInstance(concat, intersect, concat),
+                "Failed to invoke ComposedBinaryOperator constructor");
+        Assertions.assertEquals("abbcb", BinaryOperatorInvoker.invokeApply(operator, "ab", "bc"),
             "ComposedBinaryOperator(concat, intersect, concat).apply(\"ab\", \"bc\") should return \"abbcb\"");
-        Assertions.assertEquals("abcd", operator.apply("ab", "cd"),
+        Assertions.assertEquals("abcd", BinaryOperatorInvoker.invokeApply(operator,"ab", "cd"),
             "ComposedBinaryOperator(concat, intersect, concat).apply(\"ab\", \"cd\") should return \"abcd\"");
-        Assertions.assertEquals("ababab", operator.apply("ab", "ab"),
+        Assertions.assertEquals("ababab", BinaryOperatorInvoker.invokeApply(operator,"ab", "ab"),
             "ComposedBinaryOperator(concat, intersect, concat).apply(\"ab\", \"ab\") should return \"ababab\"");
-        Assertions.assertEquals("helloworldlo", operator.apply("hello", "world"),
+        Assertions.assertEquals("helloworldlo", BinaryOperatorInvoker.invokeApply(operator,"hello", "world"),
             "ComposedBinaryOperator(concat, intersect, concat).apply(\"hello\", \"world\") should return \"helloworldlo\"");
     }
 }
