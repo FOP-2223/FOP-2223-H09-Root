@@ -10,7 +10,7 @@ public final class BasicBinaryOperationInvoker {
     private BasicBinaryOperationInvoker() {
     }
 
-    private static Object invokeMethod(final BasicBinaryOperations operations,
+    private static Object invokeMethod(final Object operations,
                                        final Object left, final Object right,
                                        final String methodName) {
         final Method method = Assertions.assertDoesNotThrow(() ->
@@ -20,11 +20,11 @@ public final class BasicBinaryOperationInvoker {
             "Could not invoke " + methodName + " method in " + operations.getClass().getSimpleName());
     }
 
-    static Object invokeAdd(final BasicBinaryOperations operations, final Object left, final Object right) {
+    static Object invokeAdd(final Object operations, final Object left, final Object right) {
         return invokeMethod(operations, left, right, "add");
     }
 
-    static Object invokeMul(final BasicBinaryOperations operations, final Object left, final Object right) {
+    static Object invokeMul(final Object operations, final Object left, final Object right) {
         return invokeMethod(operations, left, right, "mul");
     }
 }
