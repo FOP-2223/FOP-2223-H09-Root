@@ -37,7 +37,9 @@ public class H09_RubricProvider implements RubricProvider {
     public static final Criterion H1_2 = createCriterion("H1.2 - DoubleFactory", () -> DoubleFactoryTest.class);
     public static final Criterion H1_3 = createCriterion("H1.3 - StringFactory", () -> StringFactoryTest.class);
 
-    public static final Criterion H1_4_1 = createCriterion("BasicBinaryOperations", () -> BasicBinaryOperationsTest.class);
+    public static final Criterion H1_4_1 = createCriterion(
+        "BasicBinaryOperations ist korrekt implementiert",
+        () -> BasicBinaryOperationsTest.class);
 
     public static final Criterion H1_4_2 = Criterion.builder()
         .shortDescription("DoubleBasicBinaryOperations und IntegerBasicBinaryOperations sind korrekt implementiert")
@@ -49,7 +51,9 @@ public class H09_RubricProvider implements RubricProvider {
             .build())
         .build();
 
-    public static final Criterion H1_4_3 = createCriterion("StringBasicBinaryOperations", () -> StringBasicBinaryOperationsTest.class);
+    public static final Criterion H1_4_3 = createCriterion(
+        "StringBasicBinaryOperations ist korrekt implementiert",
+        () -> StringBasicBinaryOperationsTest.class);
 
     public static final Criterion H1_4 = Criterion.builder()
         .shortDescription("H1.4 - BasicBinaryOperations")
