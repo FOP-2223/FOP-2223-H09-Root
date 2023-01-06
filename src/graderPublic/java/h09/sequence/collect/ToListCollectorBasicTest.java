@@ -12,10 +12,10 @@ import java.util.List;
 import java.util.stream.Stream;
 
 @TestForSubmission
+@SuppressWarnings("rawtypes")
 public final class ToListCollectorBasicTest {
 
     @Test
-    @SuppressWarnings("rawtypes")
     void testSignature() {
         final TypeVariable<Class<ToListCollector>>[] typeParameters = ToListCollector.class.getTypeParameters();
         Assertions.assertArrayEquals(new String[]{"T"}, Stream.of(typeParameters).map(TypeVariable::getName).toArray(String[]::new),
@@ -28,8 +28,10 @@ public final class ToListCollectorBasicTest {
     }
 
     @Test
+    @SuppressWarnings("unchecked")
     void testCollectBasic() {
-        final List<String> list = Sequence.of("one", "two", "three").collect(new ToListCollector<>());
+        final List<String> list = Sequence.of("one", "two", "three")
+            .collect((SequenceCollector<String, ? extends List<String>>) new ToListCollector());
         Assertions.assertArrayEquals(new String[]{"one", "two", "three"}, list.toArray(new String[0]));
     }
 }

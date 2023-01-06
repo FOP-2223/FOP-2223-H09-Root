@@ -58,18 +58,18 @@ public class MaxOfTwoOperatorTest {
 
     @Test
     void testApplyIntegers() {
-        final MaxOfTwoOperator<Integer> maxOfTwoOperator = new MaxOfTwoOperator<>();
-        Assertions.assertEquals(7, maxOfTwoOperator.apply(7, 4));
-        Assertions.assertEquals(5, maxOfTwoOperator.apply(-3, 5));
-        Assertions.assertEquals(-2, maxOfTwoOperator.apply(-5, -2));
+        final MaxOfTwoOperator operator = new MaxOfTwoOperator();
+        Assertions.assertEquals(7, BinaryOperatorInvoker.invokeApply(operator, 7, 4));
+        Assertions.assertEquals(5, BinaryOperatorInvoker.invokeApply(operator, -3, 5));
+        Assertions.assertEquals(-2, BinaryOperatorInvoker.invokeApply(operator, -5, -2));
     }
 
     @Test
     void testApplyStrings() {
-        final MaxOfTwoOperator<String> maxOfTwoOperator = new MaxOfTwoOperator<>();
-        Assertions.assertEquals("zebra", maxOfTwoOperator.apply("zebra", "apple"));
-        Assertions.assertEquals("zebra", maxOfTwoOperator.apply("apple", "zebra"));
-        Assertions.assertEquals("b12d", maxOfTwoOperator.apply("a231", "b12d"));
-        Assertions.assertEquals("b12d", maxOfTwoOperator.apply("", "b12d"));
+        final MaxOfTwoOperator operator = new MaxOfTwoOperator();
+        Assertions.assertEquals("zebra", BinaryOperatorInvoker.invokeApply(operator, "zebra", "apple"));
+        Assertions.assertEquals("zebra", BinaryOperatorInvoker.invokeApply(operator, "apple", "zebra"));
+        Assertions.assertEquals("b12d", BinaryOperatorInvoker.invokeApply(operator, "a231", "b12d"));
+        Assertions.assertEquals("b12d", BinaryOperatorInvoker.invokeApply(operator, "", "b12d"));
     }
 }

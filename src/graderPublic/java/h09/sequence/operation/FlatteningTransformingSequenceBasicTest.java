@@ -7,8 +7,10 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.sourcegrade.jagr.api.rubric.TestForSubmission;
 
+import java.lang.reflect.Constructor;
 import java.lang.reflect.TypeVariable;
 import java.util.Iterator;
+import java.util.function.Function;
 import java.util.stream.Stream;
 
 @TestForSubmission
@@ -30,11 +32,22 @@ public final class FlatteningTransformingSequenceBasicTest {
     }
 
     @Test
+    @SuppressWarnings("unchecked")
     void testIteratorBasic() {
-        Sequence<String> ogSeq = Sequence.of("1", "23", "456");
-        Sequence<Character> charSeq = new FlatteningTransformingSequence<>(ogSeq, s -> PrimitiveSequence.of(s.toCharArray()));
-        Sequence<Integer> seq = new TransformingSequence<>(charSeq, Character::getNumericValue);
-        Sequence<Integer> limitedSeq = new LimitSequence<>(seq, 6);
+        final Constructor<FlatteningTransformingSequence> constructorF = Assertions.assertDoesNotThrow(() ->
+                FlatteningTransformingSequence.class.getDeclaredConstructor(Sequence.class, Function.class),
+            "FlatteningTransformingSequence does not have a correct constructor");
+        final Constructor<TransformingSequence> constructorT = Assertions.assertDoesNotThrow(() ->
+                TransformingSequence.class.getDeclaredConstructor(Sequence.class, Function.class),
+            "TransformingSequence does not have a correct constructor");
+        final Sequence<String> ogSeq = Sequence.of("1", "23", "456");
+        final FlatteningTransformingSequence charSeq = Assertions.assertDoesNotThrow(() ->
+                constructorF.newInstance(ogSeq, (Function<String, Sequence<Character>>) s -> PrimitiveSequence.of(s.toCharArray())),
+            "FlatteningTransformingSequence constructor should not throw an exception");
+        final TransformingSequence seq = Assertions.assertDoesNotThrow(() ->
+                constructorT.newInstance(charSeq, (Function<Character, Integer>) Character::getNumericValue),
+            "TransformingSequence constructor should not throw an exception");
+        Sequence<Integer> limitedSeq = new LimitSequence<>((Sequence<Integer>) seq, 6);
         Iterator<Integer> it = limitedSeq.iterator();
         for (int i = 0; i < 6; i++) {
             Assertions.assertTrue(it.hasNext(), "FlatteningTransformingSequence should have 6 elements");

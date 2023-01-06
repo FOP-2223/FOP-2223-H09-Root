@@ -17,9 +17,9 @@ public class DoubleBasicBinaryOperationsTest {
     @Test
     void testAdd() {
         final DoubleBasicBinaryOperations operations = new DoubleBasicBinaryOperations();
-        for (double i = -10; i < 10; i+=0.5) {
-            for (double j = -10; j < 10; j+=0.25) {
-                Assertions.assertEquals(i + j, operations.add(i, j),
+        for (double i = -10; i < 10; i += 0.5) {
+            for (double j = -10; j < 10; j += 0.25) {
+                Assertions.assertEquals(i + j, BasicBinaryOperationInvoker.invokeAdd(operations, i, j),
                     i + " + " + j + " should be " + (i + j));
             }
         }
@@ -28,9 +28,9 @@ public class DoubleBasicBinaryOperationsTest {
     @Test
     void testMul() {
         final DoubleBasicBinaryOperations operations = new DoubleBasicBinaryOperations();
-        for (double i = -10; i < 10; i+=0.5) {
-            for (double j = -10; j < 10; j+=0.25) {
-                Assertions.assertEquals(i * j, operations.mul(i, j),
+        for (double i = -10; i < 10; i += 0.5) {
+            for (double j = -10; j < 10; j += 0.25) {
+                Assertions.assertEquals(i * j, BasicBinaryOperationInvoker.invokeMul(operations, i, j),
                     i + " * " + j + " should be " + (i * j));
             }
         }

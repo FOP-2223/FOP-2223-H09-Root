@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.sourcegrade.jagr.api.rubric.TestForSubmission;
 
+import java.lang.reflect.Constructor;
 import java.util.Map;
 
 @TestForSubmission
@@ -17,8 +18,14 @@ public final class ArraySequenceBasicTest {
     }
 
     @Test
+    @SuppressWarnings("rawtypes")
     void testIteratorBasic() {
-        final ArraySequence<Integer> sequence = new ArraySequence<>(new Integer[]{1, 2, 3});
+        final Constructor<ArraySequence> constructor = Assertions.assertDoesNotThrow(() ->
+            ArraySequence.class.getDeclaredConstructor(Object[].class),
+            "ArraySequence does not have a correct constructor");
+        final ArraySequence sequence = Assertions.assertDoesNotThrow(() ->
+            constructor.newInstance(new Object[]{new Integer[]{1, 2, 3}}),
+            "Failed to invoke ArraySequence constructor");
         final var iterator = sequence.iterator();
         Assertions.assertTrue(iterator.hasNext(), "Iterator should have a next element");
         Assertions.assertEquals(1, iterator.next(), "Iterator should return the first element");

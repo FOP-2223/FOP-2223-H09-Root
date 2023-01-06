@@ -94,17 +94,19 @@ public final class H2_1_Test {
             final BinaryOperator<Double> op1 = (a, b) -> a + b;
             final BinaryOperator<Double> op2 = (a, b) -> a * b;
             final BinaryOperator<Double> op3 = (a, b) -> a - b;
+            final Constructor<ComposedDoubleBinaryOperator> constructor = Assertions.assertDoesNotThrow(() ->
+                    ComposedDoubleBinaryOperator.class.getDeclaredConstructor(
+                        BinaryOperator.class, BinaryOperator.class, BinaryOperator.class),
+                "ComposedDoubleBinaryOperator does not have a correct constructor");
             final ComposedDoubleBinaryOperator operator =
-                Assertions.assertDoesNotThrow(() -> new ComposedDoubleBinaryOperator(op1, op2, op3),
-                    "Failed to invoke constructor with signature"
-                        + "ComposedDoubleBinaryOperator(BinaryOperator<Double>, BinaryOperator<Double>, BinaryOperator<Double>)"
-                );
-            Assertions.assertEquals(0.5, operator.apply(1.5, 2.0),
-                "ComposedDoubleBinaryOperator.apply(1.5, 2.0) should return 0.5");
-            Assertions.assertEquals(1.0, operator.apply(1.0, 2.0),
-                "ComposedDoubleBinaryOperator.apply(1.0, 2.0) should return 1.0");
-            Assertions.assertEquals(-16.5, operator.apply(-4.0, -2.5),
-                "ComposedDoubleBinaryOperator.apply(-4.0, -2.5) should return -16.5");
+                Assertions.assertDoesNotThrow(() -> constructor.newInstance(op1, op2, op3),
+                    "Failed to in invoke ComposedDoubleBinaryOperator constructor");
+            Assertions.assertEquals(0.5, BinaryOperatorInvoker.invokeApply(operator, 1.5, 2.0),
+                "ComposedDoubleBinaryBinaryOperatorInvoker.invokeApply(operator,1.5, 2.0) should return 0.5");
+            Assertions.assertEquals(1.0, BinaryOperatorInvoker.invokeApply(operator, 1.0, 2.0),
+                "ComposedDoubleBinaryBinaryOperatorInvoker.invokeApply(operator,1.0, 2.0) should return 1.0");
+            Assertions.assertEquals(-16.5, BinaryOperatorInvoker.invokeApply(operator, -4.0, -2.5),
+                "ComposedDoubleBinaryBinaryOperatorInvoker.invokeApply(operator,-4.0, -2.5) should return -16.5");
         }
     }
 
@@ -117,12 +119,12 @@ public final class H2_1_Test {
         @Test
         void testApply() {
             final DoubleMaxOfTwoOperator operator = new DoubleMaxOfTwoOperator();
-            Assertions.assertEquals(2.0, operator.apply(1.5, 2.0),
-                "DoubleMaxOfTwoOperator.apply(1.5, 2.0) should return 2.0");
-            Assertions.assertEquals(2.0, operator.apply(1.0, 2.0),
-                "DoubleMaxOfTwoOperator.apply(1.0, 2.0) should return 2.0");
-            Assertions.assertEquals(-2.5, operator.apply(-4.0, -2.5),
-                "DoubleMaxOfTwoOperator.apply(-4.0, -2.5) should return -2.5");
+            Assertions.assertEquals(2.0, BinaryOperatorInvoker.invokeApply(operator, 1.5, 2.0),
+                "DoubleMaxOfTwoBinaryOperatorInvoker.invokeApply(operator,1.5, 2.0) should return 2.0");
+            Assertions.assertEquals(2.0, BinaryOperatorInvoker.invokeApply(operator, 1.0, 2.0),
+                "DoubleMaxOfTwoBinaryOperatorInvoker.invokeApply(operator,1.0, 2.0) should return 2.0");
+            Assertions.assertEquals(-2.5, BinaryOperatorInvoker.invokeApply(operator, -4.0, -2.5),
+                "DoubleMaxOfTwoBinaryOperatorInvoker.invokeApply(operator,-4.0, -2.5) should return -2.5");
         }
     }
 
@@ -158,15 +160,17 @@ public final class H2_1_Test {
 
         @Test
         void testApply() {
+            final Constructor<DoubleSumWithCoefficientsOperator> constructor = Assertions.assertDoesNotThrow(() ->
+                    DoubleSumWithCoefficientsOperator.class.getDeclaredConstructor(Double.class, Double.class),
+                "DoubleSumWithCoefficientsOperator does not have a correct constructor");
             final DoubleSumWithCoefficientsOperator operator =
-                Assertions.assertDoesNotThrow(() -> new DoubleSumWithCoefficientsOperator(3.0, -2.5),
-                    "Failed to invoke constructor with signature"
-                        + "DoubleSumWithCoefficientsOperator(Double, Double)");
-            Assertions.assertEquals(-0.5, operator.apply(1.5, 2.0),
+                Assertions.assertDoesNotThrow(() -> constructor.newInstance(3.0, -2.5),
+                    "Failed to in invoke DoubleSumWithCoefficientsOperator constructor");
+            Assertions.assertEquals(-0.5, BinaryOperatorInvoker.invokeApply(operator, 1.5, 2.0),
                 "DoubleSumWithCoefficientsOperator(3.0, -2.5).apply(1.5, 2.0) should return -0.5");
-            Assertions.assertEquals(7.25, operator.apply(0.75, -2.0),
+            Assertions.assertEquals(7.25, BinaryOperatorInvoker.invokeApply(operator, 0.75, -2.0),
                 "DoubleSumWithCoefficientsOperator(3.0, -2.5).apply(0.75, -2.0) should return 7.25");
-            Assertions.assertEquals(-5.75, operator.apply(-4.0, -2.5),
+            Assertions.assertEquals(-5.75, BinaryOperatorInvoker.invokeApply(operator, -4.0, -2.5),
                 "DoubleSumWithCoefficientsOperator(3.0, -2.5).apply(-4.0, -2.5) should return -5.75");
         }
     }

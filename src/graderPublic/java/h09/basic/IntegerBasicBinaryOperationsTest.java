@@ -18,7 +18,7 @@ public final class IntegerBasicBinaryOperationsTest {
         final IntegerBasicBinaryOperations operations = new IntegerBasicBinaryOperations();
         for (int i = -20; i < 20; i++) {
             for (int j = -20; j < 20; j++) {
-                Assertions.assertEquals(i + j, operations.add(i, j),
+                Assertions.assertEquals(i + j, BasicBinaryOperationInvoker.invokeAdd(operations, i, j),
                     i + " + " + j + " should be " + (i + j));
             }
         }
@@ -29,7 +29,7 @@ public final class IntegerBasicBinaryOperationsTest {
         final IntegerBasicBinaryOperations operations = new IntegerBasicBinaryOperations();
         for (int i = -20; i < 20; i++) {
             for (int j = -20; j < 20; j++) {
-                Assertions.assertEquals(i * j, operations.mul(i, j),
+                Assertions.assertEquals(i * j, BasicBinaryOperationInvoker.invokeMul(operations, i, j),
                     i + " * " + j + " should be " + (i * j));
             }
         }
