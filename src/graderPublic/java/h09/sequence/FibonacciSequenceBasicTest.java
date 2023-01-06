@@ -21,7 +21,7 @@ public final class FibonacciSequenceBasicTest {
         int current = 1;
         for (int i = 0; i < 10; i++) {
             Assertions.assertTrue(iterator.hasNext(), "Iterator should have a next element");
-            final int next = iterator.next();
+            final Object next = iterator.next();
             Assertions.assertEquals(current, next, "Incorrect fibonacci number at index " + i);
             final int temp = current;
             current = last + current;
