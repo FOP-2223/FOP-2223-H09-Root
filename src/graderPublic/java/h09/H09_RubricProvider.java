@@ -167,9 +167,21 @@ public class H09_RubricProvider implements RubricProvider {
         .addChildCriteria(H4_3_1, H4_3_2, H4_3_3, H4_3_4)
         .build();
 
+    public static final Criterion H4_4_1 = Criterion.builder()
+        .shortDescription("FilteringSequence.of ist korrekt implementiert")
+        .build();
+
+    public static final Criterion H4_4_2 = Criterion.builder()
+        .shortDescription("TransformingSequence.of ist korrekt implementiert")
+        .build();
+
+    public static final Criterion H4_4_3 = Criterion.builder()
+        .shortDescription("FlatteningTransformingSequence.of ist korrekt implementiert")
+        .build();
+
     public static final Criterion H4_4 = Criterion.builder()
         .shortDescription("H4.4 - Einfachere Syntax bei Verwendung von Sequences")
-        .maxPoints(3)
+        .addChildCriteria(H4_4_1, H4_4_2, H4_4_3)
         .build();
 
     public static final Criterion H4 = Criterion.builder()
