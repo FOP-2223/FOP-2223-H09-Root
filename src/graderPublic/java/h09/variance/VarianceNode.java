@@ -25,20 +25,20 @@ public record VarianceNode(Type expectedBound, Variance expectedVariance, Varian
                     + expectedVariance.toString(expectedBound) + " or raw type " + normalizedExpectedBound);
         }
         // now check the children recursively if this is a parameterized type
-        if (expectedBound instanceof ParameterizedType expectedParameterizedType) {
-            if (!(actualType instanceof ParameterizedType actualParameterizedType)) {
-                throw new AssertionFailedError("Expected type " + expectedBound + " to be parameterized, but was not");
+        final Type normalizedActualType = normalizeType(actualType);
+        if (!(normalizedActualType instanceof final ParameterizedType actualParameterizedType)) {
+            if (children.length > 0) {
+                throw new AssertionError("Expected type " + normalizedActualType
+                    + " to be parameterized, but it is not");
+            } else {
+                return;
             }
-            final Type[] actualTypeArguments = actualParameterizedType.getActualTypeArguments();
-            final Type[] expectedTypeArguments = expectedParameterizedType.getActualTypeArguments();
-            Assertions.assertEquals(expectedTypeArguments.length, actualTypeArguments.length,
-                "Expected " + expectedTypeArguments.length + " type arguments, but got " + actualTypeArguments.length);
-            for (int i = 0; i < expectedTypeArguments.length; i++) {
-                final Type actualTypeArgument = actualTypeArguments[i];
-                for (final VarianceNode child : children) {
-                    child.check(actualTypeArgument, strict);
-                }
-            }
+        }
+        Assertions.assertEquals(children.length, actualParameterizedType.getActualTypeArguments().length,
+            "Expected type " + expectedVariance.toString(expectedBound) + " to have " + children.length
+                + " type arguments, but it has " + actualParameterizedType.getActualTypeArguments().length);
+        for (int i = 0; i < children.length; i++) {
+            children[i].check(actualParameterizedType.getActualTypeArguments()[i], strict);
         }
     }
 

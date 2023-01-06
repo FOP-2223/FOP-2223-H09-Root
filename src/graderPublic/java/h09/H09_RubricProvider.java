@@ -16,6 +16,8 @@ import h09.sequence.BasicFactorySequenceBasicTest;
 import h09.sequence.FibonacciSequenceBasicTest;
 import h09.sequence.operation.FilteringSequenceBasicTest;
 import h09.sequence.operation.FilteringSequenceIntermediateTest;
+import h09.sequence.operation.FlatteningTransformingSequenceBasicTest;
+import h09.sequence.operation.FlatteningTransformingSequenceIntermediateTest;
 import h09.sequence.operation.TransformingSequenceBasicTest;
 import h09.sequence.operation.TransformingSequenceIntermediateTest;
 import org.sourcegrade.jagr.api.rubric.Criterion;
@@ -132,7 +134,7 @@ public class H09_RubricProvider implements RubricProvider {
         () -> TransformingSequenceBasicTest.class);
 
     public static final Criterion H4_2_2 = createCriterion(
-        "Attribute und konstruktor sind bis auf Wildcards korrekt implementiert",
+        "Attribute und konstruktor von TransformingSequence sind bis auf Wildcards korrekt implementiert",
         () -> TransformingSequenceIntermediateTest.class);
 
     public static final Criterion H4_2_3 = Criterion.builder()
@@ -144,9 +146,25 @@ public class H09_RubricProvider implements RubricProvider {
         .addChildCriteria(H4_2_1, H4_2_2, H4_2_3)
         .build();
 
+    public static final Criterion H4_3_1 = createCriterion(
+        "Klassensignatur von FlatteningTransformingSequence ist korrekt und der Iterator funktioniert für einfache Fälle",
+        () -> FlatteningTransformingSequenceBasicTest.class);
+
+    public static final Criterion H4_3_2 = createCriterion(
+        "Attribute und konstruktor von FlatteningTransformingSequence sind bis auf Wildcards korrekt implementiert",
+        () -> FlatteningTransformingSequenceIntermediateTest.class);
+
+    public static final Criterion H4_3_3 = Criterion.builder()
+        .shortDescription("Generics von FlatteningTransformingSequence sind vollständig korrekt implementiert")
+        .build();
+
+    public static final Criterion H4_3_4 = Criterion.builder()
+        .shortDescription("FlatteningTransformingSequence is vollständig korrekt implementiert")
+        .build();
+
     public static final Criterion H4_3 = Criterion.builder()
         .shortDescription("H4.3 - FlatteningTransformingSequence")
-        .maxPoints(4)
+        .addChildCriteria(H4_3_1, H4_3_2, H4_3_3, H4_3_4)
         .build();
 
     public static final Criterion H4_4 = Criterion.builder()

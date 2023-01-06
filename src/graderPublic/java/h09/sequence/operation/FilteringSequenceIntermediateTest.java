@@ -1,5 +1,6 @@
 package h09.sequence.operation;
 
+import h09.FieldExtensions;
 import h09.sequence.Sequence;
 import h09.variance.Variance;
 import h09.variance.VarianceNode;
@@ -25,12 +26,7 @@ public final class FilteringSequenceIntermediateTest {
         final TypeVariable<Class<FilteringSequence>> genericT = FilteringSequence.class.getTypeParameters()[0];
         final Field[] fields = FilteringSequence.class.getDeclaredFields();
         Assertions.assertEquals(2, fields.length, "ComposedBinaryOperator should have two fields");
-        for (final Field field : fields) {
-            Assertions.assertTrue(Modifier.isFinal(field.getModifiers()),
-                "FilteringSequence." + field.getName() + " should be final");
-            Assertions.assertTrue(Modifier.isPrivate(field.getModifiers()),
-                "FilteringSequence." + field.getName() + " should be private");
-        }
+        FieldExtensions.assertPrivateFinal("FilteringSequence", fields);
 
         final Field sequenceField = Stream.of(fields).filter(field -> field.getType().equals(Sequence.class)).findAny()
             .orElseThrow(() -> new AssertionError("FilteringSequence should have a field who's raw type is type Sequence"));

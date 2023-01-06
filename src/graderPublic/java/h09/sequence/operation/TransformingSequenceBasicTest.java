@@ -12,7 +12,7 @@ import java.util.stream.Stream;
 
 @TestForSubmission
 @SuppressWarnings("rawtypes")
-public class TransformingSequenceBasicTest {
+public final class TransformingSequenceBasicTest {
 
     @Test
     void testSignature() {

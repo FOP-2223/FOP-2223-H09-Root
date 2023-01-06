@@ -1,6 +1,7 @@
 package h09.operator;
 
 import com.google.common.collect.Sets;
+import h09.FieldExtensions;
 import h09.SignatureTestExtensions;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -32,11 +33,8 @@ public final class ComposedBinaryOperatorTest {
         final TypeVariable<Class<ComposedBinaryOperator>> genericT = ComposedBinaryOperator.class.getTypeParameters()[0];
         final Field[] fields = ComposedBinaryOperator.class.getDeclaredFields();
         Assertions.assertEquals(3, fields.length, "ComposedBinaryOperator should have three fields");
+        FieldExtensions.assertPrivateFinal("ComposedBinaryOperator", fields);
         for (final Field field : fields) {
-            Assertions.assertTrue(Modifier.isFinal(field.getModifiers()),
-                "ComposedBinaryOperator." + field.getName() + " should be final");
-            Assertions.assertTrue(Modifier.isPrivate(field.getModifiers()),
-                "ComposedBinaryOperator." + field.getName() + " should be private");
             Assertions.assertEquals(BinaryOperator.class, field.getType(),
                 "ComposedBinaryOperator." + field.getName() + " should be of type BinaryOperator<T>");
             if (field.getGenericType() instanceof final ParameterizedType type) {

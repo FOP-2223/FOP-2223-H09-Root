@@ -1,5 +1,6 @@
 package h09.sequence.operation;
 
+import h09.FieldExtensions;
 import h09.sequence.Sequence;
 import h09.variance.Variance;
 import h09.variance.VarianceNode;
@@ -18,7 +19,7 @@ import java.util.stream.Stream;
 
 @TestForSubmission
 @SuppressWarnings("rawtypes")
-public class TransformingSequenceIntermediateTest {
+public final class TransformingSequenceIntermediateTest {
 
     @Test
     void testSignature() {
@@ -27,12 +28,7 @@ public class TransformingSequenceIntermediateTest {
         final TypeVariable<Class<TransformingSequence>> genericR = typeParameters[1];
         final Field[] fields = TransformingSequence.class.getDeclaredFields();
         Assertions.assertEquals(2, fields.length, "TransformingSequence should have two fields");
-        for (final Field field : fields) {
-            Assertions.assertTrue(Modifier.isFinal(field.getModifiers()),
-                "TransformingSequence." + field.getName() + " should be final");
-            Assertions.assertTrue(Modifier.isPrivate(field.getModifiers()),
-                "TransformingSequence." + field.getName() + " should be private");
-        }
+        FieldExtensions.assertPrivateFinal("TransformingSequence", fields);
 
         final Field sequenceField = Stream.of(fields).filter(field -> field.getType().equals(Sequence.class)).findAny()
             .orElseThrow(() -> new AssertionError("TransformingSequence should have a field who's raw type is type Sequence"));
