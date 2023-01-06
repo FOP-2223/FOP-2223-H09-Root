@@ -87,8 +87,7 @@ public final class ComposedBinaryOperatorTest {
         final Constructor<ComposedBinaryOperator> constructor = Assertions.assertDoesNotThrow(() ->
                 ComposedBinaryOperator.class.getDeclaredConstructor(
                     BinaryOperator.class, BinaryOperator.class, BinaryOperator.class),
-            "ComposedBinaryOperator does not have a correct constructor"
-        );
+            "ComposedBinaryOperator does not have a correct constructor");
         final ComposedBinaryOperator operator =
             Assertions.assertDoesNotThrow(() -> constructor.newInstance(concat, intersect, concat),
                 "Failed to invoke ComposedBinaryOperator constructor");
