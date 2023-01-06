@@ -37,10 +37,10 @@ public class H09_RubricProvider implements RubricProvider {
     public static final Criterion H1_2 = createCriterion("H1.2 - DoubleFactory", () -> DoubleFactoryTest.class);
     public static final Criterion H1_3 = createCriterion("H1.3 - StringFactory", () -> StringFactoryTest.class);
 
-    public static final Criterion H1_4_1 = createCriterion("BasicBinaryOperationsTest", () -> BasicBinaryOperationsTest.class);
+    public static final Criterion H1_4_1 = createCriterion("BasicBinaryOperations", () -> BasicBinaryOperationsTest.class);
 
     public static final Criterion H1_4_2 = Criterion.builder()
-        .shortDescription("DoubleBasicBinaryOperations + IntegerBasicBinaryOperations")
+        .shortDescription("DoubleBasicBinaryOperations und IntegerBasicBinaryOperations sind korrekt implementiert")
         .grader(Grader.testAwareBuilder()
             .requirePass(JUnitTestRef.ofClass(() -> DoubleBasicBinaryOperationsTest.class))
             .requirePass(JUnitTestRef.ofClass(() -> IntegerBasicBinaryOperationsTest.class))
@@ -66,7 +66,7 @@ public class H09_RubricProvider implements RubricProvider {
     public static final Criterion H2_3 = createCriterion("H2.3 - MaxOfTwoOperator", () -> MaxOfTwoOperatorTest.class);
 
     public static final Criterion H2_4_1 = Criterion.builder()
-        .shortDescription("Klassensignatur, Attribute und Konstruktor von SumWithCoefficients sind korrekt")
+        .shortDescription("Klassensignatur, Attribute und Konstruktor von SumWithCoefficients sind korrekt implementiert")
         .grader(Grader.testAwareBuilder()
             .requirePass(JUnitTestRef.ofMethod(() -> SumWithCoefficientsOperatorTest.class.getDeclaredMethod("testSignature")))
             .requirePass(JUnitTestRef.ofMethod(() -> SumWithCoefficientsOperatorTest.class.getDeclaredMethod("testFields")))
@@ -110,7 +110,7 @@ public class H09_RubricProvider implements RubricProvider {
         .build();
 
     public static final Criterion H3_2_1 = createCriterion(
-        "Klassensignature von FibonacciSequence ist korrekt und der Iterator funktioniert für einfache Fälle",
+        "Klassensignatur von FibonacciSequence ist korrekt und der Iterator funktioniert für einfache Fälle",
         () -> FibonacciSequenceBasicTest.class);
 
     public static final Criterion H3_2_2 = Criterion.builder()
