@@ -4,7 +4,6 @@ import org.junit.jupiter.api.Assertions;
 
 import java.lang.reflect.Method;
 
-@SuppressWarnings({"rawtypes"})
 public final class BasicBinaryOperationInvoker {
 
     private BasicBinaryOperationInvoker() {

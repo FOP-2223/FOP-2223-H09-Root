@@ -11,8 +11,8 @@ import java.lang.reflect.TypeVariable;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-@SuppressWarnings("rawtypes")
 @TestForSubmission
+@SuppressWarnings("rawtypes")
 public final class BasicBinaryOperationsTest {
 
     @Test

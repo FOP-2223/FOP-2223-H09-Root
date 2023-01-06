@@ -6,14 +6,16 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.sourcegrade.jagr.api.rubric.TestForSubmission;
 
+import java.lang.reflect.Constructor;
 import java.lang.reflect.TypeVariable;
+import java.util.function.BinaryOperator;
 import java.util.stream.Stream;
 
 @TestForSubmission
+@SuppressWarnings("rawtypes")
 public final class BinaryOpFoldCollectorBasicTest {
 
     @Test
-    @SuppressWarnings("rawtypes")
     void testSignature() {
         final TypeVariable<Class<BinaryOpFoldCollector>>[] typeParameters = BinaryOpFoldCollector.class.getTypeParameters();
         Assertions.assertArrayEquals(new String[]{"T"}, Stream.of(typeParameters).map(TypeVariable::getName).toArray(String[]::new),
@@ -25,8 +27,16 @@ public final class BinaryOpFoldCollectorBasicTest {
     }
 
     @Test
+    @SuppressWarnings("unchecked")
     void testCollectBasic() {
-        final int product = Sequence.of(1, 2, 3, 4, 5).collect(new BinaryOpFoldCollector<>(1, (a, b) -> a * b));
+        final Constructor<BinaryOpFoldCollector> constructor = Assertions.assertDoesNotThrow(() ->
+                BinaryOpFoldCollector.class.getDeclaredConstructor(Object.class, BinaryOperator.class),
+            "BinaryOpFoldCollector does not have a correct constructor");
+        final SequenceCollector<Integer, Integer> collector = Assertions.assertDoesNotThrow(() ->
+                (SequenceCollector<Integer, Integer>) constructor.newInstance(1,
+                    (BinaryOperator<Integer>) (a, b) -> a * b),
+            "BinaryOpFoldCollector does not have a correct constructor");
+        final int product = Sequence.of(1, 2, 3, 4, 5).collect(collector);
         Assertions.assertEquals(120, product);
     }
 }
