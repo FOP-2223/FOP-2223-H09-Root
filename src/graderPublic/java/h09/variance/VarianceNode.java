@@ -25,7 +25,7 @@ public record VarianceNode(Type expectedBound, Variance expectedVariance, Varian
                     + expectedVariance.toString(expectedBound) + " or raw type " + normalizedExpectedBound);
         }
         // now check the children recursively if this is a parameterized type
-        final Type normalizedActualType = normalizeType(actualType);
+        final Type normalizedActualType = dewildcardType(actualType);
         if (!(normalizedActualType instanceof final ParameterizedType actualParameterizedType)) {
             if (children.length > 0) {
                 throw new AssertionError("Expected type " + normalizedActualType
@@ -101,7 +101,12 @@ public record VarianceNode(Type expectedBound, Variance expectedVariance, Varian
     private static Type normalizeType(final Type type) {
         if (type instanceof ParameterizedType parameterizedType) {
             return parameterizedType.getRawType();
-        } else if (type instanceof WildcardType wildcardType) {
+        }
+        return dewildcardType(type);
+    }
+
+    private static Type dewildcardType(final Type type) {
+        if (type instanceof WildcardType wildcardType) {
             final Type[] lowerBounds = wildcardType.getLowerBounds();
             final Type[] upperBounds = wildcardType.getUpperBounds();
             if (lowerBounds.length == 0) {
