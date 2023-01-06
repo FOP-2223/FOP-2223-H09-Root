@@ -39,7 +39,7 @@ public final class FlatteningTransformingSequenceBasicTest {
             "FlatteningTransformingSequence does not have a correct constructor");
         final Constructor<TransformingSequence> constructorT = Assertions.assertDoesNotThrow(() ->
                 TransformingSequence.class.getDeclaredConstructor(Sequence.class, Function.class),
-            "FlatteningTransformingSequence does not have a correct constructor");
+            "TransformingSequence does not have a correct constructor");
         final Sequence<String> ogSeq = Sequence.of("1", "23", "456");
         final FlatteningTransformingSequence charSeq = Assertions.assertDoesNotThrow(() ->
                 constructorF.newInstance(ogSeq, (Function<String, Sequence<Character>>) s -> PrimitiveSequence.of(s.toCharArray())),
