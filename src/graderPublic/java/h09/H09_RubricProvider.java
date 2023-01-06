@@ -14,6 +14,9 @@ import h09.operator.SumWithCoefficientsOperatorTest;
 import h09.sequence.ArraySequenceBasicTest;
 import h09.sequence.BasicFactorySequenceBasicTest;
 import h09.sequence.FibonacciSequenceBasicTest;
+import h09.sequence.collect.BinaryOpFoldCollectorBasicTest;
+import h09.sequence.collect.SummingCollectorBasicTest;
+import h09.sequence.collect.ToListCollectorBasicTest;
 import h09.sequence.operation.FilteringSequenceBasicTest;
 import h09.sequence.operation.FilteringSequenceIntermediateTest;
 import h09.sequence.operation.FlatteningTransformingSequenceBasicTest;
@@ -61,7 +64,32 @@ public class H09_RubricProvider implements RubricProvider {
     public static final Criterion H2_1 = createCriterion("H2.1 - Erster Satz von binären Operatorklassen", () -> H2_1_Test.class);
     public static final Criterion H2_2 = createCriterion("H2.2 - ComposedBinaryOperator", () -> ComposedBinaryOperatorTest.class);
     public static final Criterion H2_3 = createCriterion("H2.3 - MaxOfTwoOperator", () -> MaxOfTwoOperatorTest.class);
-    public static final Criterion H2_4 = createCriterion("H2.4 - SumWithCoefficientsTest", () -> SumWithCoefficientsOperatorTest.class);
+
+    public static final Criterion H2_4_1 = Criterion.builder()
+        .shortDescription("Klassensignatur, Attribute und Konstruktor von SumWithCoefficients sind korrekt")
+        .grader(Grader.testAwareBuilder()
+            .requirePass(JUnitTestRef.ofMethod(() -> SumWithCoefficientsOperatorTest.class.getDeclaredMethod("testSignature")))
+            .requirePass(JUnitTestRef.ofMethod(() -> SumWithCoefficientsOperatorTest.class.getDeclaredMethod("testFields")))
+            .requirePass(JUnitTestRef.ofMethod(() -> SumWithCoefficientsOperatorTest.class.getDeclaredMethod("testConstructor")))
+            .pointsPassedMax()
+            .pointsFailedMin()
+            .build())
+        .build();
+
+    public static final Criterion H2_4_2 = Criterion.builder()
+        .shortDescription("Die apply-Methode von SumWithCoefficients ist korrekt")
+        .grader(Grader.testAwareBuilder()
+            .requirePass(JUnitTestRef.ofMethod(() -> SumWithCoefficientsOperatorTest.class.getDeclaredMethod("testApplySignature")))
+            .requirePass(JUnitTestRef.ofMethod(() -> SumWithCoefficientsOperatorTest.class.getDeclaredMethod("testApply")))
+            .pointsPassedMax()
+            .pointsFailedMin()
+            .build())
+        .build();
+
+    public static final Criterion H2_4 = Criterion.builder()
+        .shortDescription("H2.4 - SumWithCoefficientsOperator")
+        .addChildCriteria(H2_4_1, H2_4_2)
+        .build();
 
     public static final Criterion H2 = Criterion.builder()
         .shortDescription("H2 - Binary Operators")
@@ -189,9 +217,53 @@ public class H09_RubricProvider implements RubricProvider {
         .addChildCriteria(H4_1, H4_2, H4_3, H4_4)
         .build();
 
+    public static final Criterion H5_1_1 = createCriterion(
+        "Klassensignatur von ToListCollector ist korrekt und funktioniert für einfache Fälle",
+        () -> ToListCollectorBasicTest.class);
+
+    public static final Criterion H5_1_2 = Criterion.builder()
+        .shortDescription("ToListCollector ist vollständig korrekt implementiert")
+        .build();
+
+    public static final Criterion H5_1 = Criterion.builder()
+        .shortDescription("H5.1 - ToListCollector")
+        .addChildCriteria(H5_1_1, H5_1_2)
+        .build();
+
+    public static final Criterion H5_2_1 = createCriterion(
+        "Klassensignatur von SummingCollector ist korrekt und funktioniert für einfache Fälle",
+        () -> SummingCollectorBasicTest.class);
+
+    public static final Criterion H5_2_2 = Criterion.builder()
+        .shortDescription("SummingCollector ist vollständig korrekt implementiert")
+        .build();
+
+    public static final Criterion H5_2 = Criterion.builder()
+        .shortDescription("H5.2 - SummingCollector")
+        .addChildCriteria(H5_2_1, H5_2_2)
+        .build();
+
+    public static final Criterion H5_3_1 = createCriterion(
+        "Klassensignatur von BinaryOpFoldCollector ist korrekt und funktioniert für einfache Fälle",
+        () -> BinaryOpFoldCollectorBasicTest.class);
+
+    public static final Criterion H5_3_2 = Criterion.builder()
+        .shortDescription("BinaryOpFoldCollector ist vollständig korrekt implementiert")
+        .build();
+
+    public static final Criterion H5_3 = Criterion.builder()
+        .shortDescription("H5.3 - BinaryOpFoldCollector")
+        .addChildCriteria(H5_3_1, H5_3_2)
+        .build();
+
+    public static final Criterion H5 = Criterion.builder()
+        .shortDescription("H5 - Collect-e")
+        .addChildCriteria(H5_1, H5_2, H5_3)
+        .build();
+
     public static final Rubric RUBRIC = Rubric.builder()
         .title("H09 - Ein Einblick in Generics")
-        .addChildCriteria(H1, H2, H3, H4)
+        .addChildCriteria(H1, H2, H3, H4, H5)
         .build();
 
     @Override

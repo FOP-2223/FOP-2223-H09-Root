@@ -5,6 +5,7 @@ algoutils = "0.5.0"
 annotations = "org.jetbrains:annotations:23.0.0"
 algoutils-student = { module = "org.tudalgo:algoutils-student", version.ref = "algoutils" }
 algoutils-tutor = { module = "org.tudalgo:algoutils-tutor", version.ref = "algoutils" }
+geantyref = "io.leangen.geantyref:geantyref:1.3.13"
 junit-core = { module = "org.junit.jupiter:junit-jupiter", version = "5.9.1" }
 
 [plugins]
