@@ -14,6 +14,7 @@ import java.lang.reflect.Modifier;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.lang.reflect.TypeVariable;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.function.BinaryOperator;
 import java.util.stream.Stream;
@@ -24,8 +25,11 @@ public class SumWithCoefficientsOperatorTest {
 
     @Test
     void testSignature() {
-        SignatureTestExtensions.testGenericDeclaration(SumWithCoefficientsOperator.class,
-            Map.of("X", Object.class, "Y", Object.class));
+        // linked hash map to preserve insertion order
+        final Map<String, Type> genericParams = new LinkedHashMap<>();
+        genericParams.put("X", Object.class);
+        genericParams.put("Y", Object.class);
+        SignatureTestExtensions.testGenericDeclaration(SumWithCoefficientsOperator.class, genericParams);
         final TypeVariable<Class<SumWithCoefficientsOperator>> genericX = SumWithCoefficientsOperator.class.getTypeParameters()[0];
         SignatureTestExtensions.testGenericSuperInterface(SumWithCoefficientsOperator.class, BinaryOperator.class, genericX);
     }
@@ -54,25 +58,23 @@ public class SumWithCoefficientsOperatorTest {
         final Constructor<SumWithCoefficientsOperator> constructor = Assertions.assertDoesNotThrow(() ->
                 SumWithCoefficientsOperator.class.getDeclaredConstructor(
                     BasicBinaryOperations.class, Object.class, Object.class),
-            "SumWithCoefficientsOperator should have a constructor with signature"
-                + "SumWithCoefficientsOperator(BinaryOperator<X, Y>, Y, Y)"
-        );
+            "SumWithCoefficientsOperator does not have a correct constructor");
         Assertions.assertTrue(Modifier.isPublic(constructor.getModifiers()),
-            "Constructor SumWithCoefficientsOperator(BinaryOperator<X, Y>, Y, Y) should be public");
+            "Constructor for SumWithCoefficientsOperator should be public");
         final Type[] genericParams = constructor.getGenericParameterTypes();
         final TypeVariable<Class<SumWithCoefficientsOperator>>[] typeParameters = SumWithCoefficientsOperator.class.getTypeParameters();
         final TypeVariable<Class<SumWithCoefficientsOperator>> genericX = typeParameters[0];
         final TypeVariable<Class<SumWithCoefficientsOperator>> genericY = typeParameters[1];
         if (genericParams[0] instanceof final ParameterizedType type) {
             Assertions.assertArrayEquals(new Type[]{genericX, genericY}, type.getActualTypeArguments(),
-                "Constructor SumWithCoefficientsOperator(BinaryOperator<X, Y>, Y, Y) should have a first parameter of type BinaryOperator<X, Y>");
+                "The first parameter of the constructor for SumWithCoefficientsOperator is not parameterized correctly");
         } else {
-            Assertions.fail("The first parameter of constructor SumWithCoefficientsOperator(BinaryOperator<X, Y>, Y, Y) should be parameterized");
+            Assertions.fail("The first parameter of constructor for SumWithCoefficientsOperator should be parameterized");
         }
         Assertions.assertEquals(genericY, genericParams[1],
-            "Constructor SumWithCoefficientsOperator(BinaryOperator<X, Y>, Y, Y) should have a second parameter of type Y");
+            "Constructor for SumWithCoefficientsOperator should have a second parameter of type Y");
         Assertions.assertEquals(genericY, genericParams[2],
-            "Constructor SumWithCoefficientsOperator(BinaryOperator<X, Y>, Y, Y) should have a third parameter of type Y");
+            "Constructor for SumWithCoefficientsOperator should have a third parameter of type Y");
     }
 
     @Test
@@ -83,10 +85,16 @@ public class SumWithCoefficientsOperatorTest {
     @Test
     void testApply() {
         final StringBasicBinaryOperations op = new StringBasicBinaryOperations();
-        final SumWithCoefficientsOperator<String, Integer> sum = new SumWithCoefficientsOperator<>(op, 3, 2);
-        Assertions.assertEquals("abababcdcd", sum.apply("ab", "cd"),
+        final Constructor<SumWithCoefficientsOperator> sumCtor = Assertions.assertDoesNotThrow(() ->
+                SumWithCoefficientsOperator.class.getDeclaredConstructor(
+                    BasicBinaryOperations.class, Object.class, Object.class),
+            "SumWithCoefficientsOperator does not have a correct constructor");
+        final SumWithCoefficientsOperator sum = Assertions.assertDoesNotThrow(() ->
+                sumCtor.newInstance(op, 3, 2),
+            "Failed to invoke constructor for SumWithCoefficientsOperator");
+        Assertions.assertEquals("abababcdcd", BinaryOperatorInvoker.invokeApply(sum,"ab", "cd"),
             "new SumWithCoefficientsOperator(new StringBasicBinaryOperations(), 3, 2).apply(\"ab\", \"cd\") should return \"abababcdcd\"");
-        Assertions.assertEquals("aaacdaacdaa", sum.apply("a", "cdaa"),
+        Assertions.assertEquals("aaacdaacdaa", BinaryOperatorInvoker.invokeApply(sum,"a", "cdaa"),
             "new SumWithCoefficientsOperator(new StringBasicBinaryOperations(), 3, 2).apply(\"a\", \"cdaa\") should return \"aaacdaacdaa\"");
     }
 }
