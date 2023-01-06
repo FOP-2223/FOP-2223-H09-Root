@@ -14,6 +14,7 @@ import java.lang.reflect.Modifier;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.lang.reflect.TypeVariable;
+import java.util.Map;
 import java.util.function.BinaryOperator;
 import java.util.stream.Stream;
 
@@ -23,19 +24,9 @@ public class SumWithCoefficientsOperatorTest {
 
     @Test
     void testSignature() {
-        final TypeVariable<Class<SumWithCoefficientsOperator>>[] typeParameters = SumWithCoefficientsOperator.class.getTypeParameters();
-        Assertions.assertArrayEquals(new String[]{"X", "Y"}, Stream.of(typeParameters).map(TypeVariable::getName).toArray(String[]::new),
-            "SumWithCoefficientsOperator should have exactly two type parameters X and Y");
-        final TypeVariable<Class<SumWithCoefficientsOperator>> genericX = typeParameters[0];
-        final TypeVariable<Class<SumWithCoefficientsOperator>> genericY = typeParameters[1];
-        Assertions.assertEquals(1, genericX.getBounds().length,
-            "SumWithCoefficientsOperator should not have additional bounds on type parameter X");
-        Assertions.assertEquals(1, genericY.getBounds().length,
-            "SumWithCoefficientsOperator should not have additional bounds on type parameter Y");
-        Assertions.assertEquals(Object.class, genericX.getBounds()[0],
-            "ComposedBinaryOperator should have a type parameter X with bound Object");
-        Assertions.assertEquals(Object.class, genericY.getBounds()[0],
-            "ComposedBinaryOperator should have a type parameter Y with bound Object");
+        SignatureTestExtensions.testGenericDeclaration(SumWithCoefficientsOperator.class,
+            Map.of("X", Object.class, "Y", Object.class));
+        final TypeVariable<Class<SumWithCoefficientsOperator>> genericX = SumWithCoefficientsOperator.class.getTypeParameters()[0];
         SignatureTestExtensions.testGenericSuperInterface(SumWithCoefficientsOperator.class, BinaryOperator.class, genericX);
     }
 

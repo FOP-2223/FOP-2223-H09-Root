@@ -1,73 +1,48 @@
 package h09.basic;
 
+import h09.SignatureTestExtensions;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.sourcegrade.jagr.api.rubric.TestForSubmission;
-import org.sourcegrade.jagr.api.testing.SourceFile;
-import org.sourcegrade.jagr.api.testing.TestCycle;
-import org.sourcegrade.jagr.api.testing.extension.JagrExecutionCondition;
-import org.sourcegrade.jagr.api.testing.extension.TestCycleResolver;
-import spoon.Launcher;
-import spoon.reflect.declaration.CtInterface;
-import spoon.reflect.declaration.CtMethod;
-import spoon.reflect.declaration.CtType;
-import spoon.reflect.reference.CtTypeParameterReference;
-import spoon.support.compiler.VirtualFile;
 
-import java.util.Objects;
+import java.lang.reflect.Method;
+import java.lang.reflect.Type;
+import java.lang.reflect.TypeVariable;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
+@SuppressWarnings("rawtypes")
 @TestForSubmission
-@ExtendWith(JagrExecutionCondition.class)
 public final class BasicBinaryOperationsTest {
 
     @Test
     void testClassSignature() {
-        Assertions.assertArrayEquals(new String[]{"X", "Y"}, getInterface().getFormalCtTypeParameters().stream()
-                .map(CtType::getSimpleName)
-                .toArray(String[]::new),
-            "BasicBinaryOperations should have type parameters X and Y");
+        // linked hash map to preserve insertion order
+        final Map<String, Type> genericParams = new LinkedHashMap<>();
+        genericParams.put("X", Object.class);
+        genericParams.put("Y", Object.class);
+        SignatureTestExtensions.testGenericDeclaration(BasicBinaryOperations.class, genericParams);
     }
 
     @Test
     void testAddSignature() {
-        final CtInterface<?> iface = getInterface();
-        final CtMethod<?> add = iface.getMethodsByName("add").get(0);
-        final CtTypeParameterReference xType = iface.getFormalCtTypeParameters().get(0).getReference();
-        Assertions.assertEquals(2, add.getParameters().size(),
-            "add should have two parameters");
-        Assertions.assertEquals(xType, add.getParameters().get(0).getType(),
-            "add's first parameter should be of type X");
-        Assertions.assertEquals(xType, add.getParameters().get(1).getType(),
-            "add's second parameter should be of type X");
-        Assertions.assertEquals(xType, add.getType(),
+        final Method method = Assertions.assertDoesNotThrow(() ->
+                BasicBinaryOperations.class.getDeclaredMethod("add", Object.class, Object.class),
+            "Could not find add method in BasicBinaryOperations");
+        final TypeVariable<Class<BasicBinaryOperations>>[] typeParameters = BasicBinaryOperations.class.getTypeParameters();
+        Assertions.assertEquals(typeParameters[0], method.getGenericReturnType(),
             "add's return type should be X");
+        SignatureTestExtensions.testGenericParameters(method, typeParameters[0], typeParameters[0]);
     }
 
     @Test
     void testMulSignature() {
-        final CtInterface<?> iface = getInterface();
-        final CtMethod<?> mul = iface.getMethodsByName("mul").get(0);
-        final CtTypeParameterReference xType = iface.getFormalCtTypeParameters().get(0).getReference();
-        final CtTypeParameterReference yType = iface.getFormalCtTypeParameters().get(1).getReference();
-        Assertions.assertEquals(2, mul.getParameters().size(),
-            "mul should have two parameters");
-        Assertions.assertEquals(xType, mul.getParameters().get(0).getType(),
-            "mul's first parameter should be of type X");
-        Assertions.assertEquals(yType, mul.getParameters().get(1).getType(),
-            "mul's second parameter should be of type Y");
-        Assertions.assertEquals(xType, mul.getType(),
+        final Method method = Assertions.assertDoesNotThrow(() ->
+                BasicBinaryOperations.class.getDeclaredMethod("mul", Object.class, Object.class),
+            "Could not find mul method in BasicBinaryOperations");
+        final TypeVariable<Class<BasicBinaryOperations>>[] typeParameters = BasicBinaryOperations.class.getTypeParameters();
+        Assertions.assertEquals(typeParameters[0], method.getGenericReturnType(),
             "mul's return type should be X");
-    }
-
-    @SuppressWarnings("UnstableApiUsage")
-    private static CtInterface<?> getInterface() {
-        final TestCycle testCycle = Objects.requireNonNull(TestCycleResolver.getTestCycle(), "TestCycle not found");
-        final SourceFile sourceFile = testCycle.getSubmission().getSourceFile("h09/basic/BasicBinaryOperations.java");
-        Assertions.assertNotNull(sourceFile, "Could not find source file h09/basic/BasicBinaryOperations.java");
-        final Launcher launcher = new Launcher();
-        launcher.addInputResource(new VirtualFile(sourceFile.getContent()));
-        return (CtInterface<?>) launcher.buildModel().getAllTypes().stream().findFirst().orElseThrow(
-            () -> new IllegalStateException("Error building model for h09/basic/BasicBinaryOperations.java"));
+        SignatureTestExtensions.testGenericParameters(method, typeParameters);
     }
 }

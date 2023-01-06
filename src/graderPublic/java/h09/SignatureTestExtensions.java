@@ -2,6 +2,8 @@ package h09;
 
 import org.junit.jupiter.api.Assertions;
 
+import java.lang.reflect.GenericDeclaration;
+import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.lang.reflect.TypeVariable;
@@ -29,23 +31,35 @@ public class SignatureTestExtensions {
 
     public static <T> void testSignatureSimplePassThroughParameterization(final Class<T> targetClass,
                                                                           final Class<?> targetSuperInterface,
-                                                                          final Map<String, Class<?>> genericTypes) {
-        final TypeVariable<Class<T>>[] typeParameters = targetClass.getTypeParameters();
+                                                                          final Map<String, Type> genericTypes) {
+        testGenericDeclaration(targetClass, genericTypes);
+        testGenericSuperInterface(targetClass, targetSuperInterface, targetClass.getTypeParameters());
+    }
+
+    public static void testGenericDeclaration(final GenericDeclaration declaration,
+                                              final Map<String, Type> genericTypes) {
+        final TypeVariable<?>[] typeParameters = declaration.getTypeParameters();
         Assertions.assertArrayEquals(genericTypes.keySet().toArray(new String[0]),
             Stream.of(typeParameters).map(Type::getTypeName).toArray(String[]::new),
-            targetClass.getSimpleName() + " has incorrect type parameters");
+            declaration + " has incorrect type parameters");
         genericTypes.forEach((name, bound) -> {
-            final TypeVariable<Class<T>> typeParameter = Arrays.stream(typeParameters)
+            final TypeVariable<?> typeParameter = Arrays.stream(typeParameters)
                 .filter(type -> type.getName().equals(name))
                 .findFirst()
-                .orElseThrow(() -> new AssertionError("Could not find type parameter " + name + " in " + targetClass.getSimpleName()));
+                .orElseThrow(() -> new AssertionError("Could not find type parameter " + name + " in " + declaration));
             final Type[] bounds = typeParameter.getBounds();
             Assertions.assertEquals(1, bounds.length,
-                targetClass.getSimpleName() + "'s type parameter " + name + " should not have additional bounds");
+                declaration + "'s type parameter " + name + " should not have additional bounds");
             Assertions.assertEquals(bound, bounds[0],
-                targetClass.getSimpleName() + "'s type parameter " + name + " should have upper bound " + bound);
+                declaration + "'s type parameter " + name + " should have upper bound " + bound);
         });
-        testGenericSuperInterface(targetClass, targetSuperInterface, typeParameters);
+    }
+
+    public static void testGenericParameters(final Method method,
+                                             final Type... parameterTypes) {
+        final Type[] actualParameterTypes = method.getGenericParameterTypes();
+        Assertions.assertArrayEquals(parameterTypes, actualParameterTypes,
+            method + " has incorrect parameter types");
     }
 
     public static void testGenericSuperInterface(final Class<?> targetClass,
