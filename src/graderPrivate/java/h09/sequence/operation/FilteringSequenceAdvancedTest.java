@@ -4,15 +4,17 @@ import org.junit.jupiter.api.Test;
 import org.sourcegrade.jagr.api.rubric.TestForSubmission;
 
 @TestForSubmission
-public final class FilteringSequenceIntermediateTest {
+public class FilteringSequenceAdvancedTest {
 
     @Test
     void testFields() {
-        FilteringSequenceGenericAssertions.checkFields(false);
+        FilteringSequenceGenericAssertions.checkFields(true);
     }
 
     @Test
     void testConstructor() {
-        FilteringSequenceGenericAssertions.checkConstructor(false);
+        FilteringSequenceGenericAssertions.checkConstructor(true);
     }
+
+    // TODO: Other strict tests?
 }

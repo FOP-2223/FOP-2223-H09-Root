@@ -2,7 +2,10 @@ package h09.sequence;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.sourcegrade.jagr.api.rubric.TestForSubmission;
 
+@TestForSubmission
+@SuppressWarnings({"rawtypes", "unchecked"})
 public class ArraySequenceAdvancedTest {
 
     @Test

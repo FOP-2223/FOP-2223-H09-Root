@@ -144,9 +144,9 @@ public class H09_RubricProvider implements RubricProvider {
         "Attribute und Konstruktor sind bis auf Wildcards korrekt implementiert.",
         () -> FilteringSequenceIntermediateTest.class);
 
-    public static final Criterion H4_1_3 = Criterion.builder()
-        .shortDescription("FilteringSequence ist vollständig korrekt implementiert.")
-        .build();
+    public static final Criterion H4_1_3 = createCriterion(
+        "FilteringSequence ist vollständig korrekt implementiert.",
+        () -> FilteringSequenceAdvancedTest.class);
 
     public static final Criterion H4_1 = Criterion.builder()
         .shortDescription("H4.1 - FilteringSequence")

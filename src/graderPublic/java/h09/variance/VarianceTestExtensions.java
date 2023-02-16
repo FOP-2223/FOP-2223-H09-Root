@@ -5,11 +5,10 @@ import org.opentest4j.AssertionFailedError;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
-import java.lang.reflect.WildcardType;
 
 public class VarianceTestExtensions {
 
-    public static void assertVariance(final Type baseType, final VarianceNode[] varianceNodes, final boolean strict) {
+    public static void assertVariance(final Type baseType, final boolean strict, final VarianceNode... varianceNodes) {
         if (!(baseType instanceof final ParameterizedType baseParameterizedType)) {
             throw new AssertionFailedError("Base type" + baseType.getTypeName() + " is not parameterized");
         }
@@ -22,10 +21,10 @@ public class VarianceTestExtensions {
     }
 
     public static void assertStrictVariance(final Type baseType, final VarianceNode... varianceNodes) {
-        assertVariance(baseType, varianceNodes, true);
+        assertVariance(baseType, true, varianceNodes);
     }
 
     public static void assertLooseVariance(final Type baseType, final VarianceNode... varianceNodes) {
-        assertVariance(baseType, varianceNodes, false);
+        assertVariance(baseType, false, varianceNodes);
     }
 }
