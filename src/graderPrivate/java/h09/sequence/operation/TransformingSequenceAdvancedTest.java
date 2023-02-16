@@ -4,15 +4,17 @@ import org.junit.jupiter.api.Test;
 import org.sourcegrade.jagr.api.rubric.TestForSubmission;
 
 @TestForSubmission
-public final class TransformingSequenceIntermediateTest {
+public class TransformingSequenceAdvancedTest {
 
     @Test
     void testSignature() {
-        TransformingSequenceGenericAssertions.checkSignature(false);
+        TransformingSequenceGenericAssertions.checkSignature(true);
     }
 
     @Test
     void testConstructor() {
-        TransformingSequenceGenericAssertions.checkConstructor(false);
+        TransformingSequenceGenericAssertions.checkConstructor(true);
     }
+
+    // TODO: Other strict tests?
 }
