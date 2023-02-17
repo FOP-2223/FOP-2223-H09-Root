@@ -175,9 +175,9 @@ public class H09_RubricProvider implements RubricProvider {
         "Attribute und Konstruktor von FlatteningTransformingSequence sind bis auf Wildcards korrekt implementiert.",
         () -> FlatteningTransformingSequenceIntermediateTest.class);
 
-    public static final Criterion H4_3_3 = Criterion.builder()
-        .shortDescription("Generics von FlatteningTransformingSequence sind vollständig korrekt implementiert.")
-        .build();
+    public static final Criterion H4_3_3 = createCriterion(
+        "Generics von FlatteningTransformingSequence sind vollständig korrekt implementiert.",
+        () -> FlattingTransformingSequenceAdvancedGenericsTest.class);
 
     public static final Criterion H4_3_4 = Criterion.builder()
         .shortDescription("FlatteningTransformingSequence ist vollständig korrekt implementiert.")

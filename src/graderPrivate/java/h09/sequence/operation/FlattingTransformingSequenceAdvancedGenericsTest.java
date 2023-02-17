@@ -4,15 +4,15 @@ import org.junit.jupiter.api.Test;
 import org.sourcegrade.jagr.api.rubric.TestForSubmission;
 
 @TestForSubmission
-public final class FlatteningTransformingSequenceIntermediateTest {
+public class FlattingTransformingSequenceAdvancedGenericsTest {
 
     @Test
     void testFields() {
-        FlatteningTransformingSequenceGenericAssertions.checkFields(false);
+        FlatteningTransformingSequenceGenericAssertions.checkFields(true);
     }
 
     @Test
     void testConstructor() {
-        FlatteningTransformingSequenceGenericAssertions.checkConstructor(false);
+        FlatteningTransformingSequenceGenericAssertions.checkConstructor(true);
     }
 }
