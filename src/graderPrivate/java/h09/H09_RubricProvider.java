@@ -181,6 +181,13 @@ public class H09_RubricProvider implements RubricProvider {
 
     public static final Criterion H4_3_4 = Criterion.builder()
         .shortDescription("FlatteningTransformingSequence ist vollständig korrekt implementiert.")
+        .grader(Grader.testAwareBuilder()
+            .pointsPassedMax()
+            .pointsFailedMin()
+            .requirePass(JUnitTestRef.ofClass(() -> FlatteningTransformingSequenceBasicTest.class))
+            .requirePass(JUnitTestRef.ofClass(() -> FlatteningTransformingSequenceIntermediateTest.class))
+            .requirePass(JUnitTestRef.ofClass(() -> FlattingTransformingSequenceAdvancedGenericsTest.class))
+            .build())
         .build();
 
     public static final Criterion H4_3 = Criterion.builder()
