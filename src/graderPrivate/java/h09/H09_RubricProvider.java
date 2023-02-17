@@ -5,10 +5,7 @@ import h09.operator.ComposedBinaryOperatorTest;
 import h09.operator.H2_1_Test;
 import h09.operator.MaxOfTwoOperatorTest;
 import h09.operator.SumWithCoefficientsOperatorTest;
-import h09.sequence.ArraySequenceAdvancedTest;
-import h09.sequence.ArraySequenceBasicTest;
-import h09.sequence.BasicFactorySequenceBasicTest;
-import h09.sequence.FibonacciSequenceBasicTest;
+import h09.sequence.*;
 import h09.sequence.collect.BinaryOpFoldCollectorBasicTest;
 import h09.sequence.collect.SummingCollectorBasicTest;
 import h09.sequence.collect.ToListCollectorBasicTest;
@@ -109,9 +106,9 @@ public class H09_RubricProvider implements RubricProvider {
         "Klassensignatur von FibonacciSequence ist korrekt und der Iterator funktioniert für einfache Fälle.",
         () -> FibonacciSequenceBasicTest.class);
 
-    public static final Criterion H3_2_2 = Criterion.builder()
-        .shortDescription("FibonacciSequence ist vollständig korrekt implementiert.")
-        .build();
+    public static final Criterion H3_2_2 = createCriterion(
+        "FibonacciSequence ist vollständig korrekt implementiert.",
+        () -> FibonacciSequenceBasicTest.class);
 
     public static final Criterion H3_2 = Criterion.builder()
         .shortDescription("H3.2 - FibonacciSequence")
@@ -122,9 +119,9 @@ public class H09_RubricProvider implements RubricProvider {
         "Klassensignatur von BasicFactorySequence ist korrekt.",
         () -> BasicFactorySequenceBasicTest.class);
 
-    public static final Criterion H3_3_2 = Criterion.builder()
-        .shortDescription("BasicFactorySequence ist vollständig korrekt implementiert.")
-        .build();
+    public static final Criterion H3_3_2 = createCriterion(
+        "BasicFactorySequence ist vollständig korrekt implementiert.",
+        () -> BasicFactorySequenceAdvancedTest.class);
 
     public static final Criterion H3_3 = Criterion.builder()
         .shortDescription("H3.3 - BasicFactorySequence")
