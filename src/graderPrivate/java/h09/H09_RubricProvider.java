@@ -221,9 +221,9 @@ public class H09_RubricProvider implements RubricProvider {
         "Klassensignatur von ToListCollector ist korrekt und funktioniert für einfache Fälle.",
         () -> ToListCollectorBasicTest.class);
 
-    public static final Criterion H5_1_2 = Criterion.builder()
-        .shortDescription("ToListCollector ist vollständig korrekt implementiert.")
-        .build();
+    public static final Criterion H5_1_2 = createCriterion(
+        "ToListCollector ist vollständig korrekt implementiert.",
+        () -> ToListCollectorBasicTest.class);
 
     public static final Criterion H5_1 = Criterion.builder()
         .shortDescription("H5.1 - ToListCollector")
@@ -234,9 +234,9 @@ public class H09_RubricProvider implements RubricProvider {
         "Klassensignatur von SummingCollector ist korrekt und funktioniert für einfache Fälle.",
         () -> SummingCollectorBasicTest.class);
 
-    public static final Criterion H5_2_2 = Criterion.builder()
-        .shortDescription("SummingCollector ist vollständig korrekt implementiert.")
-        .build();
+    public static final Criterion H5_2_2 = createCriterion(
+        "SummingCollector ist vollständig korrekt implementiert.",
+        () -> SummingCollectorBasicTest.class);
 
     public static final Criterion H5_2 = Criterion.builder()
         .shortDescription("H5.2 - SummingCollector")
@@ -247,9 +247,9 @@ public class H09_RubricProvider implements RubricProvider {
         "Klassensignatur von BinaryOpFoldCollector ist korrekt und funktioniert für einfache Fälle.",
         () -> BinaryOpFoldCollectorBasicTest.class);
 
-    public static final Criterion H5_3_2 = Criterion.builder()
-        .shortDescription("BinaryOpFoldCollector ist vollständig korrekt implementiert.")
-        .build();
+    public static final Criterion H5_3_2 = createCriterion(
+        "BinaryOpFoldCollector ist vollständig korrekt implementiert.",
+        () -> BinaryOpFoldCollectorBasicTest.class);
 
     public static final Criterion H5_3 = Criterion.builder()
         .shortDescription("H5.3 - BinaryOpFoldCollector")
