@@ -23,8 +23,4 @@ public class VarianceTestExtensions {
     public static void assertStrictVariance(final Type baseType, final VarianceNode... varianceNodes) {
         assertVariance(baseType, true, varianceNodes);
     }
-
-    public static void assertLooseVariance(final Type baseType, final VarianceNode... varianceNodes) {
-        assertVariance(baseType, false, varianceNodes);
-    }
 }

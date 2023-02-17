@@ -46,11 +46,11 @@ class BasicSequenceTest {
 
         // Alternative with sequence.then
 
-        Sequence<String> seq = Sequence.of("Generics", "sind", "nicht", "toll")
-            .then(FilteringSequence.of(s -> !s.equals("nicht")))
-            .then(TransformingSequence.of(String::toUpperCase))
-            .then(TransformingSequence.of(s -> s + "!"))
-            .then(LimitSequence.of(3));
+//        Sequence<String> seq = Sequence.of("Generics", "sind", "nicht", "toll")
+//            .then(FilteringSequence.of(s -> !s.equals("nicht")))
+//            .then(TransformingSequence.of(String::toUpperCase))
+//            .then(TransformingSequence.of(s -> s + "!"))
+//            .then(LimitSequence.of(3));
 //
 //        Iterator<String> it1 = seq.iterator();
 //        System.out.println(it1.next()); // GERNERICS!
