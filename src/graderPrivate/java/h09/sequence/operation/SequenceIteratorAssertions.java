@@ -13,8 +13,7 @@ import java.util.Objects;
 
 public class SequenceIteratorAssertions {
 
-    public static Class<?> checkIteratorMethod(final TypeVariable<?> inputGenericType,
-                                               final TypeVariable<?> outputGenericType,
+    public static Class<?> checkIteratorMethod(final TypeVariable<?> outputGenericType,
                                                final Class<?> enclosingClass,
                                                final Object instance) {
         final Method method = Assertions.assertDoesNotThrow(() ->
@@ -40,9 +39,9 @@ public class SequenceIteratorAssertions {
     }
 
     public static void checkIteratorField(
-        TypeVariable<?> genericT,
-        Class<?> enclosingClass,
-        Class<?> localIteratorClass,
+        final TypeVariable<?> genericT,
+        final Class<?> enclosingClass,
+        final Class<?> localIteratorClass,
         final int expectedFieldCount
     ) {
         final Field[] fields = localIteratorClass.getDeclaredFields();

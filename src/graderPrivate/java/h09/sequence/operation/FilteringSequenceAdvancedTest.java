@@ -35,7 +35,7 @@ public class FilteringSequenceAdvancedTest {
                 constructor.newInstance(Sequence.of(List.of()), (Predicate) s -> true),
             "Failed to invoke FilteringSequence constructor");
         final Class<?> localIteratorClass =
-            SequenceIteratorAssertions.checkIteratorMethod(genericT, genericT, FilteringSequence.class, sequence);
+            SequenceIteratorAssertions.checkIteratorMethod(genericT, FilteringSequence.class, sequence);
         SequenceIteratorAssertions.checkIteratorField(genericT, FilteringSequence.class, localIteratorClass, 2);
     }
 }

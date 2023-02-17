@@ -38,7 +38,7 @@ public class TransformingSequenceAdvancedTest {
                 constructor.newInstance(Sequence.of(List.of()), Function.identity()),
             "Failed to invoke TransformingSequence constructor");
         final Class<?> localIteratorClass =
-            SequenceIteratorAssertions.checkIteratorMethod(genericT, genericR, TransformingSequence.class, sequence);
+            SequenceIteratorAssertions.checkIteratorMethod(genericR, TransformingSequence.class, sequence);
         SequenceIteratorAssertions.checkIteratorField(genericT, TransformingSequence.class, localIteratorClass, 1);
     }
 }

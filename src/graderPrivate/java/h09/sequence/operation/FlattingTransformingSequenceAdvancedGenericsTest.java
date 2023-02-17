@@ -45,7 +45,7 @@ public class FlattingTransformingSequenceAdvancedGenericsTest {
                 constructor.newInstance(Sequence.of(List.of()), Function.identity()),
             "Failed to invoke FlatteningTransformingSequence constructor");
         final Class<?> localIteratorClass =
-            SequenceIteratorAssertions.checkIteratorMethod(genericT, genericR, FlatteningTransformingSequence.class, sequence);
+            SequenceIteratorAssertions.checkIteratorMethod(genericR, FlatteningTransformingSequence.class, sequence);
         SequenceIteratorAssertions.checkIteratorField(genericT, FlatteningTransformingSequence.class, localIteratorClass, 2);
 
         final Field[] fields = localIteratorClass.getDeclaredFields();
