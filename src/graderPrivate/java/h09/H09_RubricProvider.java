@@ -177,7 +177,7 @@ public class H09_RubricProvider implements RubricProvider {
 
     public static final Criterion H4_3_3 = createCriterion(
         "Generics von FlatteningTransformingSequence sind vollständig korrekt implementiert.",
-        () -> FlattingTransformingSequenceAdvancedGenericsTest.class);
+        () -> FlattingTransformingSequenceAdvancedTest.class);
 
     public static final Criterion H4_3_4 = Criterion.builder()
         .shortDescription("FlatteningTransformingSequence ist vollständig korrekt implementiert.")
@@ -186,7 +186,7 @@ public class H09_RubricProvider implements RubricProvider {
             .pointsFailedMin()
             .requirePass(JUnitTestRef.ofClass(() -> FlatteningTransformingSequenceBasicTest.class))
             .requirePass(JUnitTestRef.ofClass(() -> FlatteningTransformingSequenceIntermediateTest.class))
-            .requirePass(JUnitTestRef.ofClass(() -> FlattingTransformingSequenceAdvancedGenericsTest.class))
+            .requirePass(JUnitTestRef.ofClass(() -> FlattingTransformingSequenceAdvancedTest.class))
             .build())
         .build();
 

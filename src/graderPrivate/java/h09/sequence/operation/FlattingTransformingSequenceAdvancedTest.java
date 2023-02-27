@@ -20,7 +20,7 @@ import java.util.Objects;
 import java.util.function.Function;
 
 @TestForSubmission
-public class FlattingTransformingSequenceAdvancedGenericsTest {
+public class FlattingTransformingSequenceAdvancedTest {
 
     @Test
     void testFields() {
@@ -62,5 +62,10 @@ public class FlattingTransformingSequenceAdvancedGenericsTest {
 
         VarianceTestExtensions.assertStrictVariance(iteratorField.getGenericType(),
             new VarianceNode(genericR, Variance.COVARIANT));
+    }
+
+    @Test
+    void testIteratorAdvanced() {
+        FlatteningTransformingSequenceIteratorTest.testIteratorFunction(true);
     }
 }
