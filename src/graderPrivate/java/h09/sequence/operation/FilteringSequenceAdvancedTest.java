@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.function.Predicate;
 
 @TestForSubmission
+@SuppressWarnings("rawtypes")
 public class FilteringSequenceAdvancedTest {
 
     @Test
@@ -37,5 +38,10 @@ public class FilteringSequenceAdvancedTest {
         final Class<?> localIteratorClass =
             SequenceIteratorAssertions.checkIteratorMethod(genericT, FilteringSequence.class, sequence);
         SequenceIteratorAssertions.checkIteratorField(genericT, FilteringSequence.class, localIteratorClass, 2);
+    }
+
+    @Test
+    void testIteratorAdvanced() {
+        FilteringSequenceIteratorTest.testIteratorFunction(true);
     }
 }
