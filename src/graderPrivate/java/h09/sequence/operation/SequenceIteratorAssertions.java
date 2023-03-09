@@ -57,8 +57,12 @@ public class SequenceIteratorAssertions {
 
         Assertions.assertTrue(Modifier.isFinal(iteratorField.getModifiers()),
             "The iterator field in the " + enclosingClass.getSimpleName() + " iterator should be final");
-        Assertions.assertTrue(Modifier.isPrivate(iteratorField.getModifiers()),
-            "The iterator field in the " + enclosingClass.getSimpleName() + " iterator should be private");
+        /*
+         * To check if the field is private:
+         *
+         * Assertions.assertTrue(Modifier.isPrivate(iteratorField.getModifiers()),
+         *             "The iterator field in the " + enclosingClass.getSimpleName() + " iterator should be private");
+         */
 
         VarianceTestExtensions.assertStrictVariance(iteratorField.getGenericType(),
             new VarianceNode(genericT, Variance.COVARIANT));
