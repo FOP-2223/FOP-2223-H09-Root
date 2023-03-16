@@ -34,14 +34,16 @@ public class FlatteningTransformingSequenceOfTest {
         // check parameter type
 
         if (!(ofMethod.getGenericParameterTypes()[0] instanceof ParameterizedType parameterizedPredicate)) {
-            throw new AssertionFailedError("Method FlatteningTransformingSequence.of should parameterize parameter type Function");
+            throw new AssertionFailedError(
+                "Method FlatteningTransformingSequence.of should parameterize parameter type Function");
         }
 
         VarianceTestExtensions.assertStrictVariance(parameterizedPredicate,
             new VarianceNode(genericT, Variance.CONTRAVARIANT),
             new VarianceNode(Sequence.class, Variance.COVARIANT, new VarianceNode(genericR, Variance.COVARIANT)));
 
-        final Object result = InvokeAssertions.assertDoesNotThrow(() -> ofMethod.invoke(null, (Function<Object, Object>) Objects::nonNull),
+        final Object result = InvokeAssertions.assertDoesNotThrow(
+            () -> ofMethod.invoke(null, (Function<Object, Object>) Objects::nonNull),
             "Method FlatteningTransformingSequence.of should not throw an exception when called with a non-null Function");
 
         Assertions.assertNotNull(result, "Method FlatteningTransformingSequence.of should return a non-null value");

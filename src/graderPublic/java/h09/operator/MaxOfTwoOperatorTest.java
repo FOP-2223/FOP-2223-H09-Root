@@ -19,7 +19,8 @@ public class MaxOfTwoOperatorTest {
     @Test
     void testSignature() {
         final TypeVariable<Class<MaxOfTwoOperator>>[] typeParameters = MaxOfTwoOperator.class.getTypeParameters();
-        Assertions.assertArrayEquals(new String[]{"T"}, Stream.of(typeParameters).map(TypeVariable::getName).toArray(String[]::new),
+        Assertions.assertArrayEquals(new String[]{"T"},
+            Stream.of(typeParameters).map(TypeVariable::getName).toArray(String[]::new),
             "MaxOfTwoOperator should have a single type parameter T");
         final TypeVariable<Class<MaxOfTwoOperator>> typeParameter = typeParameters[0];
         final Type[] bounds = typeParameter.getBounds();

@@ -41,4 +41,9 @@ public class TransformingSequenceAdvancedTest {
             SequenceIteratorAssertions.checkIteratorMethod(genericR, TransformingSequence.class, sequence);
         SequenceIteratorAssertions.checkIteratorField(genericT, TransformingSequence.class, localIteratorClass, 1);
     }
+
+    @Test
+    void testIteratorAdvanced() {
+        TransformingSequenceIteratorTest.testIteratorFunction(true);
+    }
 }

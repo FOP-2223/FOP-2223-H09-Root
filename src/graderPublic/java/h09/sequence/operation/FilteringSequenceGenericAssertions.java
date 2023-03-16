@@ -7,14 +7,18 @@ import h09.variance.VarianceNode;
 import h09.variance.VarianceTestExtensions;
 import org.junit.jupiter.api.Assertions;
 
-import java.lang.reflect.*;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
+import java.lang.reflect.Parameter;
+import java.lang.reflect.TypeVariable;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
 
 @SuppressWarnings("rawtypes")
 public final class FilteringSequenceGenericAssertions {
 
-    public static void checkFields(final boolean strict) {
+    static void checkFields(final boolean strict) {
         final TypeVariable<Class<FilteringSequence>> genericT = FilteringSequence.class.getTypeParameters()[0];
         final Field[] fields = FilteringSequence.class.getDeclaredFields();
         Assertions.assertEquals(2, fields.length, "FilteringSequence should have two fields");
@@ -31,7 +35,7 @@ public final class FilteringSequenceGenericAssertions {
             new VarianceNode(genericT, Variance.CONTRAVARIANT));
     }
 
-    public static void checkConstructor(final boolean strict) {
+    static void checkConstructor(final boolean strict) {
         final TypeVariable<Class<FilteringSequence>> genericT = FilteringSequence.class.getTypeParameters()[0];
         final Constructor<FilteringSequence> constructor = Assertions.assertDoesNotThrow(() ->
                 FilteringSequence.class.getDeclaredConstructor(Sequence.class, Predicate.class),

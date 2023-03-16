@@ -59,14 +59,23 @@ public class SequenceAssertions {
         }
     }
 
+    /**
+     * Asserts that the sequence is empty.
+     */
     public void assertSequenceEmpty(Sequence<?> sequence) {
         Assertions.assertFalse(sequence.iterator().hasNext());
     }
 
+    /**
+     * Asserts that the sequence is not empty.
+     */
     public void assertSequenceNotEmpty(Sequence<?> sequence) {
         Assertions.assertTrue(sequence.iterator().hasNext());
     }
 
+    /**
+     * Asserts that the sequence has the expected size.
+     */
     public void assertSequenceSize(int expectedSize, Sequence<?> sequence) {
         var iterator = sequence.iterator();
         int i = 0;
@@ -77,6 +86,9 @@ public class SequenceAssertions {
         Assertions.assertEquals(expectedSize, i);
     }
 
+    /**
+     * Asserts that the sequence contains the expected element.
+     */
     public void assertSequenceContains(Object expectedElement, Sequence<?> sequence) {
         var iterator = sequence.iterator();
         while (iterator.hasNext()) {
@@ -88,6 +100,9 @@ public class SequenceAssertions {
         Assertions.fail(String.format("Sequence does not contain element %s", expectedElement));
     }
 
+    /**
+     * Asserts that the sequence contains all the expected elements.
+     */
     public void assertSequenceContainsAll(Sequence<?> expectedElements, Sequence<?> sequence) {
         var iterator = expectedElements.iterator();
         while (iterator.hasNext()) {

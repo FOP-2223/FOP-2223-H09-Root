@@ -78,7 +78,8 @@ public final class H2_1_Test {
                     + "ComposedDoubleBinaryOperator(BinaryOperator<Double>, BinaryOperator<Double>, BinaryOperator<Double>)"
             );
             Assertions.assertTrue(Modifier.isPublic(constructor.getModifiers()),
-                "Constructor ComposedDoubleBinaryOperator(BinaryOperator<Double>, BinaryOperator<Double>, BinaryOperator<Double>) should be public");
+                "Constructor ComposedDoubleBinaryOperator(BinaryOperator<Double>, BinaryOperator<Double>,"
+                    + " BinaryOperator<Double>) should be public");
             final Type[] genericParams = constructor.getGenericParameterTypes();
             for (int i = 0; i < 3; i++) {
                 if (genericParams[i] instanceof final ParameterizedType type) {

@@ -38,7 +38,9 @@ public final class StringFactoryTest {
     @ValueSource(ints = {0, 1, 2, 5, 21, 64})
     void testComplex(final int start) {
         final Random random = new Random(start);
-        final String[] input = IntStream.rangeClosed(0, 65).mapToObj(i -> RandomExtensions.generateString(random, i)).toArray(String[]::new);
+        final String[] input = IntStream.rangeClosed(0, 65)
+            .mapToObj(i -> RandomExtensions.generateString(random, i))
+            .toArray(String[]::new);
         final StringFactory factory = createInstance(start, input);
         for (int i = 0; i < 500; i++) {
             Assertions.assertEquals(input[(i + start) % input.length], invokeCreate(factory),
