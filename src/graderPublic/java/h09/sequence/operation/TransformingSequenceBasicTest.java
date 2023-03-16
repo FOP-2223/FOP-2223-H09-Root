@@ -16,7 +16,8 @@ public final class TransformingSequenceBasicTest {
     @Test
     void testSignature() {
         final TypeVariable<Class<TransformingSequence>>[] typeParameters = TransformingSequence.class.getTypeParameters();
-        Assertions.assertArrayEquals(new String[]{"T", "R"}, Stream.of(typeParameters).map(TypeVariable::getName).toArray(String[]::new),
+        Assertions.assertArrayEquals(new String[]{"T", "R"},
+            Stream.of(typeParameters).map(TypeVariable::getName).toArray(String[]::new),
             "TransformingSequence should have two type parameters T and R");
         final TypeVariable<Class<TransformingSequence>> genericT = typeParameters[0];
         final TypeVariable<Class<TransformingSequence>> genericR = typeParameters[1];

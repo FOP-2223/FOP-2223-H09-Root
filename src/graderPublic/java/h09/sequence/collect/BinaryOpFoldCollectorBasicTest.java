@@ -19,12 +19,14 @@ public final class BinaryOpFoldCollectorBasicTest {
     @Test
     void testSignature() {
         final TypeVariable<Class<BinaryOpFoldCollector>>[] typeParameters = BinaryOpFoldCollector.class.getTypeParameters();
-        Assertions.assertArrayEquals(new String[]{"T"}, Stream.of(typeParameters).map(TypeVariable::getName).toArray(String[]::new),
+        Assertions.assertArrayEquals(new String[]{"T"},
+            Stream.of(typeParameters).map(TypeVariable::getName).toArray(String[]::new),
             "BinaryOpFoldCollector should have a type parameter T");
         final TypeVariable<Class<BinaryOpFoldCollector>> genericT = typeParameters[0];
         Assertions.assertArrayEquals(new Class<?>[]{Object.class}, genericT.getBounds(),
             "BinaryOpFoldCollector's generic type T should not have additional bounds");
-        SignatureTestExtensions.testGenericSuperInterface(BinaryOpFoldCollector.class, SequenceCollector.class, genericT, genericT);
+        SignatureTestExtensions.testGenericSuperInterface(
+            BinaryOpFoldCollector.class, SequenceCollector.class, genericT, genericT);
     }
 
     @Test

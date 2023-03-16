@@ -11,6 +11,11 @@ import java.util.function.Function;
 @SuppressWarnings("rawtypes")
 public class TransformingSequenceIteratorTest {
 
+    /**
+     * Tests the iterator of the TransformingSequence class.
+     *
+     * @param checkEndState Whether to make sure that the iterator is exhausted after the sequence is over
+     */
     public static void testIteratorFunction(boolean checkEndState) {
         final Constructor<TransformingSequence> constructor = Assertions.assertDoesNotThrow(() ->
                 TransformingSequence.class.getDeclaredConstructor(Sequence.class, Function.class),

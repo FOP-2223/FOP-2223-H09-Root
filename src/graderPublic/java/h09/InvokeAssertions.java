@@ -10,6 +10,9 @@ public final class InvokeAssertions {
     private InvokeAssertions() {
     }
 
+    /**
+     * Unwraps InvocationTargetException from a ThrowingSupplier.
+     */
     public static <T> T assertDoesNotThrow(final ThrowingSupplier<T> supplier, final String message) {
         return Assertions.assertDoesNotThrow(() -> {
             try {

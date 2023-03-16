@@ -31,20 +31,23 @@ public class SumWithCoefficientsOperatorTest {
         genericParams.put("X", Object.class);
         genericParams.put("Y", Object.class);
         SignatureTestExtensions.testGenericDeclaration(SumWithCoefficientsOperator.class, genericParams);
-        final TypeVariable<Class<SumWithCoefficientsOperator>> genericX = SumWithCoefficientsOperator.class.getTypeParameters()[0];
+        final TypeVariable<Class<SumWithCoefficientsOperator>> genericX =
+            SumWithCoefficientsOperator.class.getTypeParameters()[0];
         SignatureTestExtensions.testGenericSuperInterface(SumWithCoefficientsOperator.class, BinaryOperator.class, genericX);
     }
 
     @Test
     void testFields() {
-        final TypeVariable<Class<SumWithCoefficientsOperator>>[] typeParameters = SumWithCoefficientsOperator.class.getTypeParameters();
+        final TypeVariable<Class<SumWithCoefficientsOperator>>[] typeParameters =
+            SumWithCoefficientsOperator.class.getTypeParameters();
         final TypeVariable<Class<SumWithCoefficientsOperator>> genericX = typeParameters[0];
         final TypeVariable<Class<SumWithCoefficientsOperator>> genericY = typeParameters[1];
         final Field[] fields = SumWithCoefficientsOperator.class.getDeclaredFields();
         Assertions.assertEquals(2, Stream.of(fields).filter(field -> field.getGenericType().equals(genericY)).count(),
             "SumWithCoefficientsOperator should have exactly two fields of generic type Y");
         final Field opField = Stream.of(fields).filter(field -> field.getType().equals(BasicBinaryOperations.class)).findAny()
-            .orElseThrow(() -> new AssertionFailedError("SumWithCoefficientsOperator should have a field who's raw type is BasicBinaryOperations"));
+            .orElseThrow(() -> new AssertionFailedError(
+                "SumWithCoefficientsOperator should have a field who's raw type is BasicBinaryOperations"));
         if (opField.getGenericType() instanceof ParameterizedType type) {
             final Type[] actualTypeArguments = type.getActualTypeArguments();
             Assertions.assertArrayEquals(new Type[]{genericX, genericY}, actualTypeArguments,
@@ -63,7 +66,8 @@ public class SumWithCoefficientsOperatorTest {
         Assertions.assertTrue(Modifier.isPublic(constructor.getModifiers()),
             "Constructor for SumWithCoefficientsOperator should be public");
         final Type[] genericParams = constructor.getGenericParameterTypes();
-        final TypeVariable<Class<SumWithCoefficientsOperator>>[] typeParameters = SumWithCoefficientsOperator.class.getTypeParameters();
+        final TypeVariable<Class<SumWithCoefficientsOperator>>[] typeParameters =
+            SumWithCoefficientsOperator.class.getTypeParameters();
         final TypeVariable<Class<SumWithCoefficientsOperator>> genericX = typeParameters[0];
         final TypeVariable<Class<SumWithCoefficientsOperator>> genericY = typeParameters[1];
         if (genericParams[0] instanceof final ParameterizedType type) {
@@ -93,9 +97,11 @@ public class SumWithCoefficientsOperatorTest {
         final SumWithCoefficientsOperator sum = InvokeAssertions.assertDoesNotThrow(() ->
                 sumCtor.newInstance(op, 3, 2),
             "Failed to invoke constructor for SumWithCoefficientsOperator");
-        Assertions.assertEquals("abababcdcd", BinaryOperatorInvoker.invokeApply(sum,"ab", "cd"),
-            "new SumWithCoefficientsOperator(new StringBasicBinaryOperations(), 3, 2).apply(\"ab\", \"cd\") should return \"abababcdcd\"");
-        Assertions.assertEquals("aaacdaacdaa", BinaryOperatorInvoker.invokeApply(sum,"a", "cdaa"),
-            "new SumWithCoefficientsOperator(new StringBasicBinaryOperations(), 3, 2).apply(\"a\", \"cdaa\") should return \"aaacdaacdaa\"");
+        Assertions.assertEquals("abababcdcd", BinaryOperatorInvoker.invokeApply(sum, "ab", "cd"),
+            "new SumWithCoefficientsOperator(new StringBasicBinaryOperations(), 3, 2).apply(\"ab\", \"cd\")"
+                + " should return \"abababcdcd\"");
+        Assertions.assertEquals("aaacdaacdaa", BinaryOperatorInvoker.invokeApply(sum, "a", "cdaa"),
+            "new SumWithCoefficientsOperator(new StringBasicBinaryOperations(), 3, 2).apply(\"a\", \"cdaa\")"
+                + " should return \"aaacdaacdaa\"");
     }
 }

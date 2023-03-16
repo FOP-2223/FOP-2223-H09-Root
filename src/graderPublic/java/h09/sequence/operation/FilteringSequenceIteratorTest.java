@@ -12,6 +12,11 @@ import java.util.function.Predicate;
 @SuppressWarnings("rawtypes")
 public class FilteringSequenceIteratorTest {
 
+    /**
+     * Tests the iterator of the FilteringSequence class.
+     *
+     * @param checkEndState Whether to make sure that the iterator is exhausted after the sequence is over
+     */
     public static void testIteratorFunction(boolean checkEndState) {
         final Constructor<FilteringSequence> constructor = Assertions.assertDoesNotThrow(() ->
                 FilteringSequence.class.getDeclaredConstructor(Sequence.class, Predicate.class),

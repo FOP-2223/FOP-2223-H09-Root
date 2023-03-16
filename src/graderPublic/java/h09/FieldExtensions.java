@@ -10,6 +10,9 @@ public final class FieldExtensions {
     private FieldExtensions() {
     }
 
+    /**
+     * Asserts that all fields are private and final.
+     */
     public static void assertPrivateFinal(final String className, final Field[] fields) {
         for (final Field field : fields) {
             Assertions.assertTrue(Modifier.isFinal(field.getModifiers()),

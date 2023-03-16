@@ -2,6 +2,9 @@ package h09.sequence.collect;
 
 import h09.sequence.Sequence;
 
+/**
+ * A collector is a function that collects a sequence of type {@link T} into a result of type {@link R}.
+ */
 @FunctionalInterface
 public interface SequenceCollector<T, R> {
 

@@ -7,13 +7,20 @@ import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.lang.reflect.WildcardType;
 
+/**
+ * A node in a tree structure that calculates the variance of a set of numbers.
+ */
 public record VarianceNode(Type expectedBound, Variance expectedVariance, VarianceNode... children) {
+    /**
+     * Asserts that the given type matches the expected variance.
+     */
     public void check(final Type actualType, final boolean strict) {
         try {
             switch (expectedVariance) {
                 case INVARIANT -> assertInvariantType(actualType);
                 case COVARIANT -> assertCovariantType(actualType);
                 case CONTRAVARIANT -> assertContravariantType(actualType);
+                default -> throw new AssertionError("Unexpected variance " + expectedVariance);
             }
         } catch (AssertionFailedError e) {
             if (strict) {
@@ -55,9 +62,11 @@ public record VarianceNode(Type expectedBound, Variance expectedVariance, Varian
     private void assertInvariantType(final Type type) {
         if (type instanceof final WildcardType wildcardType) {
             if (wildcardType.getLowerBounds().length == 0) {
-                Assertions.fail("Expected invariant type parameter, but found covariant wildcard type parameter " + wildcardType);
+                Assertions.fail(
+                    "Expected invariant type parameter, but found covariant wildcard type parameter " + wildcardType);
             } else {
-                Assertions.fail("Expected invariant type parameter, but found contravariant wildcard type parameter " + wildcardType);
+                Assertions.fail(
+                    "Expected invariant type parameter, but found contravariant wildcard type parameter " + wildcardType);
             }
         } else {
             Assertions.assertEquals(expectedBound, type,
@@ -76,9 +85,11 @@ public record VarianceNode(Type expectedBound, Variance expectedVariance, Varian
                 ? parameterizedType.getRawType()
                 : upperBounds[0];
             Assertions.assertEquals(expectedBound, rawUpperBound,
-                "Expected covariant type parameter, but found wildcard type parameter with incorrect upper bound " + wildcardType);
+                "Expected covariant type parameter, but found wildcard type parameter with incorrect upper bound "
+                    + wildcardType);
         } else {
-            Assertions.fail("Expected covariant type parameter, but found contravariant wildcard type parameter " + wildcardType);
+            Assertions.fail(
+                "Expected covariant type parameter, but found contravariant wildcard type parameter " + wildcardType);
         }
     }
 
@@ -88,13 +99,15 @@ public record VarianceNode(Type expectedBound, Variance expectedVariance, Varian
         }
         final Type[] lowerBounds = wildcardType.getLowerBounds();
         if (lowerBounds.length == 0) {
-            Assertions.fail("Expected contravariant type parameter, but found contravariant wildcard type parameter " + wildcardType);
+            Assertions.fail(
+                "Expected contravariant type parameter, but found contravariant wildcard type parameter " + wildcardType);
         } else {
             final Type rawLowerBound = lowerBounds[0] instanceof ParameterizedType parameterizedType
                 ? parameterizedType.getRawType()
                 : lowerBounds[0];
             Assertions.assertEquals(expectedBound, rawLowerBound,
-                "Expected contravariant type parameter, but found wildcard type parameter with incorrect lower bound " + wildcardType);
+                "Expected contravariant type parameter, but found wildcard type parameter with incorrect lower bound "
+                    + wildcardType);
         }
     }
 

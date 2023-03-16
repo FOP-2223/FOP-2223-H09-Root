@@ -15,8 +15,10 @@ public final class FlatteningTransformingSequenceBasicTest {
 
     @Test
     void testSignature() {
-        final TypeVariable<Class<FlatteningTransformingSequence>>[] typeParameters = FlatteningTransformingSequence.class.getTypeParameters();
-        Assertions.assertArrayEquals(new String[]{"T", "R"}, Stream.of(typeParameters).map(TypeVariable::getName).toArray(String[]::new),
+        final TypeVariable<Class<FlatteningTransformingSequence>>[] typeParameters =
+            FlatteningTransformingSequence.class.getTypeParameters();
+        Assertions.assertArrayEquals(new String[]{"T", "R"},
+            Stream.of(typeParameters).map(TypeVariable::getName).toArray(String[]::new),
             "FlatteningTransformingSequence should have two type parameters T and R");
         final TypeVariable<Class<FlatteningTransformingSequence>> genericT = typeParameters[0];
         final TypeVariable<Class<FlatteningTransformingSequence>> genericR = typeParameters[1];

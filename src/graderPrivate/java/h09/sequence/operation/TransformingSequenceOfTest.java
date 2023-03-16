@@ -39,7 +39,8 @@ public class TransformingSequenceOfTest {
         VarianceTestExtensions.assertStrictVariance(parameterizedPredicate,
             new VarianceNode(genericT, Variance.CONTRAVARIANT), new VarianceNode(genericR, Variance.COVARIANT));
 
-        final Object result = InvokeAssertions.assertDoesNotThrow(() -> ofMethod.invoke(null, (Function<Object, Object>) Objects::nonNull),
+        final Object result = InvokeAssertions.assertDoesNotThrow(
+            () -> ofMethod.invoke(null, (Function<Object, Object>) Objects::nonNull),
             "Method TransformingSequence.of should not throw an exception when called with a non-null Function");
 
         Assertions.assertNotNull(result, "Method TransformingSequence.of should return a non-null value");

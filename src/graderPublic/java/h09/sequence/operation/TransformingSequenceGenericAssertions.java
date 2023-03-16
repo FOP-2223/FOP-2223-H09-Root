@@ -7,13 +7,22 @@ import h09.variance.VarianceNode;
 import h09.variance.VarianceTestExtensions;
 import org.junit.jupiter.api.Assertions;
 
-import java.lang.reflect.*;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
+import java.lang.reflect.Parameter;
+import java.lang.reflect.TypeVariable;
 import java.util.function.Function;
 import java.util.stream.Stream;
 
 @SuppressWarnings("rawtypes")
 public final class TransformingSequenceGenericAssertions {
 
+    /**
+     * Checks the signature of the TransformingSequence class.
+     *
+     * @param strict Whether to check for strict variance
+     */
     public static void checkSignature(final boolean strict) {
         final TypeVariable<Class<TransformingSequence>>[] typeParameters = TransformingSequence.class.getTypeParameters();
         final TypeVariable<Class<TransformingSequence>> genericT = typeParameters[0];
@@ -33,7 +42,7 @@ public final class TransformingSequenceGenericAssertions {
             new VarianceNode(genericT, Variance.CONTRAVARIANT), new VarianceNode(genericR, Variance.COVARIANT));
     }
 
-    public static void checkConstructor(final boolean strict) {
+    static void checkConstructor(final boolean strict) {
         final TypeVariable<Class<TransformingSequence>>[] typeParameters = TransformingSequence.class.getTypeParameters();
         final TypeVariable<Class<TransformingSequence>> genericT = typeParameters[0];
         final TypeVariable<Class<TransformingSequence>> genericR = typeParameters[1];

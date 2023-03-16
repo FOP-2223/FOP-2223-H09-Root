@@ -36,6 +36,9 @@ public class SignatureTestExtensions {
         testGenericSuperInterface(targetClass, targetSuperInterface, targetClass.getTypeParameters());
     }
 
+    /**
+     * Tests whether the given generic declaration is correct according to the provided generic types.
+     */
     public static void testGenericDeclaration(final GenericDeclaration declaration,
                                               final Map<String, Type> genericTypes) {
         final TypeVariable<?>[] typeParameters = declaration.getTypeParameters();
@@ -55,6 +58,9 @@ public class SignatureTestExtensions {
         });
     }
 
+    /**
+     * Tests whether the given method's parameters have the correct generic types.
+     */
     public static void testGenericParameters(final Method method,
                                              final Type... parameterTypes) {
         final Type[] actualParameterTypes = method.getGenericParameterTypes();
@@ -62,6 +68,9 @@ public class SignatureTestExtensions {
             method + " has incorrect parameter types");
     }
 
+    /**
+     * Tests that a given class implements a given parameterized superinterface with the specified type parameters.
+     */
     public static void testGenericSuperInterface(final Class<?> targetClass,
                                                  final Class<?> targetSuperInterface,
                                                  final Type... genericParams) {

@@ -1,24 +1,52 @@
 package h09;
 
-import h09.basic.*;
+import h09.basic.BasicBinaryOperationsTest;
+import h09.basic.DoubleBasicBinaryOperationsTest;
+import h09.basic.DoubleFactoryTest;
+import h09.basic.IntegerBasicBinaryOperationsTest;
+import h09.basic.IntegerFactoryTest;
+import h09.basic.StringBasicBinaryOperationsTest;
+import h09.basic.StringFactoryTest;
 import h09.operator.ComposedBinaryOperatorTest;
 import h09.operator.H2_1_Test;
 import h09.operator.MaxOfTwoOperatorTest;
 import h09.operator.SumWithCoefficientsOperatorTest;
-import h09.sequence.*;
+import h09.sequence.ArraySequenceAdvancedTest;
+import h09.sequence.ArraySequenceBasicTest;
+import h09.sequence.BasicFactorySequenceAdvancedTest;
+import h09.sequence.BasicFactorySequenceBasicTest;
+import h09.sequence.FibonacciSequenceBasicTest;
 import h09.sequence.collect.BinaryOpFoldCollectorBasicTest;
 import h09.sequence.collect.SummingCollectorBasicTest;
 import h09.sequence.collect.ToListCollectorBasicTest;
-import h09.sequence.operation.*;
-import org.sourcegrade.jagr.api.rubric.*;
+import h09.sequence.operation.FilteringSequenceAdvancedTest;
+import h09.sequence.operation.FilteringSequenceBasicTest;
+import h09.sequence.operation.FilteringSequenceIntermediateTest;
+import h09.sequence.operation.FilteringSequenceOfTest;
+import h09.sequence.operation.FlatteningTransformingSequenceAdvancedTest;
+import h09.sequence.operation.FlatteningTransformingSequenceBasicTest;
+import h09.sequence.operation.FlatteningTransformingSequenceIntermediateTest;
+import h09.sequence.operation.FlatteningTransformingSequenceOfTest;
+import h09.sequence.operation.TransformingSequenceAdvancedTest;
+import h09.sequence.operation.TransformingSequenceBasicTest;
+import h09.sequence.operation.TransformingSequenceIntermediateTest;
+import h09.sequence.operation.TransformingSequenceOfTest;
+import org.sourcegrade.jagr.api.rubric.Criterion;
+import org.sourcegrade.jagr.api.rubric.Grader;
+import org.sourcegrade.jagr.api.rubric.JUnitTestRef;
+import org.sourcegrade.jagr.api.rubric.Rubric;
+import org.sourcegrade.jagr.api.rubric.RubricProvider;
 
 import java.util.concurrent.Callable;
 
 public class H09_RubricProvider implements RubricProvider {
 
-    public static final Criterion H1_1 = createCriterion("H1.1 - IntegerFactory ist korrekt implementiert.", () -> IntegerFactoryTest.class);
-    public static final Criterion H1_2 = createCriterion("H1.2 - DoubleFactory ist korrekt implementiert.", () -> DoubleFactoryTest.class);
-    public static final Criterion H1_3 = createCriterion("H1.3 - StringFactory ist korrekt implementiert.", () -> StringFactoryTest.class);
+    public static final Criterion H1_1 =
+        createCriterion("H1.1 - IntegerFactory ist korrekt implementiert.", () -> IntegerFactoryTest.class);
+    public static final Criterion H1_2 =
+        createCriterion("H1.2 - DoubleFactory ist korrekt implementiert.", () -> DoubleFactoryTest.class);
+    public static final Criterion H1_3 =
+        createCriterion("H1.3 - StringFactory ist korrekt implementiert.", () -> StringFactoryTest.class);
 
     public static final Criterion H1_4_1 = createCriterion(
         "BasicBinaryOperations ist korrekt implementiert.",
@@ -48,9 +76,12 @@ public class H09_RubricProvider implements RubricProvider {
         .addChildCriteria(H1_1, H1_2, H1_3, H1_4)
         .build();
 
-    public static final Criterion H2_1 = createCriterion("H2.1 - Erster Satz von binären Operatorklassen ist korrekt implementiert.", () -> H2_1_Test.class);
-    public static final Criterion H2_2 = createCriterion("H2.2 - ComposedBinaryOperator ist korrekt implementiert.", () -> ComposedBinaryOperatorTest.class);
-    public static final Criterion H2_3 = createCriterion("H2.3 - MaxOfTwoOperator ist korrekt implementiert.", () -> MaxOfTwoOperatorTest.class);
+    public static final Criterion H2_1 =
+        createCriterion("H2.1 - Erster Satz von binären Operatorklassen ist korrekt implementiert.", () -> H2_1_Test.class);
+    public static final Criterion H2_2 =
+        createCriterion("H2.2 - ComposedBinaryOperator ist korrekt implementiert.", () -> ComposedBinaryOperatorTest.class);
+    public static final Criterion H2_3 =
+        createCriterion("H2.3 - MaxOfTwoOperator ist korrekt implementiert.", () -> MaxOfTwoOperatorTest.class);
 
     public static final Criterion H2_4_1 = Criterion.builder()
         .shortDescription("Klassensignatur, Attribute und Konstruktor von SumWithCoefficients sind korrekt implementiert.")
@@ -66,8 +97,10 @@ public class H09_RubricProvider implements RubricProvider {
     public static final Criterion H2_4_2 = Criterion.builder()
         .shortDescription("Die apply-Methode von SumWithCoefficients ist korrekt.")
         .grader(Grader.testAwareBuilder()
-            .requirePass(JUnitTestRef.ofMethod(() -> SumWithCoefficientsOperatorTest.class.getDeclaredMethod("testApplySignature")))
-            .requirePass(JUnitTestRef.ofMethod(() -> SumWithCoefficientsOperatorTest.class.getDeclaredMethod("testApply")))
+            .requirePass(JUnitTestRef.ofMethod(
+                () -> SumWithCoefficientsOperatorTest.class.getDeclaredMethod("testApplySignature")))
+            .requirePass(JUnitTestRef.ofMethod(
+                () -> SumWithCoefficientsOperatorTest.class.getDeclaredMethod("testApply")))
             .pointsPassedMax()
             .pointsFailedMin()
             .build())
@@ -177,7 +210,7 @@ public class H09_RubricProvider implements RubricProvider {
 
     public static final Criterion H4_3_3 = createCriterion(
         "Generics von FlatteningTransformingSequence sind vollständig korrekt implementiert.",
-        () -> FlattingTransformingSequenceAdvancedTest.class);
+        () -> FlatteningTransformingSequenceAdvancedTest.class);
 
     public static final Criterion H4_3_4 = Criterion.builder()
         .shortDescription("FlatteningTransformingSequence ist vollständig korrekt implementiert.")
@@ -186,7 +219,7 @@ public class H09_RubricProvider implements RubricProvider {
             .pointsFailedMin()
             .requirePass(JUnitTestRef.ofClass(() -> FlatteningTransformingSequenceBasicTest.class))
             .requirePass(JUnitTestRef.ofClass(() -> FlatteningTransformingSequenceIntermediateTest.class))
-            .requirePass(JUnitTestRef.ofClass(() -> FlattingTransformingSequenceAdvancedTest.class))
+            .requirePass(JUnitTestRef.ofClass(() -> FlatteningTransformingSequenceAdvancedTest.class))
             .build())
         .build();
 

@@ -37,7 +37,8 @@ public class FilteringSequenceOfTest {
 
         VarianceTestExtensions.assertStrictVariance(parameterizedPredicate, new VarianceNode(genericT, Variance.CONTRAVARIANT));
 
-        final Object result = InvokeAssertions.assertDoesNotThrow(() -> ofMethod.invoke(null, (Predicate<Object>) Objects::nonNull),
+        final Object result = InvokeAssertions.assertDoesNotThrow(
+            () -> ofMethod.invoke(null, (Predicate<Object>) Objects::nonNull),
             "Method FilteringSequence.of should not throw an exception when called with a non-null Predicate");
 
         Assertions.assertNotNull(result, "Method FilteringSequence.of should return a non-null value");

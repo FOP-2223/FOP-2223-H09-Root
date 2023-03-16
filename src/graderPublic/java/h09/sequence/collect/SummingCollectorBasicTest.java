@@ -19,7 +19,8 @@ public final class SummingCollectorBasicTest {
     @Test
     void testSignature() {
         final TypeVariable<Class<SummingCollector>>[] typeParameters = SummingCollector.class.getTypeParameters();
-        Assertions.assertArrayEquals(new String[]{"T"}, Stream.of(typeParameters).map(TypeVariable::getName).toArray(String[]::new),
+        Assertions.assertArrayEquals(new String[]{"T"},
+            Stream.of(typeParameters).map(TypeVariable::getName).toArray(String[]::new),
             "SummingCollector should have a type parameter T");
         final TypeVariable<Class<SummingCollector>> genericT = typeParameters[0];
         Assertions.assertArrayEquals(new Class<?>[]{Object.class}, genericT.getBounds(),

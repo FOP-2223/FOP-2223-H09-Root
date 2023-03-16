@@ -20,7 +20,7 @@ import java.util.Objects;
 import java.util.function.Function;
 
 @TestForSubmission
-public class FlattingTransformingSequenceAdvancedTest {
+public class FlatteningTransformingSequenceAdvancedTest {
 
     @Test
     void testFields() {
@@ -35,7 +35,8 @@ public class FlattingTransformingSequenceAdvancedTest {
     @Test
     @SuppressWarnings("rawtypes")
     void testIteratorGenerics() {
-        final TypeVariable<Class<FlatteningTransformingSequence>>[] typeParameters = FlatteningTransformingSequence.class.getTypeParameters();
+        final TypeVariable<Class<FlatteningTransformingSequence>>[] typeParameters =
+            FlatteningTransformingSequence.class.getTypeParameters();
         final TypeVariable<Class<FlatteningTransformingSequence>> genericT = typeParameters[0];
         final TypeVariable<Class<FlatteningTransformingSequence>> genericR = typeParameters[1];
         final Constructor<FlatteningTransformingSequence> constructor = Assertions.assertDoesNotThrow(() ->
@@ -54,8 +55,8 @@ public class FlattingTransformingSequenceAdvancedTest {
             .filter(f -> Objects.equals(f.getType(), Iterator.class))
             .filter(f -> Objects.equals(f.getName(), "currentIterator"))
             .findFirst()
-            .orElseThrow(() -> new AssertionError("The FlatteningTransformingSequence iterator should have a field" +
-                " with the name currentIterator who's raw type is Iterator"));
+            .orElseThrow(() -> new AssertionError("The FlatteningTransformingSequence iterator should have a field"
+                + " with the name currentIterator who's raw type is Iterator"));
 
         Assertions.assertTrue(Modifier.isPrivate(currentIteratorField.getModifiers()),
             "The currentIterator field in the FlatteningTransformingSequence iterator should be private");

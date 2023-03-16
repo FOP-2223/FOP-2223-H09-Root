@@ -18,7 +18,8 @@ public final class ToListCollectorBasicTest {
     @Test
     void testSignature() {
         final TypeVariable<Class<ToListCollector>>[] typeParameters = ToListCollector.class.getTypeParameters();
-        Assertions.assertArrayEquals(new String[]{"T"}, Stream.of(typeParameters).map(TypeVariable::getName).toArray(String[]::new),
+        Assertions.assertArrayEquals(new String[]{"T"},
+            Stream.of(typeParameters).map(TypeVariable::getName).toArray(String[]::new),
             "ToListCollector should have a type parameter T");
         final TypeVariable<Class<ToListCollector>> genericT = typeParameters[0];
         Assertions.assertArrayEquals(new Class<?>[]{Object.class}, genericT.getBounds(),

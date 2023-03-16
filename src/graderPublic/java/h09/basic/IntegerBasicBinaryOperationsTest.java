@@ -11,7 +11,8 @@ public final class IntegerBasicBinaryOperationsTest {
     @Test
     void testSignature() {
         SignatureTestExtensions.testSignatureWithNonGenericBase(
-            IntegerBasicBinaryOperations.class, BasicBinaryOperations.class, Integer.class, Integer.class);    }
+            IntegerBasicBinaryOperations.class, BasicBinaryOperations.class, Integer.class, Integer.class);
+    }
 
     @Test
     void testAdd() {

@@ -94,11 +94,11 @@ public final class ComposedBinaryOperatorTest {
                 "Failed to invoke ComposedBinaryOperator constructor");
         Assertions.assertEquals("abbcb", BinaryOperatorInvoker.invokeApply(operator, "ab", "bc"),
             "ComposedBinaryOperator(concat, intersect, concat).apply(\"ab\", \"bc\") should return \"abbcb\"");
-        Assertions.assertEquals("abcd", BinaryOperatorInvoker.invokeApply(operator,"ab", "cd"),
+        Assertions.assertEquals("abcd", BinaryOperatorInvoker.invokeApply(operator, "ab", "cd"),
             "ComposedBinaryOperator(concat, intersect, concat).apply(\"ab\", \"cd\") should return \"abcd\"");
-        Assertions.assertEquals("ababab", BinaryOperatorInvoker.invokeApply(operator,"ab", "ab"),
+        Assertions.assertEquals("ababab", BinaryOperatorInvoker.invokeApply(operator, "ab", "ab"),
             "ComposedBinaryOperator(concat, intersect, concat).apply(\"ab\", \"ab\") should return \"ababab\"");
-        Assertions.assertEquals("helloworldlo", BinaryOperatorInvoker.invokeApply(operator,"hello", "world"),
+        Assertions.assertEquals("helloworldlo", BinaryOperatorInvoker.invokeApply(operator, "hello", "world"),
             "ComposedBinaryOperator(concat, intersect, concat).apply(\"hello\", \"world\") should return \"helloworldlo\"");
     }
 }

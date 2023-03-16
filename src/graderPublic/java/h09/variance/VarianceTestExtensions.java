@@ -8,6 +8,9 @@ import java.lang.reflect.Type;
 
 public class VarianceTestExtensions {
 
+    /**
+     * Asserts that the given type has the expected variance.
+     */
     public static void assertVariance(final Type baseType, final boolean strict, final VarianceNode... varianceNodes) {
         if (!(baseType instanceof final ParameterizedType baseParameterizedType)) {
             throw new AssertionFailedError("Base type" + baseType.getTypeName() + " is not parameterized");

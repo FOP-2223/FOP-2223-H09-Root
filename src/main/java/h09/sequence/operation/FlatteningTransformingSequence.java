@@ -15,7 +15,8 @@ public class FlatteningTransformingSequence<T, R> implements Sequence<R> {
         return sequence -> new FlatteningTransformingSequence<>(sequence, function);
     }
 
-    public FlatteningTransformingSequence(Sequence<? extends T> sequence, Function<? super T, ? extends Sequence<? extends R>> function) {
+    public FlatteningTransformingSequence(Sequence<? extends T> sequence,
+                                          Function<? super T, ? extends Sequence<? extends R>> function) {
         this.sequence = sequence;
         this.function = function;
     }
