@@ -34,7 +34,7 @@ public final class TransformingSequenceGenericAssertions {
         final Field sequenceField = Stream.of(fields).filter(field -> field.getType().equals(Sequence.class)).findAny()
             .orElseThrow(() -> new AssertionError("TransformingSequence should have a field who's raw type is type Sequence"));
         final Field functionField = Stream.of(fields).filter(field -> field.getType().equals(Function.class)).findAny()
-            .orElseThrow(() -> new AssertionError("TransformingSequence should have a field who's raw type is type Sequence"));
+            .orElseThrow(() -> new AssertionError("TransformingSequence should have a field who's raw type is type Function"));
 
         VarianceTestExtensions.assertVariance(sequenceField.getGenericType(), strict,
             new VarianceNode(genericT, Variance.COVARIANT));
